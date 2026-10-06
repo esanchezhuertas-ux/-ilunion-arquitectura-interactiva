@@ -1,0 +1,4202 @@
+[
+  {
+    "card": "76:3450",
+    "id": "43:2049",
+    "label": "ILUNION Servicios\nNegocio integrado en la corporativa",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios"
+    ],
+    "url": "https://www.ilunionservicios.com/es",
+    "method": "business-home"
+  },
+  {
+    "card": "76:3452",
+    "id": "44:2311",
+    "label": "Contact center BPO",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Contact center BPO"
+    ],
+    "url": "https://www.ilunionservicios.com/es/contact-center",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3454",
+    "id": "44:2315",
+    "label": "Consultoría (CAT 4.0)",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Contact center BPO",
+      "Consultoría (CAT 4.0)"
+    ],
+    "url": "https://www.ilunionservicios.com/es/contact-center/automatizacion-cat",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3455",
+    "id": "44:2316",
+    "label": "Contact Center",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Contact center BPO",
+      "Contact Center"
+    ],
+    "url": "https://www.ilunionservicios.com/es/contact-center/servicio-contact-center",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3456",
+    "id": "44:2317",
+    "label": "Emergencias",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Contact center BPO",
+      "Emergencias"
+    ],
+    "url": "https://www.ilunionservicios.com/es/contact-center/emergencias",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3457",
+    "id": "44:2318",
+    "label": "BPO",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Contact center BPO",
+      "BPO"
+    ],
+    "url": "https://www.ilunionservicios.com/es/contact-center/bpo",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3458",
+    "id": "44:2319",
+    "label": "Seguridad",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Seguridad"
+    ],
+    "url": "https://www.ilunionservicios.com/es/seguridad-privada",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3460",
+    "id": "44:2323",
+    "label": "Consultoría y asesoramiento de seguridad",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Seguridad",
+      "Consultoría y asesoramiento de seguridad"
+    ],
+    "url": "https://www.ilunionservicios.com/es/seguridad/consultoria-asesoramiento-seguridad",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3461",
+    "id": "44:2324",
+    "label": "Vigilancia física",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Seguridad",
+      "Vigilancia física"
+    ],
+    "url": "https://www.ilunionservicios.com/es/seguridad/vigilancia-fisica",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3462",
+    "id": "44:2325",
+    "label": "Sistemas de seguridad",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Seguridad",
+      "Sistemas de seguridad"
+    ],
+    "url": "https://www.ilunionservicios.com/es/seguridad/sistemas-seguridad",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3463",
+    "id": "44:2326",
+    "label": "Sistemas de protección contra incendios",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Seguridad",
+      "Sistemas de protección contra incendios"
+    ],
+    "url": "https://www.ilunionservicios.com/es/seguridad/sistemas-proteccion-incendios",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3464",
+    "id": "44:2327",
+    "label": "Planes de autoprotección",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Seguridad",
+      "Planes de autoprotección"
+    ],
+    "url": "https://www.ilunionservicios.com/es/seguridad/planes-autoproteccion",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3465",
+    "id": "44:2328",
+    "label": "Unidad de inteligencia",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Seguridad",
+      "Unidad de inteligencia"
+    ],
+    "url": "https://www.ilunionservicios.com/es/seguridad/unidad-inteligencia",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3466",
+    "id": "44:2329",
+    "label": "Servicios de bomberos",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Seguridad",
+      "Servicios de bomberos"
+    ],
+    "url": "https://www.ilunionservicios.com/es/servicios-de-bomberos-privados-para-empresas-e-instalaciones-industriales",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3467",
+    "id": "44:2330",
+    "label": "Limpieza y Medioambiente",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Limpieza y Medioambiente"
+    ],
+    "url": "https://www.ilunionservicios.com/es/limpieza-medioambiente",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3469",
+    "id": "44:2334",
+    "label": "Limpieza comercial",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Limpieza y Medioambiente",
+      "Limpieza comercial"
+    ],
+    "url": "https://www.ilunionservicios.com/es/limpieza-medioambiente/limpieza-comercial",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3470",
+    "id": "44:2335",
+    "label": "Limpieza higiénica",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Limpieza y Medioambiente",
+      "Limpieza higiénica"
+    ],
+    "url": "https://www.ilunionservicios.com/es/limpieza-medioambiente/limpieza-higienica",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3471",
+    "id": "44:2336",
+    "label": "Limpieza industrial",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Limpieza y Medioambiente",
+      "Limpieza industrial"
+    ],
+    "url": "https://www.ilunionservicios.com/es/limpieza-medioambiente/limpieza-industrial",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3472",
+    "id": "44:2337",
+    "label": "Higiene ambiental",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Limpieza y Medioambiente",
+      "Higiene ambiental"
+    ],
+    "url": "https://www.ilunionservicios.com/es/limpieza-medioambiente/higiene-ambiental",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3473",
+    "id": "44:2338",
+    "label": "Zonas Urbanas",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Limpieza y Medioambiente",
+      "Zonas Urbanas"
+    ],
+    "url": "https://www.ilunionservicios.com/es/limpieza-medioambiente/zonas-urbanas",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3474",
+    "id": "44:2339",
+    "label": "Servicios forestales",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Limpieza y Medioambiente",
+      "Servicios forestales"
+    ],
+    "url": "https://www.ilunionservicios.com/es/limpieza-medioambiente/servicios-forestales",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3475",
+    "id": "44:2340",
+    "label": "Instalaciones deportivas",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Limpieza y Medioambiente",
+      "Instalaciones deportivas"
+    ],
+    "url": "https://www.ilunionservicios.com/es/limpieza-medioambiente/instalaciones-deportivas",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3476",
+    "id": "44:2341",
+    "label": "Mantenimiento",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Mantenimiento"
+    ],
+    "url": "https://www.ilunionservicios.com/es/mantenimiento",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3478",
+    "id": "44:2345",
+    "label": "Obras y reformas",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Mantenimiento",
+      "Obras y reformas"
+    ],
+    "url": "https://www.ilunionservicios.com/es/mantenimiento/obras-reformas",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3479",
+    "id": "44:2346",
+    "label": "Mantenimiento técnico legal",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Mantenimiento",
+      "Mantenimiento técnico legal"
+    ],
+    "url": "https://www.ilunionservicios.com/es/mantenimiento/tecnico-legal",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3480",
+    "id": "44:2347",
+    "label": "Mantenimiento correctivo",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Mantenimiento",
+      "Mantenimiento correctivo"
+    ],
+    "url": "https://www.ilunionservicios.com/es/mantenimiento/correctivo",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3481",
+    "id": "44:2348",
+    "label": "Mantenimiento predictivo",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Mantenimiento",
+      "Mantenimiento predictivo"
+    ],
+    "url": "https://www.ilunionservicios.com/es/mantenimiento/predictivo",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3482",
+    "id": "44:2349",
+    "label": "Mantenimiento preventivo",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Mantenimiento",
+      "Mantenimiento preventivo"
+    ],
+    "url": "https://www.ilunionservicios.com/es/mantenimiento/preventivo",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3483",
+    "id": "44:2350",
+    "label": "Mantenimiento conductivo",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Mantenimiento",
+      "Mantenimiento conductivo"
+    ],
+    "url": "https://www.ilunionservicios.com/es/mantenimiento/conductivo",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3484",
+    "id": "44:2351",
+    "label": "Logística",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Logística"
+    ],
+    "url": "https://www.ilunionservicios.com/es/logistica",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3486",
+    "id": "44:2355",
+    "label": "Cadena de aprovisionamiento",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Logística",
+      "Cadena de aprovisionamiento"
+    ],
+    "url": "https://www.ilunionservicios.com/es/logistica/cadena-aprovisionamiento",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3487",
+    "id": "44:2356",
+    "label": "Procesos industriales",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Logística",
+      "Procesos industriales"
+    ],
+    "url": "https://www.ilunionservicios.com/es/logistica/procesos-industriales",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3488",
+    "id": "44:2357",
+    "label": "Logística inversa",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Logística",
+      "Logística inversa"
+    ],
+    "url": "https://www.ilunionservicios.com/es/logistica/inversa",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3489",
+    "id": "44:2358",
+    "label": "Carretilleros y picking",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Logística",
+      "Carretilleros y picking"
+    ],
+    "url": "https://www.ilunionservicios.com/es/logistica/carretilleros-picking",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3490",
+    "id": "44:2359",
+    "label": "Manipulación, Montaje y Embalaje",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Manipulación, Montaje y Embalaje"
+    ],
+    "url": "https://www.ilunionservicios.com/es/manipulacion-montaje-embalaje",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3492",
+    "id": "44:2363",
+    "label": "Copacking",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Manipulación, Montaje y Embalaje",
+      "Copacking"
+    ],
+    "url": "https://www.ilunionservicios.com/es/manipulacion-montaje-embalaje/copacking",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3493",
+    "id": "44:2364",
+    "label": "Montaje para automoción",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Manipulación, Montaje y Embalaje",
+      "Montaje para automoción"
+    ],
+    "url": "https://www.ilunionservicios.com/es/manipulacion-montaje-embalaje/montaje-automocion",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3494",
+    "id": "44:2365",
+    "label": "Inyección de plásticos",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Manipulación, Montaje y Embalaje",
+      "Inyección de plásticos"
+    ],
+    "url": "https://www.ilunionservicios.com/es/manipulacion-montaje-embalaje/inyeccion-plasticos",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3495",
+    "id": "44:2366",
+    "label": "Field Marketing",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Field Marketing"
+    ],
+    "url": "https://www.ilunionservicios.com/es/field-marketing",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3497",
+    "id": "44:2370",
+    "label": "Promoción e impulso",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Field Marketing",
+      "Promoción e impulso"
+    ],
+    "url": "https://www.ilunionservicios.com/es/field-marketing/promocion-impulso",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3498",
+    "id": "44:2371",
+    "label": "Merchandising y reposición",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Field Marketing",
+      "Merchandising y reposición"
+    ],
+    "url": "https://www.ilunionservicios.com/es/field-marketing/merchandising",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3499",
+    "id": "44:2372",
+    "label": "Gestión en puntos de venta",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Field Marketing",
+      "Gestión en puntos de venta"
+    ],
+    "url": "https://www.ilunionservicios.com/es/field-marketing/gestion-puntos-venta",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3500",
+    "id": "44:2373",
+    "label": "JobSolutions",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "JobSolutions"
+    ],
+    "url": "https://www.ilunionservicios.com/es/seleccion-talento",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3502",
+    "id": "44:2377",
+    "label": "Trabajo temporal",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "JobSolutions",
+      "Trabajo temporal"
+    ],
+    "url": "https://www.ilunionservicios.com/es/seleccion-talento/trabajo-temporal",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3503",
+    "id": "44:2378",
+    "label": "Consultoría de selección",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "JobSolutions",
+      "Consultoría de selección"
+    ],
+    "url": "https://www.ilunionservicios.com/es/seleccion-talento/consultoria-de-seleccion",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3504",
+    "id": "44:2379",
+    "label": "Portal para candidatos ↗\njobsolutions.ilunionservicios.com",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "JobSolutions",
+      "Portal para candidatos ↗"
+    ],
+    "url": "https://jobsolutions.ilunionservicios.com/Trabajadores",
+    "method": "existing"
+  },
+  {
+    "card": "76:3505",
+    "id": "44:2380",
+    "label": "Portal para empresas ↗\njobsolutions.ilunionservicios.com",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "JobSolutions",
+      "Portal para empresas ↗"
+    ],
+    "url": "https://jobsolutions.ilunionservicios.com/Clientes",
+    "method": "existing"
+  },
+  {
+    "card": "76:3506",
+    "id": "44:2381",
+    "label": "App ILUJOB\nDescarga en App Store y Google Play",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "JobSolutions",
+      "App ILUJOB"
+    ],
+    "url": "https://www.ilunionservicios.com/es/seleccion-talento",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3507",
+    "id": "44:2382",
+    "label": "Casos de éxito",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Casos de éxito"
+    ],
+    "url": "https://www.ilunionservicios.com/es/casos-de-exito",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3509",
+    "id": "44:2386",
+    "label": "Detalle de caso\nPlantilla de contenido",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Casos de éxito",
+      "Detalle de caso"
+    ],
+    "url": "https://www.ilunionservicios.com/es/casos-de-exito/servicios-industriales-sector-cosmetico",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3510",
+    "id": "44:2391",
+    "label": "Recursos y contacto\nAccesos a contenidos comunes",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Recursos y contacto"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3512",
+    "id": "44:2395",
+    "label": "Contacto del negocio\nFormulario corporativo con negocio seleccionado",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Recursos y contacto",
+      "Contacto del negocio"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3513",
+    "id": "44:2396",
+    "label": "Blog Punto ILUNION\nContenido filtrado por negocio",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Recursos y contacto",
+      "Blog Punto ILUNION"
+    ],
+    "url": "https://www.ilunionservicios.com/es/blog-servicios",
+    "method": "current-business-blog"
+  },
+  {
+    "card": "76:3514",
+    "id": "44:2397",
+    "label": "Documentación del negocio\nRepositorio corporativo compartido",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Recursos y contacto",
+      "Documentación del negocio"
+    ],
+    "url": "https://www.ilunionservicios.com/es/documentos",
+    "method": "current-business-docs"
+  },
+  {
+    "card": "76:3515",
+    "id": "44:2398",
+    "label": "Trabaja con nosotros\nAcceso a empleo corporativo",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Recursos y contacto",
+      "Trabaja con nosotros"
+    ],
+    "url": "https://www.ilunion.com/es/unete-al-equipo",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3516",
+    "id": "69:2905",
+    "label": "Plano de evacuación · Landing",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Seguridad",
+      "Planes de autoprotección",
+      "Plano de evacuación · Landing"
+    ],
+    "url": "https://www.ilunionservicios.com/es/seguridad/planes-autoproteccion/plano-de-evacuacion",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3517",
+    "id": "69:2910",
+    "label": "Limpieza de hospitales · Landing",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Limpieza y Medioambiente",
+      "Limpieza higiénica",
+      "Limpieza de hospitales · Landing"
+    ],
+    "url": "https://www.ilunionservicios.com/es/limpieza-medioambiente/limpieza-higienica/limpieza-de-hospitales",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3518",
+    "id": "69:2915",
+    "label": "RPA · Landing",
+    "business": "servicios",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Servicios",
+      "Contact center BPO",
+      "Consultoría (CAT 4.0)",
+      "RPA · Landing"
+    ],
+    "url": "https://www.ilunionservicios.com/es/contact-center/automatizacion-cat/rpa",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3519",
+    "id": "43:2061",
+    "label": "ILUNION TextilCare\nNegocio integrado en la corporativa",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare"
+    ],
+    "url": "https://www.iluniontextilcare.com/",
+    "method": "business-home"
+  },
+  {
+    "card": "76:3521",
+    "id": "44:2636",
+    "label": "Lavandería",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Lavandería"
+    ],
+    "url": "https://www.iluniontextilcare.com/lavanderia",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3523",
+    "id": "44:2640",
+    "label": "Hotelero",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Lavandería",
+      "Hotelero"
+    ],
+    "url": "https://www.iluniontextilcare.com/lavanderia/hoteles",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3524",
+    "id": "44:2641",
+    "label": "Hospitalario",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Lavandería",
+      "Hospitalario"
+    ],
+    "url": "https://www.iluniontextilcare.com/lavanderia/hospitales",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3525",
+    "id": "44:2642",
+    "label": "Sanitario y Residencial",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Lavandería",
+      "Sanitario y Residencial"
+    ],
+    "url": "https://www.iluniontextilcare.com/lavanderia/residencias",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3526",
+    "id": "44:2643",
+    "label": "Industrial",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Lavandería",
+      "Industrial"
+    ],
+    "url": "https://www.iluniontextilcare.com/lavanderia/industrial",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3527",
+    "id": "44:2644",
+    "label": "Renting Textil",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Renting Textil"
+    ],
+    "url": "https://www.iluniontextilcare.com/renting-textil",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3529",
+    "id": "44:2648",
+    "label": "Hotelero",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Renting Textil",
+      "Hotelero"
+    ],
+    "url": "https://www.iluniontextilcare.com/renting-textil/hoteles",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3530",
+    "id": "44:2649",
+    "label": "Hospitalario",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Renting Textil",
+      "Hospitalario"
+    ],
+    "url": "https://www.iluniontextilcare.com/renting-textil/hospitales",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3531",
+    "id": "44:2650",
+    "label": "Sociosanitario y residencial",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Renting Textil",
+      "Sociosanitario y residencial"
+    ],
+    "url": "https://www.iluniontextilcare.com/renting-textil/residencias",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3532",
+    "id": "44:2651",
+    "label": "Industrial",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Renting Textil",
+      "Industrial"
+    ],
+    "url": "https://www.iluniontextilcare.com/renting-textil/industrial",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3533",
+    "id": "44:2652",
+    "label": "Otros servicios",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Otros servicios"
+    ],
+    "url": "https://www.iluniontextilcare.com/otros-servicios",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3535",
+    "id": "44:2656",
+    "label": "Salas blancas",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Otros servicios",
+      "Salas blancas"
+    ],
+    "url": "https://www.iluniontextilcare.com/salas-blancas",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3536",
+    "id": "44:2657",
+    "label": "Camareras de piso",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Otros servicios",
+      "Camareras de piso"
+    ],
+    "url": "https://www.iluniontextilcare.com/camareras-de-piso",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3537",
+    "id": "44:2658",
+    "label": "Amenities",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Otros servicios",
+      "Amenities"
+    ],
+    "url": "https://www.iluniontextilcare.com/amenities",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3538",
+    "id": "44:2664",
+    "label": "Gestión textil ↗\ngestiontextil.iluniontextilcare.com",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Gestión textil ↗"
+    ],
+    "url": "https://gestiontextil.iluniontextilcare.com/",
+    "method": "existing"
+  },
+  {
+    "card": "76:3540",
+    "id": "44:2668",
+    "label": "Recursos y contacto\nAccesos a contenidos comunes",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Recursos y contacto"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3542",
+    "id": "44:2672",
+    "label": "Contacto del negocio\nFormulario corporativo con negocio seleccionado",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Recursos y contacto",
+      "Contacto del negocio"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3543",
+    "id": "44:2673",
+    "label": "Blog Punto ILUNION\nContenido filtrado por negocio",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Recursos y contacto",
+      "Blog Punto ILUNION"
+    ],
+    "url": "https://www.iluniontextilcare.com/blog-textil-care",
+    "method": "current-business-blog"
+  },
+  {
+    "card": "76:3544",
+    "id": "44:2674",
+    "label": "Documentación del negocio\nRepositorio corporativo compartido",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Recursos y contacto",
+      "Documentación del negocio"
+    ],
+    "url": "https://www.iluniontextilcare.com/documentos",
+    "method": "current-business-docs"
+  },
+  {
+    "card": "76:3545",
+    "id": "44:2675",
+    "label": "Trabaja con nosotros\nAcceso a empleo corporativo",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Recursos y contacto",
+      "Trabaja con nosotros"
+    ],
+    "url": "https://www.ilunion.com/es/unete-al-equipo",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3546",
+    "id": "43:2068",
+    "label": "ILUNION Retail\nNegocio integrado en la corporativa",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail"
+    ],
+    "url": "https://www.iluniontutienda.com/",
+    "method": "business-home"
+  },
+  {
+    "card": "76:3548",
+    "id": "44:2781",
+    "label": "Empresas (Comercialización)\nNueva rama de negocio",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)"
+    ],
+    "url": "https://regaloresponsable.es/#que_hacemos",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3550",
+    "id": "44:2785",
+    "label": "Lotes y cestas de Navidad",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Lotes y cestas de Navidad"
+    ],
+    "url": "https://regaloresponsable.es/#que_hacemos",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3551",
+    "id": "44:2786",
+    "label": "Lotes y cestas tradicionales",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Lotes y cestas de Navidad",
+      "Lotes y cestas tradicionales"
+    ],
+    "url": "https://regaloresponsable.es/#que_hacemos",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3552",
+    "id": "44:2787",
+    "label": "Lotes y cestas gourmet y premium",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Lotes y cestas de Navidad",
+      "Lotes y cestas gourmet y premium"
+    ],
+    "url": "https://regaloresponsable.es/#que_hacemos",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3553",
+    "id": "44:2788",
+    "label": "Cestas sostenibles y solidarias",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Lotes y cestas de Navidad",
+      "Cestas sostenibles y solidarias"
+    ],
+    "url": "https://regaloresponsable.es/#que_hacemos",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3554",
+    "id": "44:2789",
+    "label": "Cestas para empleados",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Lotes y cestas de Navidad",
+      "Cestas para empleados"
+    ],
+    "url": "https://regaloresponsable.es/#que_hacemos",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3555",
+    "id": "44:2790",
+    "label": "Regalo corporativo",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Regalo corporativo"
+    ],
+    "url": "https://regaloresponsable.es/#regalos",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3556",
+    "id": "44:2791",
+    "label": "Canastillas de nacimiento",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Regalo corporativo",
+      "Canastillas de nacimiento"
+    ],
+    "url": "https://regaloresponsable.es/#regalos",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3557",
+    "id": "44:2792",
+    "label": "Kits para eventos",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Regalo corporativo",
+      "Kits para eventos"
+    ],
+    "url": "https://regaloresponsable.es/#regalos",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3558",
+    "id": "44:2793",
+    "label": "Regalos institucionales",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Regalo corporativo",
+      "Regalos institucionales"
+    ],
+    "url": "https://regaloresponsable.es/#regalos",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3559",
+    "id": "44:2794",
+    "label": "Material de oficina",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Material de oficina"
+    ],
+    "url": "https://www.ics-materialdeoficina.es/",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3560",
+    "id": "44:2795",
+    "label": "Consumibles",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Material de oficina",
+      "Consumibles"
+    ],
+    "url": "https://www.ics-materialdeoficina.es/listacartucce.asp",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3561",
+    "id": "44:2796",
+    "label": "Suministro para oficina",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Material de oficina",
+      "Suministro para oficina"
+    ],
+    "url": "https://www.ics-materialdeoficina.es/",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3562",
+    "id": "44:2797",
+    "label": "Café y fruta oficina",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Café y fruta oficina"
+    ],
+    "url": "https://www.iluniontutienda.com/auna",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3563",
+    "id": "44:2798",
+    "label": "AUNA",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Café y fruta oficina",
+      "AUNA"
+    ],
+    "url": "https://www.iluniontutienda.com/auna",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3564",
+    "id": "44:2799",
+    "label": "AUNA · Landing",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Café y fruta oficina",
+      "AUNA",
+      "AUNA · Landing"
+    ],
+    "url": "https://www.iluniontutienda.com/auna",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3565",
+    "id": "44:2800",
+    "label": "Fruta fresca",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Café y fruta oficina",
+      "Fruta fresca"
+    ],
+    "url": "https://www.iluniontutienda.com/",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3566",
+    "id": "44:2801",
+    "label": "Servicios orientados al bienestar laboral",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Empresas (Comercialización)",
+      "Café y fruta oficina",
+      "Servicios orientados al bienestar laboral"
+    ],
+    "url": "https://www.iluniontutienda.com/auna",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "76:3567",
+    "id": "44:2802",
+    "label": "Puntos Celéritas",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Puntos Celéritas"
+    ],
+    "url": "https://www.iluniontutienda.com/punto-celeritas",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3569",
+    "id": "44:2806",
+    "label": "Detalle de puntos en capa\nApertura en capa",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Puntos Celéritas",
+      "Detalle de puntos en capa"
+    ],
+    "url": "https://www.iluniontutienda.com/punto-celeritas",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3570",
+    "id": "44:2807",
+    "label": "Regala a distancia",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Regala a distancia"
+    ],
+    "url": "https://www.iluniontutienda.com/regala-distancia",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3572",
+    "id": "44:2811",
+    "label": "Nuestra red de hospitales",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Regala a distancia",
+      "Nuestra red de hospitales"
+    ],
+    "url": "https://www.iluniontutienda.com/regala-distancia",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3573",
+    "id": "44:2812",
+    "label": "Algunas ideas de regalos",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Regala a distancia",
+      "Algunas ideas de regalos"
+    ],
+    "url": "https://www.iluniontutienda.com/regala-distancia",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3574",
+    "id": "44:2813",
+    "label": "Banner promocional",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Regala a distancia",
+      "Banner promocional"
+    ],
+    "url": "https://www.iluniontutienda.com/regala-distancia",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3575",
+    "id": "44:2819",
+    "label": "Recursos y contacto\nAccesos a contenidos comunes",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Recursos y contacto"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3577",
+    "id": "44:2823",
+    "label": "Contacto del negocio\nFormulario corporativo con negocio seleccionado",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Recursos y contacto",
+      "Contacto del negocio"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3578",
+    "id": "44:2824",
+    "label": "Blog Punto ILUNION\nContenido filtrado por negocio",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Recursos y contacto",
+      "Blog Punto ILUNION"
+    ],
+    "url": "https://www.iluniontutienda.com/blog-tu-tienda",
+    "method": "current-business-blog"
+  },
+  {
+    "card": "76:3579",
+    "id": "44:2825",
+    "label": "Trabaja con nosotros\nAcceso a empleo corporativo",
+    "business": "tutienda",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Retail",
+      "Recursos y contacto",
+      "Trabaja con nosotros"
+    ],
+    "url": "https://www.ilunion.com/es/unete-al-equipo",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3582",
+    "id": "45:2682",
+    "label": "Fisioterapia",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia",
+    "method": "source-map"
+  },
+  {
+    "card": "73:2912",
+    "id": "69:2925",
+    "label": "Meniscopatía interna de rodilla · Landing",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Meniscopatía interna de rodilla · Landing"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/meniscopatia-interna-rodilla",
+    "method": "existing"
+  },
+  {
+    "card": "76:3580",
+    "id": "43:2080",
+    "label": "ILUNION Bienestar y VidaSénior\nNegocio integrado en la corporativa",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es",
+    "method": "business-home"
+  },
+  {
+    "card": "76:3584",
+    "id": "45:2686",
+    "label": "ATM y cefaleas",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "ATM y cefaleas"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/fisioterapia-en-atm-y-cefaleas",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3585",
+    "id": "45:2687",
+    "label": "Deportivo",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Deportivo"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/fisioterapia-deportiva",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3586",
+    "id": "45:2688",
+    "label": "Oncológico",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Oncológico"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/fisioterapia-oncologica",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3587",
+    "id": "45:2689",
+    "label": "Neurológico",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Neurológico"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/fisioterapia-neurologica",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3588",
+    "id": "45:2690",
+    "label": "Columna vertebral",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Columna vertebral"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/fisioterapia-de-la-columna-vertebral",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3589",
+    "id": "45:2691",
+    "label": "Sensibilización central",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Sensibilización central"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/patologias-de-sensibilizacion-central",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3590",
+    "id": "45:2692",
+    "label": "Respiratorio",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Respiratorio"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/fisioterapia-respiratoria",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3591",
+    "id": "45:2693",
+    "label": "Suelo pélvico",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Suelo pélvico"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/fisioterapia-de-suelo-pelvico",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3592",
+    "id": "45:2694",
+    "label": "Pilates y ejercicio terapéutico",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Pilates y ejercicio terapéutico"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/pilates-ejercicio-terapeutico",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3593",
+    "id": "45:2695",
+    "label": "Drenaje linfático",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Drenaje linfático"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/drenaje-linfatico",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3594",
+    "id": "45:2696",
+    "label": "Pediátrico",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Pediátrico"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/pediatrica",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3595",
+    "id": "45:2697",
+    "label": "INDIBA",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "INDIBA"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/indiba",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3596",
+    "id": "45:2698",
+    "label": "Osteopatía",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Osteopatía"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/osteopatia",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3597",
+    "id": "45:2699",
+    "label": "Punción Seca",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Punción Seca"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/puncion-seca",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3598",
+    "id": "45:2700",
+    "label": "Ondas de choque",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Ondas de choque"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/ondas-de-choque",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3599",
+    "id": "45:2701",
+    "label": "Nuestras clínicas\nSedes · Filtro clínicas de fisioterapia",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Nuestras clínicas"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/nuestras-clinicas",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3600",
+    "id": "45:2702",
+    "label": "Ficha de clínica\nPlantilla común de Sedes",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Nuestras clínicas",
+      "Ficha de clínica"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/nuestras-clinicas/calle-orense",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3601",
+    "id": "45:2703",
+    "label": "Pide tu cita online ↗\nilunionfisioterapia.com",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Pide tu cita online ↗"
+    ],
+    "url": "https://citafisioterapia.ilunionbienestaryvidasenior.com/FisioterapiaPortal/",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3602",
+    "id": "45:2704",
+    "label": "Fisioterapia para empresas\nOferta dentro de la misma página",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Fisioterapia para empresas"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3603",
+    "id": "45:2705",
+    "label": "Apartamentos 'Sénior Living'",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Apartamentos 'Sénior Living'"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/apartamentos",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3605",
+    "id": "45:2709",
+    "label": "Pontevedra",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Apartamentos 'Sénior Living'",
+      "Pontevedra"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/apartamentos/pontevedra",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3606",
+    "id": "45:2710",
+    "label": "Residencias",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Residencias"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/residencias",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3608",
+    "id": "45:2714",
+    "label": "Córdoba",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Residencias",
+      "Córdoba"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/residencias/ilunion-baena",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3609",
+    "id": "45:2715",
+    "label": "Ciudad Real",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Residencias",
+      "Ciudad Real"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/residencias/la-solana",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3610",
+    "id": "45:2716",
+    "label": "Madrid",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Residencias",
+      "Madrid"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/residencias/madrid",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3611",
+    "id": "45:2717",
+    "label": "Murcia",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Residencias",
+      "Murcia"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/residencias/murcia",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3612",
+    "id": "45:2718",
+    "label": "Albacete",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Residencias",
+      "Albacete"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/residencias/villarobledo",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3613",
+    "id": "45:2719",
+    "label": "Guadalajara",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Residencias",
+      "Guadalajara"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/residencias/ilunion-maranchon",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3614",
+    "id": "45:2720",
+    "label": "Toledo",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Residencias",
+      "Toledo"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/residencias/sonseca",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3615",
+    "id": "45:2721",
+    "label": "Certificación AICP",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Residencias",
+      "Certificación AICP"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/residencias/certificacion_aicp",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3616",
+    "id": "45:2722",
+    "label": "Norma Libera-Care DIGNOS",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Residencias",
+      "Norma Libera-Care DIGNOS"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/residencias/norma-libera-care-dignos",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3617",
+    "id": "45:2723",
+    "label": "Aplicación Tramed",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Residencias",
+      "Aplicación Tramed"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/residencias/aplicacion-tramed",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3618",
+    "id": "45:2724",
+    "label": "Centros de Día",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Centros de Día"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/centros-de-dia-ilunion",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3620",
+    "id": "45:2728",
+    "label": "Baena",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Centros de Día",
+      "Baena"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/centros-de-dia/andalucia",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3621",
+    "id": "45:2729",
+    "label": "Parla",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Centros de Día",
+      "Parla"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/centros-de-dia/madrid",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3622",
+    "id": "45:2730",
+    "label": "Centros gestionados\nSedes · Filtro centros de día",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Centros de Día",
+      "Centros gestionados"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/centros-de-dia/centros-gestionados",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3623",
+    "id": "45:2731",
+    "label": "Teleasistencia",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Teleasistencia"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/teleasistencia",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3625",
+    "id": "45:2735",
+    "label": "Servicio de Teleasistencia",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Teleasistencia",
+      "Servicio de Teleasistencia"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/teleasistencia/teleasistencia-domicilio",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3626",
+    "id": "45:2736",
+    "label": "País vasco",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Teleasistencia",
+      "País vasco"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/teleasistencia/servicio-pais-vasco",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3627",
+    "id": "45:2737",
+    "label": "Teleasistencia Avanzada en Fuenlabrada",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Teleasistencia",
+      "Teleasistencia Avanzada en Fuenlabrada"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/teleasistencia/teleasistencia-avanzada-fuenlabrada",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3628",
+    "id": "45:2738",
+    "label": "Ayuda a domicilio",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Ayuda a domicilio"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/ayuda-a-domicilio",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3630",
+    "id": "45:2742",
+    "label": "Soledad no deseada",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Ayuda a domicilio",
+      "Soledad no deseada"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/ayuda-a-domicilio/soledad-no-deseada",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3631",
+    "id": "45:2747",
+    "label": "Recursos y contacto\nAccesos a contenidos comunes",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Recursos y contacto"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3633",
+    "id": "45:2751",
+    "label": "Contacto del negocio\nFormulario corporativo con negocio seleccionado",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Recursos y contacto",
+      "Contacto del negocio"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3634",
+    "id": "45:2752",
+    "label": "Blog Punto ILUNION\nContenido filtrado por negocio",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Recursos y contacto",
+      "Blog Punto ILUNION"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/blog-bienestar-y-vidasenior",
+    "method": "current-business-blog"
+  },
+  {
+    "card": "76:3635",
+    "id": "45:2753",
+    "label": "Documentación del negocio\nRepositorio corporativo compartido",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Recursos y contacto",
+      "Documentación del negocio"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/documentos",
+    "method": "current-business-docs"
+  },
+  {
+    "card": "76:3636",
+    "id": "45:2754",
+    "label": "Trabaja con nosotros\nAcceso a empleo corporativo",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Recursos y contacto",
+      "Trabaja con nosotros"
+    ],
+    "url": "https://www.ilunion.com/es/unete-al-equipo",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3637",
+    "id": "69:2920",
+    "label": "Respiratoria pediátrica · Landing",
+    "business": "bienestar",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Bienestar y VidaSénior",
+      "Fisioterapia",
+      "Pediátrico",
+      "Respiratoria pediátrica · Landing"
+    ],
+    "url": "https://www.ilunionbienestaryvidasenior.com/es/fisioterapia/pediatrica/respiratoria",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3638",
+    "id": "43:2090",
+    "label": "ILUNION Economía Circular\nNegocio integrado en la corporativa",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular"
+    ],
+    "url": "https://www.ilunioneconomiacircular.com/",
+    "method": "business-home"
+  },
+  {
+    "card": "76:3640",
+    "id": "45:2968",
+    "label": "Plantas de tratamiento",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Plantas de tratamiento"
+    ],
+    "url": "https://www.ilunioneconomiacircular.com/plantas-de-tratamiento",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3642",
+    "id": "45:2972",
+    "label": "RAEE",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Plantas de tratamiento",
+      "RAEE"
+    ],
+    "url": "https://www.ilunioneconomiacircular.com/raee",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3643",
+    "id": "45:2973",
+    "label": "Baterías de litio",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Plantas de tratamiento",
+      "Baterías de litio"
+    ],
+    "url": "https://www.ilunioneconomiacircular.com/baterias-de-litio",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3644",
+    "id": "45:2974",
+    "label": "Mapa de plantas\nSedes · Filtro plantas de tratamiento",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Plantas de tratamiento",
+      "Mapa de plantas"
+    ],
+    "url": "https://www.ilunioneconomiacircular.com/plantas-de-tratamiento",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3645",
+    "id": "45:2975",
+    "label": "Gestión de residuos",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Gestión de residuos"
+    ],
+    "url": "https://www.ilunioneconomiacircular.com/gestion-de-residuos",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3647",
+    "id": "45:2979",
+    "label": "Centros de gestión\nSedes · Filtro centros de gestión",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Gestión de residuos",
+      "Centros de gestión"
+    ],
+    "url": "https://www.ilunioneconomiacircular.com/gestion-de-residuos",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3648",
+    "id": "45:2980",
+    "label": "Recogida y transporte de residuos",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Recogida y transporte de residuos"
+    ],
+    "url": "https://www.ilunioneconomiacircular.com/recogida-de-residuos",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3650",
+    "id": "45:2984",
+    "label": "Equipamiento",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Equipamiento"
+    ],
+    "url": "https://www.ilunioneconomiacircular.com/equipamiento",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3652",
+    "id": "45:2988",
+    "label": "Recursos y contacto\nAccesos a contenidos comunes",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Recursos y contacto"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3654",
+    "id": "45:2992",
+    "label": "Contacto del negocio\nFormulario corporativo con negocio seleccionado",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Recursos y contacto",
+      "Contacto del negocio"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3655",
+    "id": "45:2993",
+    "label": "Blog Punto ILUNION\nContenido filtrado por negocio",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Recursos y contacto",
+      "Blog Punto ILUNION"
+    ],
+    "url": "https://www.ilunioneconomiacircular.com/blog-economia-circular",
+    "method": "current-business-blog"
+  },
+  {
+    "card": "76:3656",
+    "id": "45:2994",
+    "label": "Documentación del negocio\nRepositorio corporativo compartido",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Recursos y contacto",
+      "Documentación del negocio"
+    ],
+    "url": "https://www.ilunioneconomiacircular.com/documentos",
+    "method": "current-business-docs"
+  },
+  {
+    "card": "76:3657",
+    "id": "45:2995",
+    "label": "Trabaja con nosotros\nAcceso a empleo corporativo",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Recursos y contacto",
+      "Trabaja con nosotros"
+    ],
+    "url": "https://www.ilunion.com/es/unete-al-equipo",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3658",
+    "id": "43:2098",
+    "label": "ILUNION Consultoría\nNegocio integrado en la corporativa",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es",
+    "method": "business-home"
+  },
+  {
+    "card": "76:3660",
+    "id": "45:3065",
+    "label": "Accesibilidad",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Accesibilidad"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/accesibilidad",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3662",
+    "id": "45:3069",
+    "label": "Auditoría, consultoría, certificación y formación",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Accesibilidad",
+      "Auditoría, consultoría, certificación y formación"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/accesibilidad/auditoria-certificaciones",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3663",
+    "id": "45:3070",
+    "label": "Tecnología accesible",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Accesibilidad",
+      "Tecnología accesible"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/accesibilidad/tecnologia-accesible",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3664",
+    "id": "45:3071",
+    "label": "Planes estratégicos de accesibilidad",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Accesibilidad",
+      "Planes estratégicos de accesibilidad"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/accesibilidad/planes-estrategicos-accesibilidad",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3665",
+    "id": "45:3072",
+    "label": "Información y comunicación accesible",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Accesibilidad",
+      "Información y comunicación accesible"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/accesibilidad/informacion-comunicacion-accesibles",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3666",
+    "id": "45:3073",
+    "label": "Turismo accesible",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Accesibilidad",
+      "Turismo accesible"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/accesibilidad/turismo-accesible",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3667",
+    "id": "45:3074",
+    "label": "Formación",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Formación"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/formacion",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3669",
+    "id": "45:3078",
+    "label": "Formación en Fuego",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Formación",
+      "Formación en Fuego"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/formacion/formacion-contra-incendios",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3670",
+    "id": "45:3079",
+    "label": "Formación en Conducción",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Formación",
+      "Formación en Conducción"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/formacion/formacion-conduccion",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3671",
+    "id": "45:3080",
+    "label": "Formación en Emergencias",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Formación",
+      "Formación en Emergencias"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/formacion/formacion-emergencias-proteccion-civil",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3672",
+    "id": "45:3081",
+    "label": "Consultoría",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Formación",
+      "Consultoría"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/formacion/formacion-consultoria",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3673",
+    "id": "45:3082",
+    "label": "Formación para el empleo",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Formación",
+      "Formación para el empleo"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/formacion/formacion-empleo",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3674",
+    "id": "45:3083",
+    "label": "Servicios IT",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Servicios IT"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/servicios-it",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3676",
+    "id": "45:3087",
+    "label": "Proveedor de Tecnología",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Servicios IT",
+      "Proveedor de Tecnología"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/servicios-it/proveedor-tecnologia",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3677",
+    "id": "45:3088",
+    "label": "Servicios Tecnológicos",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Servicios IT",
+      "Servicios Tecnológicos"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/servicios-it/servicios-tecnologicos",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3678",
+    "id": "45:3089",
+    "label": "Agencia de Comunicación y Marketing",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Agencia de Comunicación y Marketing"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/agencia-comunicacion-marketing",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3680",
+    "id": "45:3093",
+    "label": "Estrategia ON y OFF",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Agencia de Comunicación y Marketing",
+      "Estrategia ON y OFF"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/agencia-comunicacion-marketing/estrategia-off-digital",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3681",
+    "id": "45:3094",
+    "label": "Relaciones públicas y prensa",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Agencia de Comunicación y Marketing",
+      "Relaciones públicas y prensa"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/agencia-comunicacion-marketing/relaciones-publicas-prensa",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3682",
+    "id": "45:3095",
+    "label": "Diseño y creatividad",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Agencia de Comunicación y Marketing",
+      "Diseño y creatividad"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/agencia-comunicacion-marketing/diseno-creatividad",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3683",
+    "id": "45:3096",
+    "label": "Eventos y foros",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Agencia de Comunicación y Marketing",
+      "Eventos y foros"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/agencia-comunicacion-marketing/eventos-foros",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3684",
+    "id": "45:3097",
+    "label": "Estrategia Digital y Campañas Paid",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Agencia de Comunicación y Marketing",
+      "Estrategia Digital y Campañas Paid"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/agencia-comunicacion-marketing/estrategia-digital-campanas-paid",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3685",
+    "id": "45:3098",
+    "label": "Gestión de crisis",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Agencia de Comunicación y Marketing",
+      "Gestión de crisis"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/agencia-comunicacion-marketing/gestion-crisis",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3686",
+    "id": "45:3099",
+    "label": "Casos de éxito\nListado dentro de la página",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Agencia de Comunicación y Marketing",
+      "Casos de éxito"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/agencia-comunicacion-marketing",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3687",
+    "id": "45:3100",
+    "label": "Detalle de caso\nPlantilla de contenido",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Agencia de Comunicación y Marketing",
+      "Casos de éxito",
+      "Detalle de caso"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/agencia-comunicacion-marketing/otis",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3688",
+    "id": "45:3101",
+    "label": "Correduría de Seguros",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Correduría de Seguros"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/correduria-seguros",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3690",
+    "id": "45:3105",
+    "label": "Seguros y discapacidad",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Correduría de Seguros",
+      "Seguros y discapacidad"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/correduria-seguros/seguros-discapacidad",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3691",
+    "id": "45:3106",
+    "label": "Seguro para empresas",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Correduría de Seguros",
+      "Seguro para empresas"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/correduria-seguros/seguros-empresas",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3692",
+    "id": "45:3107",
+    "label": "Seguros para Tercer Sector",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Correduría de Seguros",
+      "Seguros para Tercer Sector"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/correduria-seguros/seguros-tercer-sector",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3693",
+    "id": "45:3108",
+    "label": "Seguros para particulares",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Correduría de Seguros",
+      "Seguros para particulares"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/correduria-seguros/seguros-particulares",
+    "method": "source-map"
+  },
+  {
+    "card": "76:3694",
+    "id": "45:3109",
+    "label": "Oficinas / Encuentra tu asesor",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Correduría de Seguros",
+      "Oficinas / Encuentra tu asesor"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/correduria-seguros/oficinas",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3695",
+    "id": "45:3110",
+    "label": "Atención de siniestros y defensor\nInformación y canales de contacto",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Correduría de Seguros",
+      "Atención de siniestros y defensor"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/correduria-seguros",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3696",
+    "id": "45:3115",
+    "label": "Recursos y contacto\nAccesos a contenidos comunes",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Recursos y contacto"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3698",
+    "id": "45:3119",
+    "label": "Contacto del negocio\nFormulario corporativo con negocio seleccionado",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Recursos y contacto",
+      "Contacto del negocio"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3699",
+    "id": "45:3120",
+    "label": "Blog Punto ILUNION\nContenido filtrado por negocio",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Recursos y contacto",
+      "Blog Punto ILUNION"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/blog-consultoria",
+    "method": "current-business-blog"
+  },
+  {
+    "card": "76:3700",
+    "id": "45:3121",
+    "label": "Documentación del negocio\nRepositorio corporativo compartido",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Recursos y contacto",
+      "Documentación del negocio"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/documentos",
+    "method": "current-business-docs"
+  },
+  {
+    "card": "76:3701",
+    "id": "45:3122",
+    "label": "Trabaja con nosotros\nAcceso a empleo corporativo",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Recursos y contacto",
+      "Trabaja con nosotros"
+    ],
+    "url": "https://www.ilunion.com/es/unete-al-equipo",
+    "method": "common-page"
+  },
+  {
+    "card": "76:3702",
+    "id": "69:2885",
+    "label": "Data center · Landing",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Servicios IT",
+      "Proveedor de Tecnología",
+      "Data center · Landing"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/servicios-it/proveedor-tecnologia/data-center",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3703",
+    "id": "69:2890",
+    "label": "Software de seguridad MDM · Landing",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Servicios IT",
+      "Servicios Tecnológicos",
+      "Software de seguridad MDM · Landing"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/servicios-it/servicios-tecnologicos/software-seguridad-mdm",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3704",
+    "id": "69:2895",
+    "label": "Responsabilidad civil · Landing",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Correduría de Seguros",
+      "Seguro para empresas",
+      "Responsabilidad civil · Landing"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/correduria-seguros/seguros-empresas/responsabilidad-civil",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3705",
+    "id": "69:2900",
+    "label": "Organización de congresos · Landing",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Agencia de Comunicación y Marketing",
+      "Eventos y foros",
+      "Organización de congresos · Landing"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/agencia-comunicacion-marketing/eventos-foros/organizacion-congresos",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3706",
+    "id": "43:1962",
+    "label": "Nosotros\nSobre ILUNION · /es/nosotros",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros"
+    ],
+    "url": "https://www.ilunion.com/es/nosotros",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3708",
+    "id": "43:1966",
+    "label": "Propósito",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Propósito"
+    ],
+    "url": "https://www.ilunion.com/es/nosotros/proposito-ilunion",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3709",
+    "id": "43:1967",
+    "label": "Historia",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Historia"
+    ],
+    "url": "https://www.ilunion.com/es/nosotros/historia-ilunion",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3710",
+    "id": "43:1968",
+    "label": "Organigrama / Liderazgo",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Organigrama / Liderazgo"
+    ],
+    "url": "https://www.ilunion.com/es/nosotros/organigrama-ilunion",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3711",
+    "id": "43:1969",
+    "label": "Ficha de directivo\nPlantilla de detalle",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Organigrama / Liderazgo",
+      "Ficha de directivo"
+    ],
+    "url": "https://www.ilunion.com/es/nosotros/organigrama-ilunion/alejandro-onoro-medrano",
+    "method": "template-example"
+  },
+  {
+    "card": "76:3712",
+    "id": "43:1972",
+    "label": "Grupo Social ONCE ↗\ngruposocialonce.com",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Grupo Social ONCE ↗"
+    ],
+    "url": "https://gruposocialonce.com/",
+    "method": "existing"
+  },
+  {
+    "card": "76:3713",
+    "id": "43:1973",
+    "label": "Compromiso\nDentro de Nosotros · Común a todos los negocios",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3715",
+    "id": "43:1977",
+    "label": "Personas",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Personas"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/personas",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3716",
+    "id": "43:1978",
+    "label": "Diversidad social",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Personas",
+      "Diversidad social"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/personas/diversidad-social",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3717",
+    "id": "43:1979",
+    "label": "Iniciativas sociales",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Personas",
+      "Iniciativas sociales"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/personas/iniciativas-sociales",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3718",
+    "id": "43:1980",
+    "label": "Sentimiento ILUNION",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Personas",
+      "Sentimiento ILUNION"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/personas/sentimiento-ilunion",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3719",
+    "id": "43:1981",
+    "label": "Transformación",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Transformación"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/transformacion",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3720",
+    "id": "43:1982",
+    "label": "Emprendimiento",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Transformación",
+      "Emprendimiento"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/transformacion/emprendimiento",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3721",
+    "id": "43:1983",
+    "label": "Digitalización",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Transformación",
+      "Digitalización"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/transformacion/digitalizacion",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3722",
+    "id": "43:1984",
+    "label": "Excelencia",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Excelencia"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/excelencia",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3723",
+    "id": "43:1985",
+    "label": "Excelencia / Cultura empresarial",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Excelencia",
+      "Excelencia / Cultura empresarial"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/excelencia/excelencia-cultura-empresarial",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3724",
+    "id": "43:1986",
+    "label": "Sostenibilidad",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Sostenibilidad"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/sostenibilidad",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3725",
+    "id": "43:1987",
+    "label": "Compromiso ambiental",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Sostenibilidad",
+      "Compromiso ambiental"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/sostenibilidad/medioambiental",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3726",
+    "id": "43:1988",
+    "label": "Compromiso social",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Sostenibilidad",
+      "Compromiso social"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/sostenibilidad/social",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3727",
+    "id": "43:1989",
+    "label": "Buen Gobierno / Gobernanza",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Sostenibilidad",
+      "Buen Gobierno / Gobernanza"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/sostenibilidad/gobernanza",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3728",
+    "id": "43:1990",
+    "label": "Compliance",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Sostenibilidad",
+      "Buen Gobierno / Gobernanza",
+      "Compliance"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/sostenibilidad/gobernanza/compliance",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3729",
+    "id": "43:1991",
+    "label": "Transparencia\nTambién enlazada desde el pie",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Sostenibilidad",
+      "Buen Gobierno / Gobernanza",
+      "Transparencia"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/sostenibilidad/gobernanza/transparencia",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3730",
+    "id": "43:1992",
+    "label": "Políticas",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Sostenibilidad",
+      "Buen Gobierno / Gobernanza",
+      "Políticas"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/sostenibilidad/gobernanza/politicas",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3731",
+    "id": "43:1993",
+    "label": "Centros Especiales de Empleo",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Sostenibilidad",
+      "Buen Gobierno / Gobernanza",
+      "Centros Especiales de Empleo"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/sostenibilidad/gobernanza/cees",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3732",
+    "id": "43:1994",
+    "label": "Cofinanciación pública\nAcceso desde el pie",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Sostenibilidad",
+      "Buen Gobierno / Gobernanza",
+      "Cofinanciación pública"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/sostenibilidad/gobernanza/cofinanciacion-publica",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3733",
+    "id": "43:1995",
+    "label": "Alianzas",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Sostenibilidad",
+      "Alianzas"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/sostenibilidad/alianzas",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3734",
+    "id": "43:1996",
+    "label": "Medidas alternativas LGD\nAcceso destacado en Inicio",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Nosotros",
+      "Compromiso",
+      "Medidas alternativas LGD"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/medidas-alternativas",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3735",
+    "id": "43:1971",
+    "label": "Buscador de sedes\nFiltros por negocio, provincia y tipo de centro",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Sedes",
+      "Buscador de sedes"
+    ],
+    "url": "https://www.ilunion.com/es/nosotros/sedes-ilunion",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3736",
+    "id": "43:1970",
+    "label": "Listado y mapa\nSedes, delegaciones, plantas, tiendas y centros",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Sedes",
+      "Buscador de sedes",
+      "Listado y mapa"
+    ],
+    "url": "https://www.ilunion.com/es/nosotros/sedes-ilunion",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3737",
+    "id": "58:2903",
+    "label": "Sedes\nPágina común a todos los negocios",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Sedes"
+    ],
+    "url": "https://www.ilunion.com/es/nosotros/sedes-ilunion",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3739",
+    "id": "58:2906",
+    "label": "Ficha de sede / centro\nUbicación, servicios, accesibilidad y contacto",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Sedes",
+      "Buscador de sedes",
+      "Listado y mapa",
+      "Ficha de sede / centro"
+    ],
+    "url": "https://www.ilunion.com/es/nosotros/sedes-ilunion",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3405",
+    "id": "43:2108",
+    "label": "ILUNION\nCorporativo\nWeb unificada · Propuesta",
+    "business": "corporativo",
+    "path": [
+      "ILUNION"
+    ],
+    "url": "https://www.ilunion.com/es",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3407",
+    "id": "43:2045",
+    "label": "Qué hacemos\nNegocios integrados en ilunion.com",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Qué hacemos"
+    ],
+    "url": "https://www.ilunion.com/es/que-hacemos",
+    "method": "existing"
+  },
+  {
+    "card": "76:3409",
+    "id": "43:2024",
+    "label": "Accesos y pie de página\nNavegación auxiliar",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página"
+    ],
+    "url": "https://www.ilunion.com/es#footer",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3411",
+    "id": "43:2017",
+    "label": "Contacto\nContacto único con derivación al negocio",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Contacto"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3413",
+    "id": "43:2008",
+    "label": "Únete al equipo\nTrabaja con nosotros · /es/unete-al-equipo",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Únete al equipo"
+    ],
+    "url": "https://www.ilunion.com/es/unete-al-equipo",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3415",
+    "id": "43:1997",
+    "label": "Comunicación\nActualidad · /es/actualidad",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Comunicación"
+    ],
+    "url": "https://www.ilunion.com/es/actualidad",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3418",
+    "id": "43:2044",
+    "label": "Redes sociales\nFacebook, X, LinkedIn, YouTube,\nInstagram y TikTok",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Redes sociales"
+    ],
+    "url": "https://www.ilunion.com/es#footer",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3419",
+    "id": "43:2043",
+    "label": "Canal de denuncias ↗\nilunion.integrityline.com",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Canal de denuncias ↗"
+    ],
+    "url": "https://ilunion.integrityline.com/",
+    "method": "existing"
+  },
+  {
+    "card": "76:3420",
+    "id": "43:2037",
+    "label": "Documentos corporativos\nDescargas PDF",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Documentos corporativos"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/sostenibilidad/gobernanza/politicas",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3421",
+    "id": "43:2042",
+    "label": "Políticas y certificados por negocio\nRepositorio común con filtro por negocio",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Documentos corporativos",
+      "Políticas y certificados por negocio"
+    ],
+    "url": "https://www.ilunion.com/es/compromiso/sostenibilidad/gobernanza/politicas",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3422",
+    "id": "43:2041",
+    "label": "Accesibilidad Universal\nPDF",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Documentos corporativos",
+      "Accesibilidad Universal"
+    ],
+    "url": "https://www.ilunion.com/sites/default/files/publicaciones-archivos/ilunion-politica-accesibilidad-universal.pdf",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3423",
+    "id": "43:2040",
+    "label": "Derechos Humanos\nPDF",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Documentos corporativos",
+      "Derechos Humanos"
+    ],
+    "url": "https://www.ilunion.com/sites/default/files/publicaciones-archivos/imkc-politica-ddhh-ilunion-acc.pdf",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3424",
+    "id": "43:2039",
+    "label": "Compliance penal y tributario\n2 documentos PDF",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Documentos corporativos",
+      "Compliance penal y tributario"
+    ],
+    "url": "https://www.ilunion.com/sites/default/files/publicaciones-archivos/ilunion-politica-compliance-penal-202608.pdf",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3425",
+    "id": "43:2038",
+    "label": "Estrategia fiscal\nPDF",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Documentos corporativos",
+      "Estrategia fiscal"
+    ],
+    "url": "https://www.ilunion.com/sites/default/files/publicaciones-archivos/ESTRATEGIA_FISCAL_ILUNION.pdf",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3426",
+    "id": "43:2032",
+    "label": "Información legal",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Información legal"
+    ],
+    "url": "https://www.ilunion.com/es#footer",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3427",
+    "id": "43:2036",
+    "label": "Privacidad por WhatsApp\nRuta publicada en el pie",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Información legal",
+      "Privacidad por WhatsApp"
+    ],
+    "url": "https://www.ilunion.com/es/es/politica-privacidad-whatsapp",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3428",
+    "id": "43:2035",
+    "label": "Política de privacidad",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Información legal",
+      "Política de privacidad"
+    ],
+    "url": "https://www.ilunion.com/es/politica-privacidad",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3429",
+    "id": "43:2034",
+    "label": "Política de cookies",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Información legal",
+      "Política de cookies"
+    ],
+    "url": "https://www.ilunion.com/es/politica-cookies",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3430",
+    "id": "43:2033",
+    "label": "Aviso legal",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Información legal",
+      "Aviso legal"
+    ],
+    "url": "https://www.ilunion.com/es/aviso-legal",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3431",
+    "id": "43:2031",
+    "label": "Accesibilidad",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Accesibilidad"
+    ],
+    "url": "https://www.ilunion.com/es/accesibilidad",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3432",
+    "id": "43:2030",
+    "label": "Portal del proveedor",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Portal del proveedor"
+    ],
+    "url": "https://www.ilunion.com/es/portal-proveedor",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3433",
+    "id": "43:2029",
+    "label": "Portal del empleado",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Portal del empleado"
+    ],
+    "url": "https://www.ilunion.com/es/portal-empleado",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3434",
+    "id": "43:2028",
+    "label": "Buscador global\nBúsqueda en toda la web corporativa",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Accesos y pie de página",
+      "Buscador global"
+    ],
+    "url": "https://www.ilunion.com/es/search/node",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3435",
+    "id": "43:2023",
+    "label": "Torre ILUNION\nUbicación y mapa",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Contacto",
+      "Torre ILUNION"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3436",
+    "id": "43:2022",
+    "label": "Selección del negocio\nContexto conservado desde la página de origen",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Contacto",
+      "Selección del negocio"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3437",
+    "id": "43:2021",
+    "label": "Formulario de contacto\nConsulta dirigida al negocio correspondiente",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Contacto",
+      "Formulario de contacto"
+    ],
+    "url": "https://www.ilunion.com/es/contacto",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3438",
+    "id": "43:2014",
+    "label": "Ofertas de empleo\nempleo.ilunion.com",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Únete al equipo",
+      "Ofertas de empleo"
+    ],
+    "url": "https://empleo.ilunion.com/",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3439",
+    "id": "43:2016",
+    "label": "Ofertas TextilCare ↗\nPortal de selección especializado",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Únete al equipo",
+      "Ofertas de empleo",
+      "Ofertas TextilCare ↗"
+    ],
+    "url": "https://iluniontextilcare.ofertas-trabajo.infojobs.net/ofertas",
+    "method": "existing"
+  },
+  {
+    "card": "76:3440",
+    "id": "43:2015",
+    "label": "Portal de empleo ILUNION ↗\nempleo.ilunion.com",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Únete al equipo",
+      "Ofertas de empleo",
+      "Portal de empleo ILUNION ↗"
+    ],
+    "url": "https://empleo.ilunion.com/",
+    "method": "existing"
+  },
+  {
+    "card": "76:3441",
+    "id": "43:2013",
+    "label": "Beneficios de empleado",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Únete al equipo",
+      "Beneficios de empleado"
+    ],
+    "url": "https://www.ilunion.com/es/unete-al-equipo/beneficios-empleado-ilunion",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3442",
+    "id": "43:2012",
+    "label": "Por qué ILUNION",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Únete al equipo",
+      "Por qué ILUNION"
+    ],
+    "url": "https://www.ilunion.com/es/unete-al-equipo/por-que-ilunion",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3443",
+    "id": "43:2007",
+    "label": "Contacto de prensa\nMódulo dentro de Actualidad",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Comunicación",
+      "Contacto de prensa"
+    ],
+    "url": "https://www.ilunion.com/es/actualidad",
+    "method": "current-parent-module"
+  },
+  {
+    "card": "76:3444",
+    "id": "43:2005",
+    "label": "Publicaciones",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Comunicación",
+      "Publicaciones"
+    ],
+    "url": "https://www.ilunion.com/es/actualidad/publicaciones",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3445",
+    "id": "43:2006",
+    "label": "PDF / lectura online\nInformes, memorias, guías y libros",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Comunicación",
+      "Publicaciones",
+      "PDF / lectura online"
+    ],
+    "url": "https://www.ilunion.com/sites/default/files/publicaciones-archivos/ilunion-informe-sostenibilidad-2025.pdf",
+    "method": "template-example"
+  },
+  {
+    "card": "76:3446",
+    "id": "43:2003",
+    "label": "Blog Punto ILUNION\nBlog único · Filtro por negocio",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Comunicación",
+      "Blog Punto ILUNION"
+    ],
+    "url": "https://www.ilunion.com/es/actualidad/blog-puntoilunion",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3447",
+    "id": "43:2004",
+    "label": "Detalle de artículo\nPlantilla editorial",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Comunicación",
+      "Blog Punto ILUNION",
+      "Detalle de artículo"
+    ],
+    "url": "https://www.ilunion.com/es/blog-puntoilunion/branded-content-marketing-contenidos-diferencias",
+    "method": "template-example"
+  },
+  {
+    "card": "76:3448",
+    "id": "43:2001",
+    "label": "Noticias\nActualidad corporativa y de los negocios",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Comunicación",
+      "Noticias"
+    ],
+    "url": "https://www.ilunion.com/es/actualidad/noticias",
+    "method": "verified-current"
+  },
+  {
+    "card": "76:3449",
+    "id": "43:2002",
+    "label": "Detalle de noticia\nPlantilla editorial",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Comunicación",
+      "Noticias",
+      "Detalle de noticia"
+    ],
+    "url": "https://www.ilunion.com/es/actualidad/aspace-cuidar-sin-renunciar",
+    "method": "template-example"
+  },
+  {
+    "card": "76:3417",
+    "id": "43:2107",
+    "label": "ILUNION Hoteles ↗\nAcceso a su web externa",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Hoteles ↗"
+    ],
+    "url": "https://www.ilunionhotels.com/",
+    "method": "existing"
+  },
+  {
+    "card": "94:4885",
+    "id": "94:4886",
+    "label": "Nuestros hoteles ↗\nilunionhotels.com/hoteles",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Hoteles ↗",
+      "Nuestros hoteles ↗"
+    ],
+    "url": "https://www.ilunionhotels.com/hoteles",
+    "method": "existing"
+  },
+  {
+    "card": "94:4891",
+    "id": "94:4892",
+    "label": "Experiencias gastronómicas ↗\nilunionhotels.com/umaniko",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Hoteles ↗",
+      "Experiencias gastronómicas ↗"
+    ],
+    "url": "https://www.ilunionhotels.com/umaniko",
+    "method": "existing"
+  },
+  {
+    "card": "94:4897",
+    "id": "94:4898",
+    "label": "Business ↗\nilunionhotels.com/ih-business",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Hoteles ↗",
+      "Business ↗"
+    ],
+    "url": "https://www.ilunionhotels.com/ih-business",
+    "method": "existing"
+  },
+  {
+    "card": "94:4903",
+    "id": "94:4904",
+    "label": "Ofertas ↗\nilunionhotels.com/ofertas",
+    "business": "corporativo",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Hoteles ↗",
+      "Ofertas ↗"
+    ],
+    "url": "https://www.ilunionhotels.com/ofertas",
+    "method": "existing"
+  }
+]

@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#eef2ff" />
+    <meta
+      name="description"
+      content="Mapa mental interactivo de la arquitectura corporativa unificada de ILUNION."
+    />
+    <title>Propuesta Arquitectura ILUNION</title>
+    <link rel="icon" href="./ilunion-symbol.png" type="image/png" />
+    <link rel="stylesheet" href="./styles.css?v=50" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand-lockup" aria-label="ILUNION · Arquitectura corporativa unificada">
+          <div class="brand-mark" aria-hidden="true">
+            <img src="./ilunion-symbol.png" alt="" />
+          </div>
+          <div class="brand-copy">
+            <p class="eyebrow">ILUNION</p>
+            <h1>Arquitectura corporativa unificada</h1>
+            <p class="subtitle">Mapa mental interactivo · propuesta de unificación</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <div class="search-wrap">
+            <label class="sr-only" for="nodeSearch">Buscar una página o servicio</label>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" /></svg>
+            <input
+              id="nodeSearch"
+              type="search"
+              role="combobox"
+              placeholder="Buscar página o servicio…"
+              autocomplete="off"
+              aria-autocomplete="list"
+              aria-haspopup="listbox"
+              aria-controls="searchResults"
+              aria-describedby="searchStatus"
+              aria-keyshortcuts="Meta+K Control+K"
+              aria-expanded="false"
+            />
+            <kbd>⌘ K</kbd>
+            <div id="searchResults" class="search-results" role="listbox" hidden></div>
+            <p id="searchStatus" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+          </div>
+
+          <button class="icon-button" id="legendButton" type="button" aria-expanded="false" aria-controls="legendPanel">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 11v6m0-10h.01" /></svg>
+            <span>Leyenda</span>
+          </button>
+        </div>
+      </header>
+
+      <p id="mapInstructions" class="sr-only">Usa Tab para recorrer páginas y controles. Cuando el mapa tenga el foco, usa las flechas para desplazarte, más y menos para cambiar el zoom y cero para encajar la arquitectura.</p>
+      <main class="workspace" id="mapViewport" tabindex="0" aria-label="Mapa mental interactivo" aria-describedby="mapInstructions">
+        <div id="scene" class="scene" aria-live="off">
+          <svg id="connectors" class="connectors" aria-hidden="true">
+            <defs>
+              <filter id="lineGlow" x="-100%" y="-100%" width="300%" height="300%">
+                <feGaussianBlur stdDeviation="3.5" result="blur" />
+                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+              <filter id="lineGlowSoft" x="-100%" y="-100%" width="300%" height="300%">
+                <feGaussianBlur stdDeviation="1.5" result="blur" />
+                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+            <g id="connectionLayer"></g>
+          </svg>
+          <div id="nodes" class="nodes"></div>
+        </div>
+
+        <div class="map-meta" aria-live="polite">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <strong id="visibleCount">0</strong> de <strong id="totalCount">288</strong> páginas visibles
+        </div>
+
+        <aside class="minimap" id="minimap" aria-labelledby="minimapTitle">
+          <h2 class="sr-only" id="minimapTitle">Navegación y zoom del mapa</h2>
+          <div class="minimap-stage" id="minimapStage">
+            <div
+              class="minimap-navigator"
+              id="minimapNavigator"
+              role="group"
+              tabindex="0"
+              aria-label="Minimapa. Arrastra el área azul claro, haz clic en un área o usa las flechas para desplazarte por la arquitectura."
+            >
+              <canvas id="minimapCanvas" aria-hidden="true"></canvas>
+            </div>
+            <span class="sr-only" id="minimapLocation">Vista general</span>
+          </div>
+          <div class="minimap-toolbar" role="toolbar" aria-label="Zoom y visibilidad del minimapa">
+            <button class="minimap-tool minimap-fit" id="minimapFitButton" type="button" aria-label="Encajar mapa en pantalla" title="Encajar en pantalla">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5" /></svg>
+            </button>
+            <span class="minimap-divider" aria-hidden="true"></span>
+            <button class="minimap-tool" id="minimapZoomOutButton" type="button" aria-label="Reducir zoom" title="Reducir zoom">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14" /></svg>
+            </button>
+            <label class="sr-only" for="minimapZoomSlider">Nivel de zoom</label>
+            <input id="minimapZoomSlider" type="range" min="4" max="170" step="1" value="100" aria-label="Nivel de zoom" aria-valuetext="100 por ciento" />
+            <output id="minimapZoom" for="minimapZoomSlider">100%</output>
+            <button class="minimap-tool" id="minimapZoomInButton" type="button" aria-label="Aumentar zoom" title="Aumentar zoom">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14" /></svg>
+            </button>
+            <span class="minimap-divider" aria-hidden="true"></span>
+            <button class="minimap-tool minimap-toggle is-active" id="minimapToggleButton" type="button" aria-controls="minimapStage" aria-expanded="true" aria-label="Ocultar minimapa" title="Ocultar minimapa">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Z"/><path d="M9 3v16M15 5v16"/><circle cx="17.5" cy="8" r="1.6"/></svg>
+            </button>
+          </div>
+        </aside>
+
+        <div class="map-controls" aria-label="Controles del mapa">
+          <button id="summaryButton" type="button" title="Contraer todas las ramas" aria-controls="nodes">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14" /><path d="m8 8 4-4 4 4M8 16l4 4 4-4" /></svg>
+            <span>Vista resumida</span>
+          </button>
+          <button id="expandButton" type="button" title="Ampliar todas las ramas" aria-controls="nodes">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5v14M4 8h7M4 12h7M4 16h7" /><path d="M18 9v6M15 12h6" /></svg>
+            <span>Ampliar todo</span>
+          </button>
+          <span class="control-divider desktop-zoom-control" aria-hidden="true"></span>
+          <button class="square-control desktop-zoom-control" id="zoomOutButton" type="button" aria-label="Reducir zoom" aria-keyshortcuts="-">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14" /></svg>
+          </button>
+          <output class="desktop-zoom-control" id="zoomValue" for="zoomOutButton zoomInButton">100%</output>
+          <button class="square-control desktop-zoom-control" id="zoomInButton" type="button" aria-label="Aumentar zoom" aria-keyshortcuts="+">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14" /></svg>
+          </button>
+          <button class="square-control desktop-zoom-control" id="fitButton" type="button" aria-label="Encajar mapa en pantalla" aria-keyshortcuts="0" title="Encajar en pantalla">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5" /></svg>
+          </button>
+        </div>
+
+        <div class="interaction-hint" id="interactionHint">
+          <span class="desktop-hint">Arrastra para moverte · rueda para desplazar · Ctrl/⌘ + rueda para ampliar</span>
+          <span class="mobile-hint">Arrastra para moverte · pellizca para ampliar</span>
+          <button type="button" aria-label="Cerrar ayuda">×</button>
+        </div>
+      </main>
+
+      <aside class="legend-panel" id="legendPanel" role="dialog" aria-modal="true" aria-labelledby="legendTitle" aria-hidden="true">
+        <div class="legend-head">
+          <div>
+            <p class="eyebrow">GUÍA DE LECTURA</p>
+            <h2 id="legendTitle">Cómo leer el mapa</h2>
+          </div>
+          <button class="close-button" id="closeLegendButton" type="button" aria-label="Cerrar leyenda">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></svg>
+          </button>
+        </div>
+
+        <section class="criteria">
+          <h3>Criterios de integración</h3>
+          <ul>
+            <li>Las seis webs se integran en <strong>Qué hacemos</strong> con sus servicios y landings.</li>
+            <li><strong>ILUNION Retail</strong> reúne Tu Tienda y Comercialización.</li>
+            <li><strong>Compromiso</strong> se integra en Nosotros. <strong>Sedes</strong> es una página común del menú principal.</li>
+            <li><strong>Hoteles</strong> conserva sus accesos externos.</li>
+          </ul>
+        </section>
+
+        <details class="legend-disclosure">
+          <summary><span>Tipos de conexión</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></summary>
+          <div class="legend-disclosure-body">
+          <ul class="line-legend">
+            <li><span class="legend-line solid"></span><span><strong>Continua</strong>Navegación interna</span></li>
+            <li><span class="legend-line dashed"></span><span><strong>Discontinua + icono</strong>Enlace externo</span></li>
+            <li><span class="legend-line dotted"></span><span><strong>Punteada fija</strong>Módulo o acceso</span></li>
+            <li><span class="legend-line detail"></span><span><strong>Punteada luminosa</strong>Página de detalle o plantilla</span></li>
+          </ul>
+          </div>
+        </details>
+
+        <details class="legend-disclosure">
+          <summary><span>Claves de enlace</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></summary>
+          <div class="legend-disclosure-body">
+          <ul class="link-legend">
+            <li>
+              <span class="legend-link-symbol page" aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.25"/><path d="M1.75 8h12.5M8 1.75c1.85 1.8 2.8 3.88 2.8 6.25S9.85 12.45 8 14.25M8 1.75C6.15 3.55 5.2 5.63 5.2 8S6.15 12.45 8 14.25"/></svg></span>
+              <span><strong>Página enlazada</strong>Globo y título subrayado</span>
+            </li>
+            <li>
+              <span class="legend-link-symbol external" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5 11 11 5M7 5h4v4"/></svg></span>
+              <span><strong>Salida externa</strong>Flecha dentro de una elipse</span>
+            </li>
+            <li>
+              <span class="legend-link-symbol annotation" aria-hidden="true"><span class="annotation-alert-mark"></span></span>
+              <span><strong>Anotación destacada</strong>Cápsula con aviso y pulso sutil</span>
+            </li>
+          </ul>
+          </div>
+        </details>
+
+        <details class="legend-disclosure">
+          <summary><span>Ramas de negocio</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></summary>
+          <div class="legend-disclosure-body">
+          <div class="color-key" id="businessColorKey"></div>
+          </div>
+        </details>
+
+        <details class="legend-disclosure">
+          <summary><span>Temas transversales</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></summary>
+          <div class="legend-disclosure-body">
+          <div class="color-key" id="themeColorKey"></div>
+          </div>
+        </details>
+
+        <details class="legend-disclosure">
+          <summary><span>Profundidad de navegación</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></summary>
+          <div class="legend-disclosure-body">
+          <div class="depth-scale" aria-label="Nivel cero a nivel cuatro o superior">
+            <span class="d0">N0</span><span class="d1">N1</span><span class="d2">N2</span><span class="d3">N3</span><span class="d4">N4+</span>
+          </div>
+          <p class="legend-note">El tamaño de la caja y del texto disminuye de forma gradual según la profundidad.</p>
+          </div>
+        </details>
+
+        <details class="legend-disclosure">
+          <summary><span>Uso del mapa</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></summary>
+          <div class="legend-disclosure-body">
+            <p class="legend-note">Pulsa el texto de una caja para abrir su destino actual. Las páginas propuestas sin URL propia usan una página de referencia hasta su publicación.</p>
+          </div>
+        </details>
+      </aside>
+
+      <footer class="powered-by" aria-label="Créditos">
+        <img src="./publicis-lion.png" alt="" width="20" height="20" />
+        <span>Powered by</span>
+        <strong>Publicis España</strong>
+      </footer>
+
+      <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true">
+        <span class="toast-info" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10v6M12 7h.01"/></svg>
+        </span>
+        <span class="toast-message" id="toastMessage"></span>
+        <button class="toast-dismiss" id="toastDismissButton" type="button" aria-label="Cerrar aviso">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></svg>
+        </button>
+      </div>
+      <noscript>Esta visualización necesita JavaScript para mostrar y plegar las ramas.</noscript>
+    </div>
+    <script src="./app.js?v=50" defer></script>
+  </body>
+</html>
