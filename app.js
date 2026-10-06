@@ -660,6 +660,13 @@ function branchToggle(node) {
 function renderNode(node) {
   const color = themeFor(node);
   const displayTitle = node.isAnnotation ? node.title.replace(/^\*\s*/, "") : node.title;
+  const approvalMatch = node.isAnnotation
+    ? displayTitle.match(/\s*(\(pendiente de aprobación\))\s*$/i)
+    : null;
+  const primaryTitle = approvalMatch
+    ? displayTitle.slice(0, approvalMatch.index).trim()
+    : displayTitle;
+  const approvalStatus = approvalMatch ? approvalMatch[1] : "";
   const element = document.createElement("article");
   const visualDepth = Math.min(node.depth, 4);
   const isFocusTarget = state.focusedId === node.id;
@@ -694,7 +701,7 @@ function renderNode(node) {
     link.href = node.url;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
-    const cleanTitle = displayTitle.replace(/\s*↗\s*$/, "");
+    const cleanTitle = primaryTitle.replace(/\s*↗\s*$/, "");
     const icon = document.createElementNS(SVG_NS, "svg");
     icon.setAttribute("class", "page-link-icon");
     icon.setAttribute("viewBox", "0 0 16 16");
@@ -715,7 +722,7 @@ function renderNode(node) {
   } else {
     const title = document.createElement("span");
     title.className = "node-title-static";
-    title.textContent = displayTitle;
+    title.textContent = primaryTitle;
     topLine.append(title);
   }
 
@@ -742,6 +749,13 @@ function renderNode(node) {
   }
 
   body.append(topLine);
+
+  if (approvalStatus) {
+    const approval = document.createElement("span");
+    approval.className = "node-meta annotation-approval";
+    approval.textContent = approvalStatus;
+    body.append(approval);
+  }
 
   if (node.subtitle && !node.isAnnotation) {
     const subtitle = document.createElement("p");

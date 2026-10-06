@@ -15,6 +15,7 @@
   --ui-surface-solid: #fff;
   --ui-background: #f5f5f7;
   --annotation-alert: #ff3b30;
+  --annotation-alert-text: #d70015;
   --radius-micro: 4px;
   --radius-control: 6px;
   --radius-surface: 8px;
@@ -640,6 +641,14 @@ input:focus-visible,
   font-weight: 600;
   letter-spacing: 0.035em;
   text-transform: uppercase;
+}
+
+.node-meta.annotation-approval {
+  margin: 4px 0 0 29px;
+  color: var(--annotation-alert-text);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .toggle-branch {
