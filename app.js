@@ -1649,6 +1649,13 @@ function setupInteractions() {
 
   document.addEventListener("pointerdown", (event) => {
     if (!event.target.closest(".search-wrap")) closeSearch();
+    if (
+      dom.legend.classList.contains("is-open") &&
+      !dom.legend.contains(event.target) &&
+      !dom.legendButton.contains(event.target)
+    ) {
+      toggleLegend(false);
+    }
   });
 
   window.addEventListener("keydown", (event) => {

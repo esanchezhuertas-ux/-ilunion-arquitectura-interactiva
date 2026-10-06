@@ -806,7 +806,7 @@ input:focus-visible,
   grid-template-columns: 40px 1px 32px minmax(64px, 1fr) 38px 32px 1px 40px;
   align-items: center;
   gap: 5px;
-  border-top: 1px solid var(--ui-border-subtle);
+  border-top: 0;
   background: #fff;
 }
 .minimap.is-collapsed .minimap-toolbar { border-top: 0; }
