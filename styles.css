@@ -136,7 +136,7 @@ button { color: inherit; }
 }
 .subtitle { margin: 4px 0 0; color: var(--muted); font-size: 0.73rem; }
 
-.header-actions { gap: 10px; }
+.header-actions { gap: 8px; }
 
 .search-wrap {
   position: relative;
@@ -768,7 +768,16 @@ input:focus-visible,
   font-size: .69rem;
 }
 .map-meta strong { color: var(--ink); }
-.pulse-dot { width: 7px; height: 7px; display: inline-block; margin-right: 6px; border-radius: 50%; background: var(--ui-accent); box-shadow: 0 0 0 4px var(--ui-accent-soft); }
+.map-meta-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: -3px;
+  background: var(--ui-accent);
+  -webkit-mask: url("./icons/ui/guide-line.svg") center / contain no-repeat;
+  mask: url("./icons/ui/guide-line.svg") center / contain no-repeat;
+}
 
 .minimap {
   position: absolute;
