@@ -1095,6 +1095,35 @@
     "method": "existing"
   },
   {
+    "card": "110:5001",
+    "id": "110:4001",
+    "label": "Casos de éxito",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Casos de éxito"
+    ],
+    "url": "https://www.iluniontextilcare.com/",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "110:5002",
+    "id": "110:4002",
+    "label": "Detalle de caso\nPlantilla de contenido",
+    "business": "textilcare",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION TextilCare",
+      "Casos de éxito",
+      "Detalle de caso"
+    ],
+    "url": "https://www.iluniontextilcare.com/",
+    "method": "template-example"
+  },
+  {
     "card": "76:3540",
     "id": "44:2668",
     "label": "Recursos y contacto\nAccesos a contenidos comunes",
@@ -2499,6 +2528,35 @@
     "method": "source-map"
   },
   {
+    "card": "110:5003",
+    "id": "110:4003",
+    "label": "Casos de éxito",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Casos de éxito"
+    ],
+    "url": "https://www.ilunioneconomiacircular.com/",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "110:5004",
+    "id": "110:4004",
+    "label": "Detalle de caso\nPlantilla de contenido",
+    "business": "circular",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Economía Circular",
+      "Casos de éxito",
+      "Detalle de caso"
+    ],
+    "url": "https://www.ilunioneconomiacircular.com/",
+    "method": "template-example"
+  },
+  {
     "card": "76:3652",
     "id": "45:2988",
     "label": "Recursos y contacto\nAccesos a contenidos comunes",
@@ -2914,14 +2972,14 @@
   {
     "card": "76:3686",
     "id": "45:3099",
-    "label": "Casos de éxito\nListado dentro de la página",
+    "label": "Portfolio\nListado dentro de la página",
     "business": "consultoria",
     "path": [
       "ILUNION",
       "Qué hacemos",
       "ILUNION Consultoría",
       "Agencia de Comunicación y Marketing",
-      "Casos de éxito"
+      "Portfolio"
     ],
     "url": "https://www.ilunionconsultoria.com/es/agencia-comunicacion-marketing",
     "method": "current-parent-module"
@@ -2936,7 +2994,7 @@
       "Qué hacemos",
       "ILUNION Consultoría",
       "Agencia de Comunicación y Marketing",
-      "Casos de éxito",
+      "Portfolio",
       "Detalle de caso"
     ],
     "url": "https://www.ilunionconsultoria.com/es/agencia-comunicacion-marketing/otis",
@@ -3045,6 +3103,35 @@
     ],
     "url": "https://www.ilunionconsultoria.com/es/correduria-seguros",
     "method": "current-parent-module"
+  },
+  {
+    "card": "110:5005",
+    "id": "110:4005",
+    "label": "Casos de éxito",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Casos de éxito"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/agencia-comunicacion-marketing",
+    "method": "proposed-page-reference"
+  },
+  {
+    "card": "110:5006",
+    "id": "110:4006",
+    "label": "Detalle de caso\nPlantilla de contenido",
+    "business": "consultoria",
+    "path": [
+      "ILUNION",
+      "Qué hacemos",
+      "ILUNION Consultoría",
+      "Casos de éxito",
+      "Detalle de caso"
+    ],
+    "url": "https://www.ilunionconsultoria.com/es/agencia-comunicacion-marketing/otis",
+    "method": "template-example"
   },
   {
     "card": "76:3696",

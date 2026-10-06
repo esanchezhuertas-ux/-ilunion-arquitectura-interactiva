@@ -1425,7 +1425,7 @@ function setAllCollapsed(summary) {
     state.transform.x = (state.mobile ? 16 : 28) - rootLayout.x * state.transform.scale;
     state.transform.y = (state.mobile ? 18 : 28) - (rootLayout.y - rootLayout.height / 2) * state.transform.scale;
     applyTransform();
-    showToast("Arquitectura completa desplegada: 288 páginas. Arrastra o usa el buscador para recorrerla.");
+    showToast(`Arquitectura completa desplegada: ${dom.totalCount.textContent} páginas. Arrastra o usa el buscador para recorrerla.`);
   }
 }
 
