@@ -342,7 +342,7 @@ function buildTree(records) {
 
   const corporateBlog = byPath.get(pathKey(["ILUNION", "Comunicación", "Blog Punto ILUNION"]));
   addAnnotation(corporateBlog, {
-    title: "* Donde el dormir es despertar",
+    title: "* Donde el dormir es despertar (pendiente de aprobación)",
     keySuffix: "donde-el-dormir-es-despertar",
     url: "https://dondedormiresdespertar.es/",
     order: Number.MAX_SAFE_INTEGER - 1
@@ -352,7 +352,7 @@ function buildTree(records) {
     /^ILUNION Hoteles(?:\s*↗)?$/.test(node.title) && node.path.length === 3
   );
   addAnnotation(hoteles, {
-    title: "* Landings informacionales",
+    title: "* Landings informacionales (pendiente de aprobación)",
     keySuffix: "landings-informacionales"
   });
 
@@ -843,12 +843,12 @@ function applyTransform() {
     const height = dom.viewport.clientHeight;
     const scaledWidth = state.sceneWidth * state.transform.scale;
     const scaledHeight = state.sceneHeight * state.transform.scale;
-    const edge = 64;
-    const minX = Math.min(16, width - scaledWidth - edge);
-    const maxX = width - edge;
-    const bottomClearance = Math.max(180, Math.min(260, height * 0.26));
-    const minY = Math.min(16, height - scaledHeight - bottomClearance);
-    const maxY = 72;
+    const clearance = navigationClearancePx();
+    const sideClearance = Math.max(clearance, width - 64);
+    const minX = Math.min(16, width - scaledWidth - sideClearance);
+    const maxX = sideClearance;
+    const minY = Math.min(16, height - scaledHeight - clearance);
+    const maxY = clearance;
     state.transform.x = Math.min(maxX, Math.max(minX, state.transform.x));
     state.transform.y = Math.min(maxY, Math.max(minY, state.transform.y));
   } else if (isMinimapEnabled() && state.root) {
@@ -900,12 +900,21 @@ function minimapBranchColor(node) {
   return themeFor(node);
 }
 
+function navigationClearancePx() {
+  const height = Math.max(1, dom.viewport.clientHeight);
+  return state.mobile
+    ? Math.max(180, Math.min(260, height * 0.26))
+    : Math.max(190, Math.min(300, height * 0.3));
+}
+
 function minimapWorldBounds() {
+  const scale = Math.max(0.001, state.transform.scale);
+  const clearance = navigationClearancePx() / scale;
   return {
-    left: 0,
-    top: 0,
-    width: Math.max(1, state.sceneWidth),
-    height: Math.max(1, state.sceneHeight)
+    left: -clearance,
+    top: -clearance,
+    width: Math.max(1, state.sceneWidth) + clearance * 2,
+    height: Math.max(1, state.sceneHeight) + clearance * 2
   };
 }
 
@@ -918,20 +927,12 @@ function clampDesktopTransformToNavigationWorld() {
   const world = minimapWorldBounds();
   const currentCenterX = (viewportWidth / 2 - state.transform.x) / scale;
   const currentCenterY = (viewportHeight / 2 - state.transform.y) / scale;
-  // Keep enough free space below the final nodes to lift them clear of the
-  // floating toolbar and browser safe area at every navigable zoom level.
-  const bottomClearancePx = Math.max(190, Math.min(300, viewportHeight * 0.3));
-  const bottomClearanceWorld = bottomClearancePx / scale;
   const centerX = viewWidth >= world.width
     ? world.left + world.width / 2
     : clamp(currentCenterX, world.left + viewWidth / 2, world.left + world.width - viewWidth / 2);
   const centerY = viewHeight >= world.height
     ? world.top + world.height / 2
-    : clamp(
-        currentCenterY,
-        world.top + viewHeight / 2,
-        world.top + world.height - viewHeight / 2 + bottomClearanceWorld
-      );
+    : clamp(currentCenterY, world.top + viewHeight / 2, world.top + world.height - viewHeight / 2);
   state.transform.x = viewportWidth / 2 - centerX * scale;
   state.transform.y = viewportHeight / 2 - centerY * scale;
 }
@@ -1075,7 +1076,7 @@ function drawMinimap() {
   const viewportX = clamp(mapX(sceneCenterX) - viewportMapWidth / 2, padding, padding + innerWidth - viewportMapWidth);
   const viewportY = viewHeight >= world.height
     ? padding
-    : mapY(sceneCenterY) - viewportMapHeight / 2;
+    : clamp(mapY(sceneCenterY) - viewportMapHeight / 2, padding, padding + innerHeight - viewportMapHeight);
   state.minimapViewportRect = {
     x: viewportX,
     y: viewportY,
