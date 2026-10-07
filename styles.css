@@ -369,7 +369,8 @@ input:focus-visible,
     radial-gradient(circle at 50% 40%, rgba(255,255,255,.92), rgba(245,245,247,.50));
   background-size: 28px 28px, 28px 28px, 100% 100%;
 }
-.workspace.is-dragging { cursor: grabbing; user-select: none; }
+.workspace.is-dragging,
+.workspace.is-node-dragging { cursor: grabbing; user-select: none; }
 
 .scene {
   position: absolute;
@@ -392,6 +393,7 @@ input:focus-visible,
   stroke-linejoin: round;
   transition: opacity 220ms ease, filter 220ms ease;
 }
+.connector.is-elastic { transition: none; }
 .connector-base { stroke-width: 4; opacity: 1; }
 .connector-flow {
   stroke-width: 2.65;
@@ -425,6 +427,9 @@ input:focus-visible,
   --node-color: #253d88;
   --context-icon-size: 12px;
   --branch-control-axis: 20.5px;
+  --elastic-x: 0px;
+  --elastic-y: 0px;
+  --node-lift: 0px;
   position: absolute;
   display: flex;
   align-items: stretch;
@@ -434,6 +439,7 @@ input:focus-visible,
   background: color-mix(in srgb, var(--node-color), white 97%);
   box-shadow: 0 4px 12px rgba(20, 32, 60, 0.10), 0 1px 3px rgba(20, 32, 60, 0.06);
   overflow: visible;
+  transform: translate3d(var(--elastic-x), calc(var(--elastic-y) + var(--node-lift)), 0);
   transition: box-shadow 160ms ease, border-color 160ms ease, transform 160ms ease, opacity 220ms ease, filter 220ms ease;
 }
 .map-node::before {
@@ -459,11 +465,19 @@ input:focus-visible,
 }
 .map-node:hover,
 .map-node.is-highlighted {
+  --node-lift: -1px;
   z-index: 4;
   border-color: var(--node-color);
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--node-color), transparent 80%), 0 8px 20px rgba(26,40,76,.15);
-  transform: translateY(-1px);
 }
+.map-node.is-elastic-dragging,
+.map-node.is-elastic-returning {
+  --node-lift: 0px;
+  z-index: 14;
+  will-change: transform;
+  transition: box-shadow 160ms ease, border-color 160ms ease, opacity 220ms ease, filter 220ms ease;
+}
+.map-node.is-elastic-dragging { cursor: grabbing; }
 .map-node.is-highlighted { animation: nodePulse 1.4s ease-in-out 2; }
 @keyframes nodePulse { 50% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--node-color), transparent 78%), 0 14px 36px rgba(26,40,76,.2); } }
 
@@ -635,8 +649,8 @@ input:focus-visible,
 }
 .file-mark-label { line-height: 1; }
 .external-link-mark {
-  width: 1.35em;
-  height: 1.05em;
+  width: calc(var(--context-icon-size) + 14px);
+  height: calc(var(--context-icon-size) + 7px);
   flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
@@ -644,10 +658,11 @@ input:focus-visible,
   border-radius: 999px;
   color: var(--node-color);
   background: color-mix(in srgb, var(--node-color), white 88%);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--node-color), white 72%);
 }
 .external-link-mark .context-icon {
-  width: 0.72em;
-  height: 0.72em;
+  width: var(--context-icon-size);
+  height: var(--context-icon-size);
   margin: 0;
   color: inherit;
 }
@@ -804,10 +819,10 @@ input:focus-visible,
 .annotation-node .node-link .link-label { color: #121212; }
 .annotation-node .node-link { color: var(--node-color); }
 .annotation-node:hover {
+  --node-lift: -1px;
   border-color: var(--node-color);
   background: color-mix(in srgb, var(--node-color), white 94%);
   box-shadow: 0 8px 20px rgba(26, 40, 76, .14), inset 0 0 0 1px rgba(255, 255, 255, .78);
-  transform: translateY(-1px);
 }
 .annotation-alert-mark {
   width: 24px;

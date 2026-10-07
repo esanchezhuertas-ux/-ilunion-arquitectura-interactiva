@@ -10,7 +10,7 @@
     />
     <title>Propuesta Arquitectura ILUNION</title>
     <link rel="icon" href="./ilunion-symbol.png" type="image/png" />
-    <link rel="stylesheet" href="./styles.css?v=59" />
+    <link rel="stylesheet" href="./styles.css?v=60" />
   </head>
   <body>
     <div class="app-shell">
@@ -55,7 +55,7 @@
         </div>
       </header>
 
-      <p id="mapInstructions" class="sr-only">Usa Tab para recorrer páginas y controles. Cuando el mapa tenga el foco, usa las flechas para desplazarte, más y menos para cambiar el zoom y cero para encajar la arquitectura.</p>
+      <p id="mapInstructions" class="sr-only">Usa Tab para recorrer páginas y controles. Cuando el mapa tenga el foco, usa las flechas para desplazarte, más y menos para cambiar el zoom y cero para encajar la arquitectura. Puedes arrastrar una tarjeta para estirarla temporalmente y soltarla para devolverla a su posición.</p>
       <main class="workspace" id="mapViewport" tabindex="0" aria-label="Mapa mental interactivo" aria-describedby="mapInstructions">
         <div id="scene" class="scene" aria-live="off">
           <svg id="connectors" class="connectors" aria-hidden="true">
@@ -137,8 +137,8 @@
         </div>
 
         <div class="interaction-hint" id="interactionHint">
-          <span class="desktop-hint">Arrastra para moverte · rueda para desplazar · Ctrl/⌘ + rueda para ampliar</span>
-          <span class="mobile-hint">Arrastra para moverte · pellizca para ampliar</span>
+          <span class="desktop-hint">Fondo: mover · tarjeta: estirar · Ctrl/⌘ + rueda: zoom</span>
+          <span class="mobile-hint">Fondo: mover · tarjeta: estirar · pellizca: zoom</span>
           <button type="button" aria-label="Cerrar ayuda">×</button>
         </div>
       </main>
@@ -248,6 +248,6 @@
       </div>
       <noscript>Esta visualización necesita JavaScript para mostrar y plegar las ramas.</noscript>
     </div>
-    <script src="./app.js?v=59" defer></script>
+    <script src="./app.js?v=60" defer></script>
   </body>
 </html>

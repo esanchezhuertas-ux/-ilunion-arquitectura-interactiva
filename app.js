@@ -123,11 +123,25 @@ const state = {
   minimapPointerId: null,
   minimapDragOrigin: null,
   minimapCollapsed: false,
-  viewportWidth: window.innerWidth
+  viewportWidth: window.innerWidth,
+  elasticDrag: null
 };
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const NODE_PORT_OFFSET = 12;
+const NODE_DRAG_THRESHOLD = 7;
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+const EXTERNAL_HOSTS = new Set([
+  "ilunionhotels.com",
+  "jobsolutions.ilunionservicios.com",
+  "gestiontextil.iluniontextilcare.com",
+  "citafisioterapia.ilunionbienestaryvidasenior.com",
+  "empleo.ilunion.com",
+  "ilunion.integrityline.com",
+  "iluniontextilcare.ofertas-trabajo.infojobs.net",
+  "gruposocialonce.com",
+  "dondedormiresdespertar.es"
+]);
 const normalize = (value) => String(value || "")
   .normalize("NFD")
   .replace(/[\u0300-\u036f]/g, "")
@@ -195,7 +209,18 @@ function colorWithAlpha(hex, alpha) {
 }
 
 function isExternal(node) {
-  return node.method === "annotation-link" || /↗/.test(`${node.title} ${node.label || ""}`);
+  if (typeof node.external === "boolean") return node.external;
+  if (node.method === "annotation-link" || /↗/.test(`${node.title} ${node.label || ""}`)) return true;
+  if (!node.url) return false;
+  try {
+    const hostname = new URL(node.url, "https://www.ilunion.com/")
+      .hostname
+      .toLowerCase()
+      .replace(/^www\./, "");
+    return EXTERNAL_HOSTS.has(hostname);
+  } catch {
+    return false;
+  }
 }
 
 function isPdf(node) {
@@ -497,13 +522,18 @@ function layoutMobile(visible) {
   state.sceneHeight = Math.max(cursor + 160, dom.viewport.clientHeight + 120);
 }
 
-function createSvgPath(className, d, color, delay, focusChildId) {
+function createSvgPath(className, d, color, delay, focusChildId, connectorMeta = null) {
   const path = document.createElementNS(SVG_NS, "path");
   path.setAttribute("class", className);
   path.setAttribute("d", d);
   path.setAttribute("stroke", color);
   if (delay !== undefined) path.style.animationDelay = `${delay}s`;
   if (focusChildId) path.dataset.focusChildId = focusChildId;
+  if (connectorMeta) {
+    path.connectorMeta = { ...connectorMeta, restD: d };
+    if (connectorMeta.parent) path.dataset.connectorParentId = connectorMeta.parent.id;
+    if (connectorMeta.child) path.dataset.connectorChildId = connectorMeta.child.id;
+  }
   return path;
 }
 
@@ -558,9 +588,9 @@ function roundedOrthogonalPath(points, radius = 16) {
   return `${path} L ${last.x} ${last.y}`;
 }
 
-function desktopStepPath(parent, child) {
-  const p = parent.layout;
-  const c = child.layout;
+function desktopStepPath(parent, child, parentLayout = parent.layout, childLayout = child.layout) {
+  const p = parentLayout;
+  const c = childLayout;
   const startX = p.x + p.width;
   const startY = p.y;
   const endX = c.x - NODE_PORT_OFFSET;
@@ -584,9 +614,9 @@ function desktopStepPath(parent, child) {
   ].join(" ");
 }
 
-function connectorPath(parent, child) {
-  const p = parent.layout;
-  const c = child.layout;
+function connectorPath(parent, child, parentLayout = parent.layout, childLayout = child.layout) {
+  const p = parentLayout;
+  const c = childLayout;
 
   if (state.mobile) {
     const startX = p.x + 24;
@@ -601,7 +631,7 @@ function connectorPath(parent, child) {
     ], 16);
   }
 
-  return desktopStepPath(parent, child);
+  return desktopStepPath(parent, child, p, c);
 }
 
 function desktopConnectorFlowPaths(parent, child) {
@@ -627,11 +657,12 @@ function renderConnectors(visible) {
         const color = themeFor(child);
         const type = connectorType(child);
         const d = connectorPath(parent, child);
+        const connectorMeta = { role: "direct", parent, child };
         const baseClass = `connector connector-base${type === "solid" ? "" : ` base-${type}`}`;
         const flowClass = `connector connector-flow${type === "solid" ? "" : ` flow-${type}`}`;
-        fragment.append(createSvgPath(baseClass, d, color, undefined, child.id));
+        fragment.append(createSvgPath(baseClass, d, color, undefined, child.id, connectorMeta));
         if (type !== "dotted") {
-          fragment.append(createSvgPath(flowClass, d, color, -((connectionIndex % 9) * 0.13), child.id));
+          fragment.append(createSvgPath(flowClass, d, color, -((connectionIndex % 9) * 0.13), child.id, connectorMeta));
         }
         connectionIndex += 1;
         return;
@@ -651,7 +682,10 @@ function renderConnectors(visible) {
       fragment.append(createSvgPath(
         "connector connector-base mobile-spine",
         spine,
-        themeFor(parent)
+        themeFor(parent),
+        undefined,
+        undefined,
+        { role: "mobile-spine", parent, railX, endY: lastY }
       ));
 
       const flowingChildren = children.filter((child) => connectorType(child) !== "dotted");
@@ -668,7 +702,9 @@ function renderConnectors(visible) {
           `connector connector-flow mobile-spine-flow${allDetails ? " flow-detail" : ""}`,
           flowSpine,
           themeFor(parent),
-          -((connectionIndex % 9) * 0.13)
+          -((connectionIndex % 9) * 0.13),
+          undefined,
+          { role: "mobile-spine", parent, railX, endY: lastFlowY }
         ));
       }
 
@@ -679,11 +715,18 @@ function renderConnectors(visible) {
           { x: railX, y: child.layout.y },
           { x: child.layout.x - NODE_PORT_OFFSET, y: child.layout.y }
         ]);
+        const connectorMeta = {
+          role: "mobile-branch",
+          parent,
+          child,
+          railX,
+          anchorY: child.layout.y
+        };
         const baseClass = `connector connector-base${type === "solid" ? "" : ` base-${type}`}`;
         const flowClass = `connector connector-flow${type === "solid" ? "" : ` flow-${type}`}`;
-        fragment.append(createSvgPath(baseClass, d, color, undefined, child.id));
+        fragment.append(createSvgPath(baseClass, d, color, undefined, child.id, connectorMeta));
         if (type !== "dotted") {
-          fragment.append(createSvgPath(flowClass, d, color, -((connectionIndex % 9) * 0.13), child.id));
+          fragment.append(createSvgPath(flowClass, d, color, -((connectionIndex % 9) * 0.13), child.id, connectorMeta));
         }
         connectionIndex += 1;
       });
@@ -700,19 +743,274 @@ function renderConnectors(visible) {
     const color = themeFor(child);
     const type = connectorType(child);
     const d = connectorPath(parent, child);
+    const connectorMeta = { role: "direct", parent, child };
     const baseClass = `connector connector-base${type === "solid" ? "" : ` base-${type}`}`;
     const flowClass = `connector connector-flow${type === "solid" ? "" : ` flow-${type}`}`;
 
-    fragment.append(createSvgPath(baseClass, d, color, undefined, child.id));
+    fragment.append(createSvgPath(baseClass, d, color, undefined, child.id, connectorMeta));
     if (type !== "dotted") {
       desktopConnectorFlowPaths(parent, child).forEach((flowPath, partIndex) => {
         const delay = -((index % 9) * 0.13) - partIndex * 0.21;
-        fragment.append(createSvgPath(flowClass, flowPath, color, delay, child.id));
+        fragment.append(createSvgPath(flowClass, flowPath, color, delay, child.id, connectorMeta));
       });
     }
   });
 
   dom.connections.append(fragment);
+}
+
+function elasticLayoutFor(node, drag) {
+  if (!drag || drag.node !== node || drag.phase === "pending") return node.layout;
+  const scale = Math.max(0.001, state.transform.scale);
+  return {
+    ...node.layout,
+    x: node.layout.x + drag.offsetX / scale,
+    y: node.layout.y + drag.offsetY / scale
+  };
+}
+
+function isElasticConnectorForNode(path, node) {
+  const meta = path.connectorMeta;
+  if (!meta) return false;
+  if (meta.role === "direct") return meta.parent === node || meta.child === node;
+  if (meta.role === "mobile-branch") return meta.child === node;
+  if (meta.role === "mobile-spine") return meta.parent === node;
+  return false;
+}
+
+function elasticConnectorPath(path, drag) {
+  const meta = path.connectorMeta;
+  if (!meta) return path.getAttribute("d") || "";
+
+  if (meta.role === "direct") {
+    return connectorPath(
+      meta.parent,
+      meta.child,
+      elasticLayoutFor(meta.parent, drag),
+      elasticLayoutFor(meta.child, drag)
+    );
+  }
+
+  if (meta.role === "mobile-branch") {
+    const childLayout = elasticLayoutFor(meta.child, drag);
+    return roundedOrthogonalPath([
+      { x: meta.railX, y: meta.anchorY },
+      { x: meta.railX, y: childLayout.y },
+      { x: childLayout.x - NODE_PORT_OFFSET, y: childLayout.y }
+    ], 16);
+  }
+
+  if (meta.role === "mobile-spine") {
+    const parentLayout = elasticLayoutFor(meta.parent, drag);
+    const startX = parentLayout.x + 24;
+    const startY = parentLayout.y + parentLayout.height / 2;
+    return roundedOrthogonalPath([
+      { x: startX, y: startY },
+      { x: startX, y: startY + 32 },
+      { x: meta.railX, y: startY + 32 },
+      { x: meta.railX, y: meta.endY }
+    ], 16);
+  }
+
+  return meta.restD;
+}
+
+function paintElasticDrag(drag) {
+  if (!drag?.element?.isConnected) return;
+  const scale = Math.max(0.001, state.transform.scale);
+  drag.element.style.setProperty("--elastic-x", `${drag.offsetX / scale}px`);
+  drag.element.style.setProperty("--elastic-y", `${drag.offsetY / scale}px`);
+  drag.paths.forEach((path) => {
+    if (path.isConnected) path.setAttribute("d", elasticConnectorPath(path, drag));
+  });
+}
+
+function scheduleElasticPaint(drag) {
+  if (drag.paintRaf) return;
+  drag.paintRaf = window.requestAnimationFrame(() => {
+    drag.paintRaf = null;
+    if (state.elasticDrag === drag) paintElasticDrag(drag);
+  });
+}
+
+function finishElasticDrag(drag = state.elasticDrag) {
+  if (!drag) return;
+  drag.phase = "finished";
+  if (drag.paintRaf) window.cancelAnimationFrame(drag.paintRaf);
+  if (drag.springRaf) window.cancelAnimationFrame(drag.springRaf);
+  drag.paintRaf = null;
+  drag.springRaf = null;
+  try {
+    if (drag.element?.hasPointerCapture?.(drag.pointerId)) {
+      drag.element.releasePointerCapture(drag.pointerId);
+    }
+  } catch {}
+  drag.element?.style.removeProperty("--elastic-x");
+  drag.element?.style.removeProperty("--elastic-y");
+  drag.element?.classList.remove("is-elastic-dragging", "is-elastic-returning");
+  drag.paths?.forEach((path) => {
+    if (!path.isConnected || !path.connectorMeta) return;
+    path.setAttribute("d", path.connectorMeta.restD);
+    path.classList.remove("is-elastic");
+  });
+  dom.viewport.classList.remove("is-node-dragging");
+  if (state.elasticDrag === drag) state.elasticDrag = null;
+}
+
+function cancelElasticDrag() {
+  finishElasticDrag(state.elasticDrag);
+}
+
+function elasticLimitFor(node) {
+  const scaledWidth = node.layout.width * state.transform.scale;
+  const minimum = state.mobile ? 82 : 84;
+  const maximum = state.mobile ? 112 : 144;
+  return clamp(scaledWidth * 0.55, minimum, maximum);
+}
+
+function resistedElasticDelta(deltaX, deltaY, limit) {
+  const distance = Math.hypot(deltaX, deltaY);
+  if (distance < 0.001) return { x: 0, y: 0 };
+  const softStart = limit * 0.32;
+  const effectiveDistance = distance <= softStart
+    ? distance
+    : softStart + (limit - softStart) * (1 - Math.exp(-(distance - softStart) / (limit - softStart)));
+  const ratio = effectiveDistance / distance;
+  return { x: deltaX * ratio, y: deltaY * ratio };
+}
+
+function beginElasticCandidate(event, element) {
+  if (state.elasticDrag) finishElasticDrag(state.elasticDrag);
+  const node = state.visibleNodes.find((candidate) => candidate.id === element.dataset.nodeId);
+  if (!node) return false;
+  window.clearTimeout(state.hoverFocusTimer);
+  state.hoverFocusTimer = null;
+  state.elasticDrag = {
+    phase: "pending",
+    pointerId: event.pointerId,
+    pointerType: event.pointerType,
+    node,
+    element,
+    startClientX: event.clientX,
+    startClientY: event.clientY,
+    currentClientX: event.clientX,
+    currentClientY: event.clientY,
+    limit: elasticLimitFor(node),
+    offsetX: 0,
+    offsetY: 0,
+    velocityX: 0,
+    velocityY: 0,
+    lastSampleX: 0,
+    lastSampleY: 0,
+    lastSampleTime: performance.now(),
+    paths: [],
+    paintRaf: null,
+    springRaf: null
+  };
+  return true;
+}
+
+function activateElasticDrag(event, drag) {
+  drag.phase = "dragging";
+  drag.paths = [...dom.connections.querySelectorAll(".connector")]
+    .filter((path) => isElasticConnectorForNode(path, drag.node));
+  drag.paths.forEach((path) => path.classList.add("is-elastic"));
+  drag.element.classList.add("is-elastic-dragging");
+  dom.viewport.classList.add("is-node-dragging");
+  clearNodeFocus();
+  try { drag.element.setPointerCapture(event.pointerId); } catch {}
+}
+
+function updateElasticVelocity(drag, nextX, nextY, timestamp) {
+  const elapsed = Math.max(1, timestamp - drag.lastSampleTime) / 1000;
+  const instantaneousX = (nextX - drag.lastSampleX) / elapsed;
+  const instantaneousY = (nextY - drag.lastSampleY) / elapsed;
+  drag.velocityX = drag.velocityX * 0.62 + instantaneousX * 0.38;
+  drag.velocityY = drag.velocityY * 0.62 + instantaneousY * 0.38;
+  drag.lastSampleX = nextX;
+  drag.lastSampleY = nextY;
+  drag.lastSampleTime = timestamp;
+}
+
+function handleElasticPointerMove(event) {
+  const drag = state.elasticDrag;
+  if (!drag || drag.pointerId !== event.pointerId || drag.phase === "returning") return false;
+  drag.currentClientX = event.clientX;
+  drag.currentClientY = event.clientY;
+  const rawX = event.clientX - drag.startClientX;
+  const rawY = event.clientY - drag.startClientY;
+  const rawDistance = Math.hypot(rawX, rawY);
+
+  if (drag.phase === "pending") {
+    if (rawDistance < NODE_DRAG_THRESHOLD) return true;
+    activateElasticDrag(event, drag);
+  }
+
+  event.preventDefault();
+  const resisted = resistedElasticDelta(rawX, rawY, drag.limit);
+  updateElasticVelocity(drag, resisted.x, resisted.y, performance.now());
+  drag.offsetX = resisted.x;
+  drag.offsetY = resisted.y;
+  scheduleElasticPaint(drag);
+  return true;
+}
+
+function startElasticReturn(drag) {
+  drag.phase = "returning";
+  drag.element.classList.remove("is-elastic-dragging");
+  drag.element.classList.add("is-elastic-returning");
+  dom.viewport.classList.remove("is-node-dragging");
+  try {
+    if (drag.element.hasPointerCapture?.(drag.pointerId)) drag.element.releasePointerCapture(drag.pointerId);
+  } catch {}
+
+  if (window.matchMedia(REDUCED_MOTION_QUERY).matches) {
+    finishElasticDrag(drag);
+    return;
+  }
+
+  let velocityX = clamp(drag.velocityX, -850, 850);
+  let velocityY = clamp(drag.velocityY, -850, 850);
+  let previousTime = performance.now();
+  const stiffness = 280;
+  const damping = 24;
+
+  const springStep = (timestamp) => {
+    if (state.elasticDrag !== drag || drag.phase !== "returning") return;
+    const deltaTime = Math.min(0.032, Math.max(0.001, (timestamp - previousTime) / 1000));
+    previousTime = timestamp;
+    velocityX += (-stiffness * drag.offsetX - damping * velocityX) * deltaTime;
+    velocityY += (-stiffness * drag.offsetY - damping * velocityY) * deltaTime;
+    drag.offsetX += velocityX * deltaTime;
+    drag.offsetY += velocityY * deltaTime;
+    paintElasticDrag(drag);
+
+    if (Math.hypot(drag.offsetX, drag.offsetY) < 0.25 && Math.hypot(velocityX, velocityY) < 5) {
+      finishElasticDrag(drag);
+      return;
+    }
+    drag.springRaf = window.requestAnimationFrame(springStep);
+  };
+
+  if (drag.paintRaf) window.cancelAnimationFrame(drag.paintRaf);
+  drag.paintRaf = null;
+  paintElasticDrag(drag);
+  drag.springRaf = window.requestAnimationFrame(springStep);
+}
+
+function handleElasticPointerRelease(event) {
+  const drag = state.elasticDrag;
+  if (!drag || drag.pointerId !== event.pointerId || drag.phase === "returning") return false;
+  if (drag.phase === "pending") {
+    finishElasticDrag(drag);
+    return true;
+  }
+
+  state.suppressClick = true;
+  window.clearTimeout(state.suppressClickTimer);
+  state.suppressClickTimer = window.setTimeout(() => { state.suppressClick = false; }, 160);
+  startElasticReturn(drag);
+  return true;
 }
 
 function metaLabel(node) {
@@ -904,6 +1202,9 @@ function renderNode(node) {
     label.textContent = cleanTitle;
     link.append(icon, label);
     link.title = `Abrir en una pestaña nueva: ${cleanTitle}`;
+    if (isExternal(node)) {
+      link.setAttribute("aria-label", `${cleanTitle}, enlace externo; se abre en una pestaña nueva`);
+    }
     topLine.append(link);
   } else {
     const title = document.createElement("span");
@@ -929,6 +1230,7 @@ function renderNode(node) {
     const external = document.createElement("span");
     external.className = "external-link-mark";
     external.title = "Enlace externo";
+    external.setAttribute("aria-hidden", "true");
     external.append(createContextIcon("external"));
     topLine.append(external);
   }
@@ -1008,6 +1310,7 @@ function measureNodeHeights(visible) {
 }
 
 function renderMap() {
+  if (state.elasticDrag) cancelElasticDrag();
   if (!state.root) return;
   state.mobile = window.matchMedia(MOBILE_QUERY).matches;
   const visible = getVisibleNodes();
@@ -1833,6 +2136,10 @@ function setupInteractions() {
     }
   });
 
+  dom.nodes.addEventListener("dragstart", (event) => {
+    if (event.target.closest(".map-node")) event.preventDefault();
+  });
+
   document.addEventListener("pointerdown", (event) => {
     if (!event.target.closest(".search-wrap")) closeSearch();
     if (
@@ -1876,6 +2183,7 @@ function setupInteractions() {
   dom.viewport.addEventListener("wheel", (event) => {
     if (event.target.closest(".minimap")) return;
     event.preventDefault();
+    if (state.elasticDrag?.phase === "dragging") return;
     if (event.ctrlKey || event.metaKey) {
       const factor = Math.exp(-event.deltaY * 0.0025);
       zoomAt(state.transform.scale * factor, event.clientX, event.clientY);
@@ -1889,6 +2197,22 @@ function setupInteractions() {
   dom.viewport.addEventListener("pointerdown", (event) => {
     if (event.target.closest("button, input, .legend-panel, .minimap")) return;
     if (event.pointerType === "mouse" && event.button !== 0) return;
+    if (
+      state.elasticDrag &&
+      state.elasticDrag.pointerId !== event.pointerId &&
+      state.elasticDrag.phase !== "returning"
+    ) {
+      event.preventDefault();
+      return;
+    }
+    const nodeElement = event.target.closest(".map-node");
+    if (nodeElement && state.pointers.size === 0) {
+      if (state.elasticDrag && state.elasticDrag.phase !== "returning") {
+        event.preventDefault();
+        return;
+      }
+      if (beginElasticCandidate(event, nodeElement)) return;
+    }
     if (state.mobile && !event.target.closest(".map-node")) clearNodeFocus();
     state.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
 
@@ -1918,6 +2242,7 @@ function setupInteractions() {
   });
 
   dom.viewport.addEventListener("pointermove", (event) => {
+    if (handleElasticPointerMove(event)) return;
     if (!state.pointers.has(event.pointerId)) return;
     state.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
 
@@ -1956,6 +2281,7 @@ function setupInteractions() {
   });
 
   const releasePointer = (event) => {
+    if (handleElasticPointerRelease(event)) return;
     if (!state.pointers.has(event.pointerId)) return;
     state.pointers.delete(event.pointerId);
     if (state.pointers.size < 2) state.pinchOrigin = null;
@@ -1980,6 +2306,10 @@ function setupInteractions() {
   };
   dom.viewport.addEventListener("pointerup", releasePointer);
   dom.viewport.addEventListener("pointercancel", releasePointer);
+  dom.viewport.addEventListener("lostpointercapture", (event) => {
+    const drag = state.elasticDrag;
+    if (drag?.pointerId === event.pointerId && drag.phase === "dragging") startElasticReturn(drag);
+  }, true);
 
   dom.viewport.addEventListener("click", (event) => {
     if (event.target.closest("button, input, .legend-panel, .minimap")) {
@@ -2018,6 +2348,10 @@ function setupInteractions() {
   };
   window.addEventListener("resize", refreshViewport);
   window.visualViewport?.addEventListener("resize", refreshViewport);
+  window.addEventListener("blur", cancelElasticDrag);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) cancelElasticDrag();
+  });
   if (window.ResizeObserver && dom.header) {
     new ResizeObserver(() => {
       syncHeaderHeight();
