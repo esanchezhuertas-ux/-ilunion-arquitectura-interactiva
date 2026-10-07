@@ -480,6 +480,10 @@ function nodeDimensions(node, mobile) {
   return { width, height: Math.max(node.isAnnotation ? 42 : size.height, node.measuredHeight || 0) };
 }
 
+function hasApprovalStatus(node) {
+  return Boolean(node?.isAnnotation && /\(pendiente de aprobación\)\s*$/i.test(node.title || ""));
+}
+
 function getVisibleNodes() {
   const result = [];
   function walk(node) {
@@ -515,7 +519,7 @@ function layoutDesktop(visible) {
 
     if (!children.length) {
       node.layout.y = leafCursor;
-      leafCursor += Math.max(84, dimensions.height + 24);
+      leafCursor += Math.max(hasApprovalStatus(node) ? 96 : 84, dimensions.height + 24);
       return;
     }
 
@@ -542,7 +546,7 @@ function layoutMobile(visible) {
       x: 28 + indent,
       y: cursor + dimensions.height / 2
     };
-    cursor += dimensions.height + (node.isAnnotation ? 28 : 48);
+    cursor += dimensions.height + (node.isAnnotation ? (hasApprovalStatus(node) ? 40 : 28) : 48);
     maxRight = Math.max(maxRight, node.layout.x + dimensions.width);
   });
 
@@ -1196,7 +1200,7 @@ function renderNode(node) {
   const visualDepth = Math.min(node.depth, 4);
   const isFocusTarget = state.focusedId === node.id;
   const isFocusPath = state.focusPathIds.has(node.id);
-  element.className = `map-node depth-${visualDepth}${node.isAnnotation ? " annotation-node" : ""}${isModuleNode(node) ? " module-node" : ""}${hasCornerTag ? " has-corner-tag" : ""}${state.highlightedId === node.id ? " is-highlighted" : ""}${isFocusPath ? " is-focus-path" : ""}${isFocusTarget ? " is-focus-target" : ""}`;
+  element.className = `map-node depth-${visualDepth}${node.isAnnotation ? " annotation-node" : ""}${approvalStatus ? " has-approval" : ""}${isModuleNode(node) ? " module-node" : ""}${hasCornerTag ? " has-corner-tag" : ""}${state.highlightedId === node.id ? " is-highlighted" : ""}${isFocusPath ? " is-focus-path" : ""}${isFocusTarget ? " is-focus-target" : ""}`;
   element.dataset.nodeId = node.id;
   element.style.setProperty("--node-color", color);
   element.style.left = `${node.layout.x}px`;
@@ -1296,7 +1300,8 @@ function renderNode(node) {
   if (approvalStatus) {
     const approval = document.createElement("span");
     approval.className = "node-meta annotation-approval";
-    approval.textContent = approvalStatus;
+    approval.textContent = approvalStatus.replace(/[()]/g, "").toLocaleUpperCase("es-ES");
+    approval.setAttribute("aria-label", "Estado: pendiente de aprobación");
     body.append(approval);
   }
 
