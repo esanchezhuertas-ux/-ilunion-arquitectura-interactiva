@@ -442,6 +442,18 @@ input:focus-visible,
   transform: translate3d(var(--elastic-x), calc(var(--elastic-y) + var(--node-lift)), 0);
   transition: box-shadow 160ms ease, border-color 160ms ease, transform 160ms ease, opacity 220ms ease, filter 220ms ease;
 }
+.map-node.module-node {
+  border-color: transparent;
+}
+.map-node.module-node::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  border: 2px dashed color-mix(in srgb, var(--node-color), white 28%);
+  border-radius: inherit;
+}
 .map-node::before {
   content: "";
   position: absolute;
@@ -470,6 +482,12 @@ input:focus-visible,
   border-color: var(--node-color);
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--node-color), transparent 80%), 0 8px 20px rgba(26,40,76,.15);
 }
+.map-node.module-node:hover,
+.map-node.module-node.is-highlighted,
+.map-node.module-node.is-focus-target { border-color: transparent; }
+.map-node.module-node:hover::after,
+.map-node.module-node.is-highlighted::after,
+.map-node.module-node.is-focus-target::after { border-color: var(--node-color); }
 .map-node.is-elastic-dragging,
 .map-node.is-elastic-returning {
   --node-lift: 0px;
@@ -637,7 +655,7 @@ input:focus-visible,
   color: var(--node-color);
   background: color-mix(in srgb, var(--node-color), white 86%);
   border: 1px solid color-mix(in srgb, var(--node-color), white 68%);
-  font-size: 0.54rem;
+  font-size: 0.625rem;
   font-weight: 780;
   letter-spacing: .04em;
 }
@@ -648,6 +666,10 @@ input:focus-visible,
   color: currentColor;
 }
 .file-mark-label { line-height: 1; }
+.search-mark {
+  min-width: 0;
+  padding-inline: 6px;
+}
 .external-link-mark {
   width: calc(var(--context-icon-size) + 14px);
   height: calc(var(--context-icon-size) + 7px);
@@ -1361,6 +1383,7 @@ input:focus-visible,
   .connector-base,
   .connector-flow { stroke: CanvasText; filter: none; }
   .map-node::before { border-color: CanvasText; background: Canvas; }
+  .map-node.module-node::after { border-color: CanvasText; }
   .node-detail-row { border: 1px solid CanvasText; background: Canvas; }
   .result-business-icon,
   .node-business-icon,

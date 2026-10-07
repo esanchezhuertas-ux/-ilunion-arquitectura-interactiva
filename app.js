@@ -238,6 +238,10 @@ function isModuleNode(node) {
   return node.method === "current-parent-module";
 }
 
+function isSearchNode(node) {
+  return /^buscador\b/.test(normalize(node.title));
+}
+
 function connectorType(node) {
   if (isModuleNode(node)) return "dotted";
   if (node.isAnnotation && !node.url) return "dotted";
@@ -1040,7 +1044,8 @@ const CONTEXT_ICON_FILES = Object.freeze({
   article: "article.svg",
   business: "business.svg",
   layer: "layer.svg",
-  window: "window.svg"
+  window: "window.svg",
+  search: "search.svg"
 });
 
 function isUrlOrNavigationDetail(value) {
@@ -1224,6 +1229,18 @@ function renderNode(node) {
     fileLabel.textContent = "PDF";
     file.append(createContextIcon("pdf"), fileLabel);
     topLine.append(file);
+  }
+
+  if (isSearchNode(node)) {
+    const search = document.createElement("span");
+    search.className = "file-mark search-mark";
+    search.title = "Buscador";
+    search.setAttribute("aria-hidden", "true");
+    const searchLabel = document.createElement("span");
+    searchLabel.className = "file-mark-label";
+    searchLabel.textContent = "BUSCADOR";
+    search.append(createContextIcon("search"), searchLabel);
+    topLine.append(search);
   }
 
   if (isExternal(node)) {
