@@ -1238,7 +1238,7 @@ function renderNode(node) {
     search.setAttribute("aria-hidden", "true");
     const searchLabel = document.createElement("span");
     searchLabel.className = "file-mark-label";
-    searchLabel.textContent = "BUSCADOR";
+    searchLabel.textContent = "SRC";
     search.append(createContextIcon("search"), searchLabel);
     topLine.append(search);
   }
