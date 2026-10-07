@@ -424,6 +424,7 @@ input:focus-visible,
 .map-node {
   --node-color: #253d88;
   --context-icon-size: 12px;
+  --branch-control-axis: 20.5px;
   position: absolute;
   display: flex;
   align-items: stretch;
@@ -716,15 +717,21 @@ input:focus-visible,
 .depth-6 .node-detail-row { padding: 5px 7px; border-radius: var(--radius-micro); }
 
 .node-meta.annotation-approval {
-  margin: 4px 0 0 29px;
-  padding: 0;
-  width: auto;
-  background: transparent;
-  border-radius: 0;
+  align-self: flex-start;
+  width: fit-content;
+  max-width: calc(100% - 32px);
+  margin: 4px 0 0 32px;
+  padding: 3px 7px;
+  border: 1px solid color-mix(in srgb, var(--annotation-alert), white 62%);
+  border-radius: 999px;
   color: var(--annotation-alert-text);
+  background: color-mix(in srgb, var(--annotation-alert), white 92%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .72);
+  font-size: .50rem;
   font-style: normal;
-  font-weight: 700;
-  line-height: 1.2;
+  font-weight: 760;
+  line-height: 1.15;
+  letter-spacing: .045em;
 }
 
 .toggle-branch {
@@ -759,51 +766,60 @@ input:focus-visible,
 .toggle-branch .toggle-icon-subtract { --toggle-icon: url("./icons/ui/subtract-line.svg"); }
 .child-count {
   position: absolute;
-  right: -34px;
+  left: calc(100% + var(--branch-control-axis));
+  right: auto;
   bottom: -9px;
-  min-width: 26px;
+  min-width: 30px;
   height: 26px;
-  padding: 0 6px;
+  padding: 0 8px;
   display: grid;
   place-items: center;
-  border: 2px solid #fff;
+  transform: translateX(-50%);
+  border: 2px solid rgba(255, 255, 255, .96);
   border-radius: 999px;
   color: #fff;
-  background: var(--node-color);
+  background: color-mix(in srgb, var(--node-color), #111827 5%);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--node-color), white 58%), 0 3px 9px rgba(29, 43, 77, .18), inset 0 1px 0 rgba(255, 255, 255, .18);
   font-size: .68rem;
-  font-weight: 780;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: .015em;
 }
 
 .map-node.annotation-node {
-  border: 1.5px solid var(--node-color);
+  border: 1.5px solid color-mix(in srgb, var(--node-color), white 28%);
   border-radius: 999px;
-  background: rgba(255, 255, 255, .97);
-  box-shadow: 0 5px 14px rgba(26, 40, 76, .10);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .99), color-mix(in srgb, var(--node-color), white 96%));
+  box-shadow: 0 6px 16px rgba(26, 40, 76, .11), inset 0 1px 0 rgba(255, 255, 255, .90);
   overflow: visible;
   animation: annotationAttention 4.8s ease-in-out var(--annotation-delay, 0s) infinite;
 }
 .map-node.annotation-node::before { display: none; }
-.annotation-node .node-body { padding: 7px 11px; }
-.annotation-node .node-topline { align-items: center; gap: 7px; }
+.annotation-node .node-body { padding: 9px 13px; gap: 1px; }
+.annotation-node .node-topline { align-items: center; gap: 8px; }
 .annotation-node .node-title-static,
-.annotation-node .node-link { font-size: .68rem; font-style: italic; font-weight: 720; }
+.annotation-node .node-link { font-size: .69rem; font-style: italic; font-weight: 760; }
 .annotation-node .node-title-static,
 .annotation-node .node-link .link-label { color: #121212; }
 .annotation-node .node-link { color: var(--node-color); }
 .annotation-node:hover {
   border-color: var(--node-color);
-  box-shadow: 0 8px 20px rgba(26, 40, 76, .14);
+  background: color-mix(in srgb, var(--node-color), white 94%);
+  box-shadow: 0 8px 20px rgba(26, 40, 76, .14), inset 0 0 0 1px rgba(255, 255, 255, .78);
   transform: translateY(-1px);
 }
 .annotation-alert-mark {
-  width: 22px;
-  height: 22px;
-  flex: 0 0 22px;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
   display: grid;
   place-items: center;
   border-radius: 50%;
   color: #121212;
-  background: color-mix(in srgb, var(--node-color, var(--corporate)), white 88%);
+  border: 1px solid color-mix(in srgb, var(--node-color, var(--corporate)), white 62%);
+  background: color-mix(in srgb, var(--node-color, var(--corporate)), white 92%);
+  box-shadow: 0 1px 3px rgba(20, 32, 60, .10);
   animation: annotationIconBlink 4.8s ease-in-out var(--annotation-delay, 0s) infinite;
 }
 .annotation-alert-mark::before {
@@ -816,12 +832,12 @@ input:focus-visible,
   mask: url("./icon-alert-triangle.svg") center / contain no-repeat;
 }
 @keyframes annotationAttention {
-  0%, 74%, 90%, 100% { border-color: var(--node-color); box-shadow: 0 5px 14px rgba(26, 40, 76, .10); }
-  82% { border-color: var(--node-color); box-shadow: 0 5px 14px rgba(26, 40, 76, .10), 0 0 0 5px color-mix(in srgb, var(--annotation-alert), transparent 72%), 0 0 18px 3px color-mix(in srgb, var(--annotation-alert), transparent 58%); }
+  0%, 74%, 90%, 100% { border-color: color-mix(in srgb, var(--node-color), white 28%); box-shadow: 0 6px 16px rgba(26, 40, 76, .11), inset 0 1px 0 rgba(255, 255, 255, .90); }
+  82% { border-color: color-mix(in srgb, var(--node-color), white 28%); box-shadow: 0 6px 16px rgba(26, 40, 76, .11), inset 0 1px 0 rgba(255, 255, 255, .90), 0 0 0 5px color-mix(in srgb, var(--annotation-alert), transparent 72%), 0 0 20px 4px color-mix(in srgb, var(--annotation-alert), transparent 62%); }
 }
 @keyframes annotationIconBlink {
   0%, 74%, 90%, 100% { opacity: 1; }
-  82% { opacity: .48; }
+  82% { opacity: .72; }
 }
 
 .map-meta,
@@ -1258,13 +1274,16 @@ input:focus-visible,
     width: 42px;
     height: 42px;
   }
+  .map-node { --branch-control-axis: 29px; }
   .toggle-branch .toggle-icon { width: 18px; height: 18px; }
   .child-count {
-    right: -43px;
+    left: calc(100% + var(--branch-control-axis));
+    right: auto;
     bottom: -10px;
-    min-width: 28px;
-    height: 28px;
-    font-size: .72rem;
+    min-width: 32px;
+    height: 26px;
+    padding-inline: 8px;
+    font-size: .70rem;
   }
   .legend-panel {
     right: max(12px, env(safe-area-inset-right, 0px));

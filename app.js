@@ -758,9 +758,13 @@ function isPdfDetail(value) {
   return /^(?:\d+\s+documentos?\s+)?pdf$/.test(normalize(value));
 }
 
+function isPlainMetadataDetail(value) {
+  return /^(?:modulo o acceso|plantilla de ejemplo)$/.test(normalize(value));
+}
+
 function contextualIconKind(value) {
   const text = normalize(value);
-  if (isUrlOrNavigationDetail(value) || isPdfDetail(value)) return null;
+  if (isUrlOrNavigationDetail(value) || isPdfDetail(value) || isPlainMetadataDetail(value)) return null;
   if (/\bpdf\b/.test(text)) return "pdf";
   if (/plantilla/.test(text)) return "template";
   if (/app store|google play|descarga en|aplicacion movil|aplicación móvil/.test(text)) return "mobile";
