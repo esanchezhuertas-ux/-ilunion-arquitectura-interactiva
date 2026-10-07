@@ -457,7 +457,8 @@ function nodeDimensions(node, mobile) {
   if (mobile) {
     const viewportWidth = dom.viewport.clientWidth || window.innerWidth;
     const baseWidth = Math.max(272, Math.min(320, viewportWidth - 56));
-    const width = Math.max(252, baseWidth - Math.min(node.depth, 4) * 4);
+    const tagWidthBoost = usesCornerTag(node) ? 8 : 0;
+    const width = Math.max(252, baseWidth - Math.min(node.depth, 4) * 4 + tagWidthBoost);
     const heights = [92, 80, 72, 66, 60];
     const minimumHeight = node.isAnnotation ? 42 : heights[Math.min(node.depth, 4)];
     return {
