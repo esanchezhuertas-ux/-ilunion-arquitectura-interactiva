@@ -439,10 +439,10 @@ input:focus-visible,
   content: "";
   position: absolute;
   z-index: 3;
-  left: -7px;
+  left: -19px;
   top: 50%;
-  width: 13px;
-  height: 13px;
+  width: 14px;
+  height: 14px;
   transform: translateY(-50%);
   border: 4px solid var(--node-color);
   border-radius: 50%;
@@ -613,15 +613,26 @@ input:focus-visible,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: calc(var(--context-icon-size) + 6px);
+  width: auto;
+  min-width: calc(var(--context-icon-size) + 22px);
   height: calc(var(--context-icon-size) + 6px);
+  padding: 0 6px;
+  gap: 4px;
   border-radius: var(--radius-micro);
   color: var(--node-color);
   background: color-mix(in srgb, var(--node-color), white 86%);
-  font-size: 0.65rem;
-  font-weight: 800;
+  border: 1px solid color-mix(in srgb, var(--node-color), white 68%);
+  font-size: 0.54rem;
+  font-weight: 780;
+  letter-spacing: .04em;
 }
-.file-mark { padding: 0; font-size: .54rem; }
+.file-mark .context-icon {
+  width: calc(var(--context-icon-size) - 2px);
+  height: calc(var(--context-icon-size) - 2px);
+  margin: 0;
+  color: currentColor;
+}
+.file-mark-label { line-height: 1; }
 .external-link-mark {
   width: 1.35em;
   height: 1.05em;
@@ -652,7 +663,7 @@ input:focus-visible,
   margin: 0;
   padding: 6px 8px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 6px;
   border-radius: var(--radius-micro);
   background: color-mix(in srgb, var(--node-color), white 93%);
@@ -662,8 +673,8 @@ input:focus-visible,
   width: var(--context-icon-size);
   height: var(--context-icon-size);
   flex: 0 0 auto;
-  margin-top: 1px;
-  color: var(--node-color);
+  margin-top: 0;
+  color: currentColor;
   background: currentColor;
   -webkit-mask: var(--context-icon) center / contain no-repeat;
   mask: var(--context-icon) center / contain no-repeat;
@@ -693,7 +704,12 @@ input:focus-visible,
   color: rgba(255,255,255,.88);
   background: rgba(255,255,255,.12);
 }
-.depth-0 .context-icon { color: rgba(255,255,255,.92); }
+.depth-0 .context-icon { color: currentColor; }
+
+.node-detail-row.pdf-detail {
+  font-weight: 720;
+  letter-spacing: .045em;
+}
 
 .depth-4 .node-detail-row,
 .depth-5 .node-detail-row,
@@ -714,7 +730,7 @@ input:focus-visible,
 .toggle-branch {
   position: absolute;
   z-index: 3;
-  right: -13px;
+  right: -34px;
   top: 50%;
   width: 27px;
   height: 27px;
@@ -743,19 +759,19 @@ input:focus-visible,
 .toggle-branch .toggle-icon-subtract { --toggle-icon: url("./icons/ui/subtract-line.svg"); }
 .child-count {
   position: absolute;
-  right: -7px;
-  bottom: -7px;
-  min-width: 20px;
-  height: 20px;
-  padding: 0 5px;
+  right: -34px;
+  bottom: -9px;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 6px;
   display: grid;
   place-items: center;
   border: 2px solid #fff;
   border-radius: 999px;
   color: #fff;
   background: var(--node-color);
-  font-size: .53rem;
-  font-weight: 750;
+  font-size: .68rem;
+  font-weight: 780;
 }
 
 .map-node.annotation-node {
@@ -1238,11 +1254,18 @@ input:focus-visible,
   .map-meta { top: 10px; left: max(10px, env(safe-area-inset-left, 0px)); }
   .minimap { display: none; }
   .toggle-branch {
-    right: -21px;
+    right: -50px;
     width: 42px;
     height: 42px;
   }
   .toggle-branch .toggle-icon { width: 18px; height: 18px; }
+  .child-count {
+    right: -43px;
+    bottom: -10px;
+    min-width: 28px;
+    height: 28px;
+    font-size: .72rem;
+  }
   .legend-panel {
     right: max(12px, env(safe-area-inset-right, 0px));
     bottom: max(12px, env(safe-area-inset-bottom, 0px));

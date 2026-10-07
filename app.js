@@ -127,6 +127,7 @@ const state = {
 };
 
 const SVG_NS = "http://www.w3.org/2000/svg";
+const NODE_PORT_OFFSET = 12;
 const normalize = (value) => String(value || "")
   .normalize("NFD")
   .replace(/[\u0300-\u036f]/g, "")
@@ -562,7 +563,7 @@ function desktopStepPath(parent, child) {
   const c = child.layout;
   const startX = p.x + p.width;
   const startY = p.y;
-  const endX = c.x;
+  const endX = c.x - NODE_PORT_OFFSET;
   const endY = c.y;
   const railX = startX + (endX - startX) / 2;
   const verticalDistance = Math.abs(endY - startY);
@@ -596,7 +597,7 @@ function connectorPath(parent, child) {
       { x: startX, y: startY + 32 },
       { x: railX, y: startY + 32 },
       { x: railX, y: c.y },
-      { x: c.x, y: c.y }
+      { x: c.x - NODE_PORT_OFFSET, y: c.y }
     ], 16);
   }
 
@@ -676,7 +677,7 @@ function renderConnectors(visible) {
         const type = connectorType(child);
         const d = roundedOrthogonalPath([
           { x: railX, y: child.layout.y },
-          { x: child.layout.x, y: child.layout.y }
+          { x: child.layout.x - NODE_PORT_OFFSET, y: child.layout.y }
         ]);
         const baseClass = `connector connector-base${type === "solid" ? "" : ` base-${type}`}`;
         const flowClass = `connector connector-flow${type === "solid" ? "" : ` flow-${type}`}`;
@@ -744,25 +745,35 @@ const CONTEXT_ICON_FILES = Object.freeze({
   window: "window.svg"
 });
 
+function isUrlOrNavigationDetail(value) {
+  const raw = String(value || "");
+  const text = normalize(raw);
+  const containsUrlOrRoute = /https?:\/\/|www\.|(?:^|\s)[a-z0-9-]+(?:\.[a-z0-9-]+)+(?:\/|\s|$)|(?:^|[\s·])\/(?:[a-z0-9-]+\/?)+/i.test(raw);
+  const containsBreadcrumb = /[›→]/.test(raw);
+  const sharedNavigationCopy = /negocios? integrados? en (?:la corporativa|ilunion\.com)|acceso (?:a|al) empleo corporativo|empleo en la corporativa|referencia actual|url provisional/.test(text);
+  return containsUrlOrRoute || containsBreadcrumb || sharedNavigationCopy;
+}
+
+function isPdfDetail(value) {
+  return /^(?:\d+\s+documentos?\s+)?pdf$/.test(normalize(value));
+}
+
 function contextualIconKind(value) {
   const text = normalize(value);
+  if (isUrlOrNavigationDetail(value) || isPdfDetail(value)) return null;
   if (/\bpdf\b/.test(text)) return "pdf";
   if (/plantilla/.test(text)) return "template";
   if (/app store|google play|descarga en|aplicacion movil|aplicación móvil/.test(text)) return "mobile";
-  if (/empleo|trabaja con nosotros|unete al equipo/.test(text)) return "briefcase";
+  if (/^modulo\b|misma pagina|misma página/.test(text)) return "module";
   if (/formulario|negocio seleccionado/.test(text)) return "form";
   if (/repositorio|documentacion|documentación|catalogo|catálogo/.test(text)) return "archive";
   if (/blog|noticias|actualidad|contenido filtrado/.test(text)) return "article";
-  if (/negocio integrado|rama de negocio/.test(text)) return "business";
   if (/sede|mapa de|filtro|clinica|clínica|centro de dia|centro de día/.test(text)) return "location";
-  if (/navegacion|navegación|accesos a contenidos comunes/.test(text)) return "navigation";
+  if (/navegacion|navegación/.test(text)) return "navigation";
   if (/apertura en capa/.test(text)) return "window";
   if (/detalle en capa/.test(text)) return "layer";
-  if (/modulo|módulo|misma pagina|misma página|acceso/.test(text)) return "module";
-  if (/referencia actual|url provisional/.test(text)) return "link";
-  if (/enlace externo/.test(text)) return "external";
   if (/ecosistema corporativo/.test(text)) return "ecosystem";
-  return "description";
+  return null;
 }
 
 function createContextIcon(kind) {
@@ -774,10 +785,16 @@ function createContextIcon(kind) {
   return icon;
 }
 
-function createDetailRow(tagName, className, value, node) {
+function createDetailRow(tagName, className, value) {
   const row = document.createElement(tagName);
   row.className = `${className} node-detail-row`;
-  row.append(createContextIcon(contextualIconKind(value)));
+  const iconKind = contextualIconKind(value);
+  if (iconKind) {
+    row.append(createContextIcon(iconKind));
+  } else {
+    row.classList.add("without-context-icon");
+  }
+  if (isPdfDetail(value)) row.classList.add("pdf-detail");
   const text = document.createElement("span");
   text.className = "node-detail-text";
   text.textContent = value;
@@ -897,7 +914,10 @@ function renderNode(node) {
     file.title = "Documento PDF";
     file.setAttribute("role", "img");
     file.setAttribute("aria-label", "Documento PDF");
-    file.append(createContextIcon("pdf"));
+    const fileLabel = document.createElement("span");
+    fileLabel.className = "file-mark-label";
+    fileLabel.textContent = "PDF";
+    file.append(createContextIcon("pdf"), fileLabel);
     topLine.append(file);
   }
 
@@ -922,13 +942,13 @@ function renderNode(node) {
   if (details) details.className = "node-details";
 
   if (node.subtitle && details) {
-    const subtitle = createDetailRow("p", "node-subtitle", node.subtitle, node);
+    const subtitle = createDetailRow("p", "node-subtitle", node.subtitle);
     details.append(subtitle);
   }
 
   const meta = metaLabel(node);
   if (meta && details) {
-    const metaElement = createDetailRow("span", "node-meta", meta, node);
+    const metaElement = createDetailRow("span", "node-meta", meta);
     details.append(metaElement);
   }
 
