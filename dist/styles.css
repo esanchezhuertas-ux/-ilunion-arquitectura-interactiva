@@ -575,6 +575,9 @@ input:focus-visible,
 .depth-6 .node-body { padding-top: 8px; padding-bottom: 8px; }
 
 .node-topline { display: flex; align-items: center; gap: 7px; min-width: 0; }
+.map-node.has-corner-tag .node-topline {
+  padding-inline-end: 58px;
+}
 
 .node-link,
 .node-title-static {
@@ -641,8 +644,14 @@ input:focus-visible,
 .depth-6 .node-link,
 .depth-6 .node-title-static { font-size: 0.69rem; }
 
+.map-node.has-corner-tag .file-mark {
+  position: absolute;
+  z-index: 4;
+  inset-block-start: 10px;
+  inset-inline-end: 10px;
+  pointer-events: none;
+}
 .file-mark {
-  flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;

@@ -1177,6 +1177,7 @@ function branchToggle(node) {
 
 function renderNode(node) {
   const color = themeFor(node);
+  const hasCornerTag = isPdf(node) || isSearchNode(node) || isRestrictedAccessNode(node);
   const displayTitle = node.isAnnotation ? node.title.replace(/^\*\s*/, "") : node.title;
   const approvalMatch = node.isAnnotation
     ? displayTitle.match(/\s*(\(pendiente de aprobación\))\s*$/i)
@@ -1189,7 +1190,7 @@ function renderNode(node) {
   const visualDepth = Math.min(node.depth, 4);
   const isFocusTarget = state.focusedId === node.id;
   const isFocusPath = state.focusPathIds.has(node.id);
-  element.className = `map-node depth-${visualDepth}${node.isAnnotation ? " annotation-node" : ""}${isModuleNode(node) ? " module-node" : ""}${state.highlightedId === node.id ? " is-highlighted" : ""}${isFocusPath ? " is-focus-path" : ""}${isFocusTarget ? " is-focus-target" : ""}`;
+  element.className = `map-node depth-${visualDepth}${node.isAnnotation ? " annotation-node" : ""}${isModuleNode(node) ? " module-node" : ""}${hasCornerTag ? " has-corner-tag" : ""}${state.highlightedId === node.id ? " is-highlighted" : ""}${isFocusPath ? " is-focus-path" : ""}${isFocusTarget ? " is-focus-target" : ""}`;
   element.dataset.nodeId = node.id;
   element.style.setProperty("--node-color", color);
   element.style.left = `${node.layout.x}px`;
