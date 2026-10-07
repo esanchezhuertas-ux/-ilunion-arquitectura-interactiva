@@ -242,6 +242,12 @@ function isSearchNode(node) {
   return /^buscador\b/.test(normalize(node.title));
 }
 
+function isRestrictedAccessNode(node) {
+  if (node.parent?.title !== "Accesos y pie de página") return false;
+  const title = normalize(node.title);
+  return title === "portal del proveedor" || title === "portal del empleado";
+}
+
 function connectorType(node) {
   if (isModuleNode(node)) return "dotted";
   if (node.isAnnotation && !node.url) return "dotted";
@@ -388,6 +394,8 @@ function buildTree(records) {
 
   const topOrder = ["Qué hacemos", "Nosotros", "Sedes", "Contacto", "Únete al equipo", "Comunicación", "Accesos y pie de página"];
   const businessOrder = ["ILUNION Servicios", "ILUNION TextilCare", "ILUNION Retail", "ILUNION Bienestar y VidaSénior", "ILUNION Economía Circular", "ILUNION Consultoría", "ILUNION Hoteles ↗"];
+  const footerOrder = ["Buscador global", "Portal del proveedor", "Portal del empleado", "Accesibilidad", "Canal de denuncias ↗", "Documentos corporativos", "Información legal", "Redes sociales"];
+  const legalOrder = ["Política de privacidad", "Aviso legal", "Política de cookies", "Privacidad por WhatsApp"];
 
   function sortChildren(node) {
     node.children.sort((a, b) => {
@@ -399,6 +407,16 @@ function buildTree(records) {
       if (node.title === "Qué hacemos") {
         const ai = businessOrder.indexOf(a.title);
         const bi = businessOrder.indexOf(b.title);
+        if (ai !== -1 || bi !== -1) return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+      }
+      if (node.title === "Accesos y pie de página") {
+        const ai = footerOrder.indexOf(a.title);
+        const bi = footerOrder.indexOf(b.title);
+        if (ai !== -1 || bi !== -1) return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+      }
+      if (node.title === "Información legal") {
+        const ai = legalOrder.indexOf(a.title);
+        const bi = legalOrder.indexOf(b.title);
         if (ai !== -1 || bi !== -1) return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
       }
       return a.order - b.order || a.title.localeCompare(b.title, "es");
@@ -1045,7 +1063,8 @@ const CONTEXT_ICON_FILES = Object.freeze({
   business: "business.svg",
   layer: "layer.svg",
   window: "window.svg",
-  search: "search.svg"
+  search: "search.svg",
+  lock: "lock.svg"
 });
 
 function isUrlOrNavigationDetail(value) {
@@ -1241,6 +1260,19 @@ function renderNode(node) {
     searchLabel.textContent = "SRC";
     search.append(createContextIcon("search"), searchLabel);
     topLine.append(search);
+  }
+
+  if (isRestrictedAccessNode(node)) {
+    const access = document.createElement("span");
+    access.className = "file-mark access-mark";
+    access.title = "Acceso restringido";
+    access.setAttribute("role", "img");
+    access.setAttribute("aria-label", "Acceso restringido (ACC)");
+    const accessLabel = document.createElement("span");
+    accessLabel.className = "file-mark-label";
+    accessLabel.textContent = "ACC";
+    access.append(createContextIcon("lock"), accessLabel);
+    topLine.append(access);
   }
 
   if (isExternal(node)) {
