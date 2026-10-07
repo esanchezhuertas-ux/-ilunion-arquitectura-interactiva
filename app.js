@@ -248,6 +248,10 @@ function isRestrictedAccessNode(node) {
   return title === "portal del proveedor" || title === "portal del empleado";
 }
 
+function usesCornerTag(node) {
+  return isPdf(node) || isSearchNode(node) || isRestrictedAccessNode(node);
+}
+
 function connectorType(node) {
   if (isModuleNode(node)) return "dotted";
   if (node.isAnnotation && !node.url) return "dotted";
@@ -470,7 +474,8 @@ function nodeDimensions(node, mobile) {
     { width: 194, height: 56 }
   ];
   const size = sizes[Math.min(node.depth, 4)];
-  const width = node.isAnnotation ? Math.max(268, size.width) : size.width;
+  const tagWidthBoost = usesCornerTag(node) ? 8 : 0;
+  const width = node.isAnnotation ? Math.max(268, size.width) : size.width + tagWidthBoost;
   return { width, height: Math.max(node.isAnnotation ? 42 : size.height, node.measuredHeight || 0) };
 }
 
@@ -1177,7 +1182,7 @@ function branchToggle(node) {
 
 function renderNode(node) {
   const color = themeFor(node);
-  const hasCornerTag = isPdf(node) || isSearchNode(node) || isRestrictedAccessNode(node);
+  const hasCornerTag = usesCornerTag(node);
   const displayTitle = node.isAnnotation ? node.title.replace(/^\*\s*/, "") : node.title;
   const approvalMatch = node.isAnnotation
     ? displayTitle.match(/\s*(\(pendiente de aprobación\))\s*$/i)

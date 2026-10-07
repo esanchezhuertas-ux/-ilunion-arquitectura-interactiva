@@ -576,7 +576,7 @@ input:focus-visible,
 
 .node-topline { display: flex; align-items: center; gap: 7px; min-width: 0; }
 .map-node.has-corner-tag .node-topline {
-  padding-inline-end: 58px;
+  padding-inline-end: 66px;
 }
 
 .node-link,
