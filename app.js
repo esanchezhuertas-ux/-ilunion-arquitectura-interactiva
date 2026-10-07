@@ -439,11 +439,24 @@ function getVisibleNodes() {
 function layoutDesktop(visible) {
   const visibleSet = new Set(visible.map((node) => node.id));
   let leafCursor = 92;
-  const columnGap = 286;
+  const columnSpacing = 80;
+  const dimensionsById = new Map();
+  const columnWidths = [];
+
+  visible.forEach((node) => {
+    const dimensions = nodeDimensions(node, false);
+    dimensionsById.set(node.id, dimensions);
+    columnWidths[node.depth] = Math.max(columnWidths[node.depth] || 0, dimensions.width);
+  });
+
+  const columnX = [64];
+  for (let depth = 1; depth < columnWidths.length; depth += 1) {
+    columnX[depth] = columnX[depth - 1] + columnWidths[depth - 1] + columnSpacing;
+  }
 
   function place(node) {
-    const dimensions = nodeDimensions(node, false);
-    node.layout = { ...dimensions, x: 64 + node.depth * columnGap, y: 0 };
+    const dimensions = dimensionsById.get(node.id);
+    node.layout = { ...dimensions, x: columnX[node.depth], y: 0 };
     const children = node.collapsed ? [] : node.children.filter((child) => visibleSet.has(child.id));
 
     if (!children.length) {
@@ -469,7 +482,7 @@ function layoutMobile(visible) {
 
   visible.forEach((node) => {
     const dimensions = nodeDimensions(node, true);
-    const indent = Math.min(node.depth, 6) * 112;
+    const indent = Math.min(node.depth, 6) * 124;
     node.layout = {
       ...dimensions,
       x: 28 + indent,
@@ -493,7 +506,7 @@ function createSvgPath(className, d, color, delay, focusChildId) {
   return path;
 }
 
-function roundedOrthogonalPath(points, radius = 13) {
+function roundedOrthogonalPath(points, radius = 16) {
   const clean = [];
 
   points.forEach((point) => {
@@ -535,11 +548,39 @@ function roundedOrthogonalPath(points, radius = 13) {
       x: corner.x + outgoingX * cornerRadius,
       y: corner.y + outgoingY * cornerRadius
     };
-    path += ` L ${before.x} ${before.y} Q ${corner.x} ${corner.y} ${after.x} ${after.y}`;
+    const cross = incomingX * outgoingY - incomingY * outgoingX;
+    const sweep = cross > 0 ? 1 : 0;
+    path += ` L ${before.x} ${before.y} A ${cornerRadius} ${cornerRadius} 0 0 ${sweep} ${after.x} ${after.y}`;
   }
 
   const last = simplified[simplified.length - 1];
   return `${path} L ${last.x} ${last.y}`;
+}
+
+function desktopStepPath(parent, child) {
+  const p = parent.layout;
+  const c = child.layout;
+  const startX = p.x + p.width;
+  const startY = p.y;
+  const endX = c.x;
+  const endY = c.y;
+  const railX = startX + (endX - startX) / 2;
+  const verticalDistance = Math.abs(endY - startY);
+
+  if (verticalDistance < 1) return `M ${startX} ${startY} L ${endX} ${endY}`;
+
+  const radius = Math.max(1, Math.min(24, (endX - startX) / 2 - 8, verticalDistance / 2));
+  const direction = Math.sign(endY - startY);
+  const firstSweep = direction > 0 ? 1 : 0;
+  const secondSweep = direction > 0 ? 0 : 1;
+  return [
+    `M ${startX} ${startY}`,
+    `L ${railX - radius} ${startY}`,
+    `A ${radius} ${radius} 0 0 ${firstSweep} ${railX} ${startY + direction * radius}`,
+    `L ${railX} ${endY - direction * radius}`,
+    `A ${radius} ${radius} 0 0 ${secondSweep} ${railX + radius} ${endY}`,
+    `L ${endX} ${endY}`
+  ].join(" ");
 }
 
 function connectorPath(parent, child) {
@@ -549,27 +590,17 @@ function connectorPath(parent, child) {
   if (state.mobile) {
     const startX = p.x + 24;
     const startY = p.y + p.height / 2;
-    const railX = c.x - 24;
+    const railX = c.x - 28;
     return roundedOrthogonalPath([
       { x: startX, y: startY },
-      { x: startX, y: startY + 18 },
-      { x: railX, y: startY + 18 },
+      { x: startX, y: startY + 32 },
+      { x: railX, y: startY + 32 },
       { x: railX, y: c.y },
       { x: c.x, y: c.y }
-    ], 11);
+    ], 16);
   }
 
-  const startX = p.x + p.width;
-  const startY = p.y;
-  const endX = c.x;
-  const endY = c.y;
-  const middleX = startX + (endX - startX) / 2;
-  return roundedOrthogonalPath([
-    { x: startX, y: startY },
-    { x: middleX, y: startY },
-    { x: middleX, y: endY },
-    { x: endX, y: endY }
-  ]);
+  return desktopStepPath(parent, child);
 }
 
 function desktopConnectorFlowPaths(parent, child) {
@@ -606,16 +637,16 @@ function renderConnectors(visible) {
       }
 
       const parentLayout = parent.layout;
-      const railX = Math.min(...children.map((child) => child.layout.x)) - 24;
+      const railX = Math.min(...children.map((child) => child.layout.x)) - 28;
       const startX = parentLayout.x + 24;
       const startY = parentLayout.y + parentLayout.height / 2;
       const lastY = children[children.length - 1].layout.y;
       const spine = roundedOrthogonalPath([
         { x: startX, y: startY },
-        { x: startX, y: startY + 18 },
-        { x: railX, y: startY + 18 },
+        { x: startX, y: startY + 32 },
+        { x: railX, y: startY + 32 },
         { x: railX, y: lastY }
-      ], 11);
+      ], 16);
       fragment.append(createSvgPath(
         "connector connector-base mobile-spine",
         spine,
@@ -628,10 +659,10 @@ function renderConnectors(visible) {
         const allDetails = flowingChildren.every((child) => connectorType(child) === "detail");
         const flowSpine = roundedOrthogonalPath([
           { x: startX, y: startY },
-          { x: startX, y: startY + 18 },
-          { x: railX, y: startY + 18 },
+          { x: startX, y: startY + 32 },
+          { x: railX, y: startY + 32 },
           { x: railX, y: lastFlowY }
-        ], 11);
+        ], 16);
         fragment.append(createSvgPath(
           `connector connector-flow mobile-spine-flow${allDetails ? " flow-detail" : ""}`,
           flowSpine,
@@ -690,6 +721,87 @@ function metaLabel(node) {
   if (node.depth === 0) return "Ecosistema corporativo";
   if (isExternal(node)) return "Enlace externo";
   return "";
+}
+
+const CONTEXT_ICON_FILES = Object.freeze({
+  global: "global.svg",
+  description: "description.svg",
+  navigation: "navigation.svg",
+  module: "module.svg",
+  template: "template.svg",
+  link: "link.svg",
+  external: "external.svg",
+  ecosystem: "ecosystem.svg",
+  pdf: "pdf.svg",
+  location: "location.svg",
+  form: "form.svg",
+  archive: "archive.svg",
+  briefcase: "briefcase.svg",
+  mobile: "mobile.svg",
+  article: "article.svg",
+  business: "business.svg",
+  layer: "layer.svg",
+  window: "window.svg"
+});
+
+function contextualIconKind(value) {
+  const text = normalize(value);
+  if (/\bpdf\b/.test(text)) return "pdf";
+  if (/plantilla/.test(text)) return "template";
+  if (/app store|google play|descarga en|aplicacion movil|aplicación móvil/.test(text)) return "mobile";
+  if (/empleo|trabaja con nosotros|unete al equipo/.test(text)) return "briefcase";
+  if (/formulario|negocio seleccionado/.test(text)) return "form";
+  if (/repositorio|documentacion|documentación|catalogo|catálogo/.test(text)) return "archive";
+  if (/blog|noticias|actualidad|contenido filtrado/.test(text)) return "article";
+  if (/negocio integrado|rama de negocio/.test(text)) return "business";
+  if (/sede|mapa de|filtro|clinica|clínica|centro de dia|centro de día/.test(text)) return "location";
+  if (/navegacion|navegación|accesos a contenidos comunes/.test(text)) return "navigation";
+  if (/apertura en capa/.test(text)) return "window";
+  if (/detalle en capa/.test(text)) return "layer";
+  if (/modulo|módulo|misma pagina|misma página|acceso/.test(text)) return "module";
+  if (/referencia actual|url provisional/.test(text)) return "link";
+  if (/enlace externo/.test(text)) return "external";
+  if (/ecosistema corporativo/.test(text)) return "ecosystem";
+  return "description";
+}
+
+function createContextIcon(kind) {
+  const icon = document.createElement("span");
+  const fileName = CONTEXT_ICON_FILES[kind] || CONTEXT_ICON_FILES.description;
+  icon.className = "context-icon";
+  icon.setAttribute("aria-hidden", "true");
+  icon.style.setProperty("--context-icon", `url("./icons/context/${fileName}")`);
+  return icon;
+}
+
+function createDetailRow(tagName, className, value, node) {
+  const row = document.createElement(tagName);
+  row.className = `${className} node-detail-row`;
+  row.append(createContextIcon(contextualIconKind(value)));
+  const text = document.createElement("span");
+  text.className = "node-detail-text";
+  text.textContent = value;
+  row.append(text);
+  return row;
+}
+
+function createNodeLeadingIcon(node) {
+  const businessIcon = node.depth === 2 && node.parent?.title === "Qué hacemos"
+    ? businessIconFor(node)
+    : null;
+
+  if (businessIcon) {
+    const icon = document.createElement("span");
+    icon.className = "node-business-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.style.setProperty("--node-business-icon", `url("./icons/business/${businessIcon.icon}.svg")`);
+    return icon;
+  }
+
+  const icon = document.createElement("span");
+  icon.className = "page-link-icon";
+  icon.setAttribute("aria-hidden", "true");
+  return icon;
 }
 
 function branchToggle(node) {
@@ -765,17 +877,7 @@ function renderNode(node) {
     link.target = "_blank";
     link.rel = "noopener noreferrer";
     const cleanTitle = primaryTitle.replace(/\s*↗\s*$/, "");
-    const icon = document.createElementNS(SVG_NS, "svg");
-    icon.setAttribute("class", "page-link-icon");
-    icon.setAttribute("viewBox", "0 0 16 16");
-    icon.setAttribute("aria-hidden", "true");
-    const globeCircle = document.createElementNS(SVG_NS, "circle");
-    globeCircle.setAttribute("cx", "8");
-    globeCircle.setAttribute("cy", "8");
-    globeCircle.setAttribute("r", "6.25");
-    const globeLines = document.createElementNS(SVG_NS, "path");
-    globeLines.setAttribute("d", "M1.75 8h12.5M8 1.75c1.85 1.8 2.8 3.88 2.8 6.25S9.85 12.45 8 14.25M8 1.75C6.15 3.55 5.2 5.63 5.2 8S6.15 12.45 8 14.25");
-    icon.append(globeCircle, globeLines);
+    const icon = createNodeLeadingIcon(node);
     const label = document.createElement("span");
     label.className = "link-label";
     label.textContent = cleanTitle;
@@ -792,8 +894,10 @@ function renderNode(node) {
   if (isPdf(node)) {
     const file = document.createElement("span");
     file.className = "file-mark";
-    file.textContent = "PDF";
     file.title = "Documento PDF";
+    file.setAttribute("role", "img");
+    file.setAttribute("aria-label", "Documento PDF");
+    file.append(createContextIcon("pdf"));
     topLine.append(file);
   }
 
@@ -801,13 +905,7 @@ function renderNode(node) {
     const external = document.createElement("span");
     external.className = "external-link-mark";
     external.title = "Enlace externo";
-    const externalIcon = document.createElementNS(SVG_NS, "svg");
-    externalIcon.setAttribute("viewBox", "0 0 16 16");
-    externalIcon.setAttribute("aria-hidden", "true");
-    const externalPath = document.createElementNS(SVG_NS, "path");
-    externalPath.setAttribute("d", "M5 11 11 5M7 5h4v4");
-    externalIcon.append(externalPath);
-    external.append(externalIcon);
+    external.append(createContextIcon("external"));
     topLine.append(external);
   }
 
@@ -824,17 +922,13 @@ function renderNode(node) {
   if (details) details.className = "node-details";
 
   if (node.subtitle && details) {
-    const subtitle = document.createElement("p");
-    subtitle.className = "node-subtitle node-detail-row";
-    subtitle.textContent = node.subtitle;
+    const subtitle = createDetailRow("p", "node-subtitle", node.subtitle, node);
     details.append(subtitle);
   }
 
   const meta = metaLabel(node);
   if (meta && details) {
-    const metaElement = document.createElement("span");
-    metaElement.className = "node-meta node-detail-row";
-    metaElement.textContent = meta;
+    const metaElement = createDetailRow("span", "node-meta", meta, node);
     details.append(metaElement);
   }
 

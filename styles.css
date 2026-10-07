@@ -392,7 +392,7 @@ input:focus-visible,
   stroke-linejoin: round;
   transition: opacity 220ms ease, filter 220ms ease;
 }
-.connector-base { stroke-width: 3.7; opacity: 1; }
+.connector-base { stroke-width: 4; opacity: 1; }
 .connector-flow {
   stroke-width: 2.65;
   stroke-dasharray: 3 19;
@@ -401,8 +401,8 @@ input:focus-visible,
   animation: currentFlow 1.25s linear infinite;
 }
 .connector.base-dashed { stroke-dasharray: 11 8; }
-.connector.base-dotted { stroke-dasharray: 1.5 8; stroke-width: 3.55; opacity: 1; }
-.connector.base-detail { stroke-dasharray: 1.5 8; stroke-width: 3.45; opacity: 1; }
+.connector.base-dotted { stroke-dasharray: 1.5 8; stroke-width: 3.85; opacity: 1; }
+.connector.base-detail { stroke-dasharray: 1.5 8; stroke-width: 3.75; opacity: 1; }
 .connector-flow.flow-dashed { stroke-dasharray: 5 25; }
 .connector-flow.flow-dotted { display: none; }
 .connector-flow.mobile-spine-flow {
@@ -423,12 +423,13 @@ input:focus-visible,
 
 .map-node {
   --node-color: #253d88;
+  --context-icon-size: 12px;
   position: absolute;
   display: flex;
   align-items: stretch;
   min-width: 0;
   border: 1px solid color-mix(in srgb, var(--node-color), white 68%);
-  border-radius: 14px;
+  border-radius: var(--radius-surface);
   background: color-mix(in srgb, var(--node-color), white 97%);
   box-shadow: 0 4px 12px rgba(20, 32, 60, 0.10), 0 1px 3px rgba(20, 32, 60, 0.06);
   overflow: visible;
@@ -438,12 +439,12 @@ input:focus-visible,
   content: "";
   position: absolute;
   z-index: 3;
-  left: -6px;
+  left: -7px;
   top: 50%;
-  width: 11px;
-  height: 11px;
+  width: 13px;
+  height: 13px;
   transform: translateY(-50%);
-  border: 3px solid var(--node-color);
+  border: 4px solid var(--node-color);
   border-radius: 50%;
   background: #fff;
   box-shadow: 0 1px 4px rgba(20, 32, 60, .16);
@@ -515,7 +516,7 @@ input:focus-visible,
 
 .map-node.depth-0 {
   border: 0;
-  border-radius: 16px;
+  border-radius: var(--radius-emphasis);
   color: #fff;
   background: var(--corporate);
   box-shadow: 0 15px 34px rgba(37, 61, 136, 0.26);
@@ -559,16 +560,24 @@ input:focus-visible,
   flex: 1 1 auto;
 }
 .page-link-icon {
-  width: 0.76em;
-  height: 0.76em;
+  width: var(--context-icon-size);
+  height: var(--context-icon-size);
   flex: 0 0 auto;
-  margin-top: 0.15em;
-  fill: none;
+  margin-top: 1px;
   color: var(--node-color);
-  stroke: currentColor;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  background: currentColor;
+  -webkit-mask: url("./icons/context/global.svg") center / contain no-repeat;
+  mask: url("./icons/context/global.svg") center / contain no-repeat;
+}
+.node-business-icon {
+  width: var(--context-icon-size);
+  height: var(--context-icon-size);
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: var(--node-color);
+  background: currentColor;
+  -webkit-mask: var(--node-business-icon) center / contain no-repeat;
+  mask: var(--node-business-icon) center / contain no-repeat;
 }
 .link-label {
   min-width: 0;
@@ -579,14 +588,19 @@ input:focus-visible,
 }
 .node-link:hover .link-label { text-decoration-thickness: 1.6px; }
 .depth-0 .page-link-icon { color: #fff; }
+.depth-0 .node-business-icon { color: #fff; }
 .depth-0 .node-link,
 .depth-0 .node-title-static { font-size: 1.16rem; font-weight: 800; }
+.depth-0 { --context-icon-size: 18px; }
 .depth-1 .node-link,
 .depth-1 .node-title-static { font-size: 0.92rem; }
+.depth-1 { --context-icon-size: 16px; }
 .depth-2 .node-link,
 .depth-2 .node-title-static { font-size: 0.82rem; }
+.depth-2 { --context-icon-size: 15px; }
 .depth-3 .node-link,
 .depth-3 .node-title-static { font-size: 0.76rem; }
+.depth-3 { --context-icon-size: 14px; }
 .depth-4 .node-link,
 .depth-4 .node-title-static,
 .depth-5 .node-link,
@@ -599,15 +613,15 @@ input:focus-visible,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
+  width: calc(var(--context-icon-size) + 6px);
+  height: calc(var(--context-icon-size) + 6px);
+  border-radius: var(--radius-micro);
   color: var(--node-color);
   background: color-mix(in srgb, var(--node-color), white 86%);
   font-size: 0.65rem;
   font-weight: 800;
 }
-.file-mark { width: auto; padding: 0 5px; border-radius: var(--radius-micro); font-size: .54rem; }
+.file-mark { padding: 0; font-size: .54rem; }
 .external-link-mark {
   width: 1.35em;
   height: 1.05em;
@@ -619,14 +633,11 @@ input:focus-visible,
   color: var(--node-color);
   background: color-mix(in srgb, var(--node-color), white 88%);
 }
-.external-link-mark svg {
+.external-link-mark .context-icon {
   width: 0.72em;
   height: 0.72em;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  margin: 0;
+  color: inherit;
 }
 
 .node-details {
@@ -640,10 +651,25 @@ input:focus-visible,
   width: 100%;
   margin: 0;
   padding: 6px 8px;
-  display: block;
-  border-radius: 9px;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  border-radius: var(--radius-micro);
   background: color-mix(in srgb, var(--node-color), white 93%);
 }
+
+.context-icon {
+  width: var(--context-icon-size);
+  height: var(--context-icon-size);
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: var(--node-color);
+  background: currentColor;
+  -webkit-mask: var(--context-icon) center / contain no-repeat;
+  mask: var(--context-icon) center / contain no-repeat;
+}
+
+.node-detail-text { min-width: 0; flex: 1 1 auto; }
 
 .node-subtitle {
   color: #465165;
@@ -667,10 +693,11 @@ input:focus-visible,
   color: rgba(255,255,255,.88);
   background: rgba(255,255,255,.12);
 }
+.depth-0 .context-icon { color: rgba(255,255,255,.92); }
 
 .depth-4 .node-detail-row,
 .depth-5 .node-detail-row,
-.depth-6 .node-detail-row { padding: 5px 7px; border-radius: 8px; }
+.depth-6 .node-detail-row { padding: 5px 7px; border-radius: var(--radius-micro); }
 
 .node-meta.annotation-approval {
   margin: 4px 0 0 29px;
@@ -1278,5 +1305,9 @@ input:focus-visible,
   .connector-flow { stroke: CanvasText; filter: none; }
   .map-node::before { border-color: CanvasText; background: Canvas; }
   .node-detail-row { border: 1px solid CanvasText; background: Canvas; }
-  .result-business-icon { background: CanvasText; }
+  .result-business-icon,
+  .node-business-icon,
+  .page-link-icon,
+  .context-icon,
+  .map-meta-icon { background: CanvasText; }
 }
