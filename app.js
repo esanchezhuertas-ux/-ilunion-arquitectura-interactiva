@@ -493,6 +493,55 @@ function createSvgPath(className, d, color, delay, focusChildId) {
   return path;
 }
 
+function roundedOrthogonalPath(points, radius = 13) {
+  const clean = [];
+
+  points.forEach((point) => {
+    const previous = clean[clean.length - 1];
+    if (!previous || previous.x !== point.x || previous.y !== point.y) clean.push(point);
+  });
+
+  if (clean.length < 2) return "";
+  if (clean.length === 2) return `M ${clean[0].x} ${clean[0].y} L ${clean[1].x} ${clean[1].y}`;
+
+  const simplified = [clean[0]];
+  for (let index = 1; index < clean.length - 1; index += 1) {
+    const previous = simplified[simplified.length - 1];
+    const current = clean[index];
+    const next = clean[index + 1];
+    const sameHorizontal = previous.y === current.y && current.y === next.y;
+    const sameVertical = previous.x === current.x && current.x === next.x;
+    if (!sameHorizontal && !sameVertical) simplified.push(current);
+  }
+  simplified.push(clean[clean.length - 1]);
+
+  let path = `M ${simplified[0].x} ${simplified[0].y}`;
+  for (let index = 1; index < simplified.length - 1; index += 1) {
+    const previous = simplified[index - 1];
+    const corner = simplified[index];
+    const next = simplified[index + 1];
+    const incomingLength = Math.hypot(corner.x - previous.x, corner.y - previous.y);
+    const outgoingLength = Math.hypot(next.x - corner.x, next.y - corner.y);
+    const cornerRadius = Math.min(radius, incomingLength / 2, outgoingLength / 2);
+    const incomingX = (corner.x - previous.x) / incomingLength;
+    const incomingY = (corner.y - previous.y) / incomingLength;
+    const outgoingX = (next.x - corner.x) / outgoingLength;
+    const outgoingY = (next.y - corner.y) / outgoingLength;
+    const before = {
+      x: corner.x - incomingX * cornerRadius,
+      y: corner.y - incomingY * cornerRadius
+    };
+    const after = {
+      x: corner.x + outgoingX * cornerRadius,
+      y: corner.y + outgoingY * cornerRadius
+    };
+    path += ` L ${before.x} ${before.y} Q ${corner.x} ${corner.y} ${after.x} ${after.y}`;
+  }
+
+  const last = simplified[simplified.length - 1];
+  return `${path} L ${last.x} ${last.y}`;
+}
+
 function connectorPath(parent, child) {
   const p = parent.layout;
   const c = child.layout;
@@ -501,7 +550,13 @@ function connectorPath(parent, child) {
     const startX = p.x + 24;
     const startY = p.y + p.height / 2;
     const railX = c.x - 24;
-    return `M ${startX} ${startY} V ${startY + 18} H ${railX} V ${c.y} H ${c.x}`;
+    return roundedOrthogonalPath([
+      { x: startX, y: startY },
+      { x: startX, y: startY + 18 },
+      { x: railX, y: startY + 18 },
+      { x: railX, y: c.y },
+      { x: c.x, y: c.y }
+    ], 11);
   }
 
   const startX = p.x + p.width;
@@ -509,21 +564,16 @@ function connectorPath(parent, child) {
   const endX = c.x;
   const endY = c.y;
   const middleX = startX + (endX - startX) / 2;
-  return `M ${startX} ${startY} H ${middleX} V ${endY} H ${endX}`;
+  return roundedOrthogonalPath([
+    { x: startX, y: startY },
+    { x: middleX, y: startY },
+    { x: middleX, y: endY },
+    { x: endX, y: endY }
+  ]);
 }
 
 function desktopConnectorFlowPaths(parent, child) {
-  const p = parent.layout;
-  const c = child.layout;
-  const startX = p.x + p.width;
-  const startY = p.y;
-  const endX = c.x;
-  const endY = c.y;
-  const middleX = startX + (endX - startX) / 2;
-  return [
-    `M ${startX} ${startY} H ${middleX} V ${endY}`,
-    `M ${middleX} ${endY} H ${endX}`
-  ];
+  return [connectorPath(parent, child)];
 }
 
 function renderConnectors(visible) {
@@ -560,7 +610,12 @@ function renderConnectors(visible) {
       const startX = parentLayout.x + 24;
       const startY = parentLayout.y + parentLayout.height / 2;
       const lastY = children[children.length - 1].layout.y;
-      const spine = `M ${startX} ${startY} V ${startY + 18} H ${railX} V ${lastY}`;
+      const spine = roundedOrthogonalPath([
+        { x: startX, y: startY },
+        { x: startX, y: startY + 18 },
+        { x: railX, y: startY + 18 },
+        { x: railX, y: lastY }
+      ], 11);
       fragment.append(createSvgPath(
         "connector connector-base mobile-spine",
         spine,
@@ -571,7 +626,12 @@ function renderConnectors(visible) {
       if (flowingChildren.length) {
         const lastFlowY = flowingChildren[flowingChildren.length - 1].layout.y;
         const allDetails = flowingChildren.every((child) => connectorType(child) === "detail");
-        const flowSpine = `M ${startX} ${startY} V ${startY + 18} H ${railX} V ${lastFlowY}`;
+        const flowSpine = roundedOrthogonalPath([
+          { x: startX, y: startY },
+          { x: startX, y: startY + 18 },
+          { x: railX, y: startY + 18 },
+          { x: railX, y: lastFlowY }
+        ], 11);
         fragment.append(createSvgPath(
           `connector connector-flow mobile-spine-flow${allDetails ? " flow-detail" : ""}`,
           flowSpine,
@@ -583,7 +643,10 @@ function renderConnectors(visible) {
       children.forEach((child) => {
         const color = themeFor(child);
         const type = connectorType(child);
-        const d = `M ${railX} ${child.layout.y} H ${child.layout.x}`;
+        const d = roundedOrthogonalPath([
+          { x: railX, y: child.layout.y },
+          { x: child.layout.x, y: child.layout.y }
+        ]);
         const baseClass = `connector connector-base${type === "solid" ? "" : ` base-${type}`}`;
         const flowClass = `connector connector-flow${type === "solid" ? "" : ` flow-${type}`}`;
         fragment.append(createSvgPath(baseClass, d, color, undefined, child.id));
@@ -757,20 +820,25 @@ function renderNode(node) {
     body.append(approval);
   }
 
-  if (node.subtitle && !node.isAnnotation) {
+  const details = !node.isAnnotation ? document.createElement("div") : null;
+  if (details) details.className = "node-details";
+
+  if (node.subtitle && details) {
     const subtitle = document.createElement("p");
-    subtitle.className = "node-subtitle";
+    subtitle.className = "node-subtitle node-detail-row";
     subtitle.textContent = node.subtitle;
-    body.append(subtitle);
+    details.append(subtitle);
   }
 
   const meta = metaLabel(node);
-  if (meta && !node.isAnnotation) {
+  if (meta && details) {
     const metaElement = document.createElement("span");
-    metaElement.className = "node-meta";
+    metaElement.className = "node-meta node-detail-row";
     metaElement.textContent = meta;
-    body.append(metaElement);
+    details.append(metaElement);
   }
+
+  if (details?.childElementCount) body.append(details);
 
   element.append(body);
 
@@ -1038,7 +1106,7 @@ function drawMinimap() {
     context.lineTo(middleX, endY);
     context.lineTo(endX, endY);
     context.strokeStyle = color;
-    context.lineWidth = node.depth <= 2 ? 1.5 : 1.05;
+    context.lineWidth = node.depth <= 2 ? 1.7 : 1.2;
     context.setLineDash(isExternal(node) ? [3, 2] : []);
     context.stroke();
   });
