@@ -97,7 +97,6 @@ const dom = {
 
 const state = {
   root: null,
-  scopeRoot: null,
   allNodes: [],
   visibleNodes: [],
   transform: { x: 0, y: 0, scale: 1 },
@@ -448,7 +447,7 @@ function buildTree(records) {
 
   allNodes.forEach((node) => {
     if (!node.children.length) return;
-    node.collapsed = node.depth !== 0;
+    node.collapsed = !(node.depth === 0 || node.title === "Qué hacemos");
   });
 
   return { root, allNodes };
@@ -491,7 +490,7 @@ function getVisibleNodes() {
     result.push(node);
     if (!node.collapsed) node.children.forEach(walk);
   }
-  walk(state.scopeRoot || state.root);
+  walk(state.root);
   return result;
 }
 
@@ -501,12 +500,11 @@ function layoutDesktop(visible) {
   const columnSpacing = 80;
   const dimensionsById = new Map();
   const columnWidths = [];
-  const baseDepth = (state.scopeRoot || state.root).depth;
 
   visible.forEach((node) => {
     const dimensions = nodeDimensions(node, false);
     dimensionsById.set(node.id, dimensions);
-    columnWidths[node.depth - baseDepth] = Math.max(columnWidths[node.depth - baseDepth] || 0, dimensions.width);
+    columnWidths[node.depth] = Math.max(columnWidths[node.depth] || 0, dimensions.width);
   });
 
   const columnX = [64];
@@ -516,7 +514,7 @@ function layoutDesktop(visible) {
 
   function place(node) {
     const dimensions = dimensionsById.get(node.id);
-    node.layout = { ...dimensions, x: columnX[node.depth - baseDepth], y: 0 };
+    node.layout = { ...dimensions, x: columnX[node.depth], y: 0 };
     const children = node.collapsed ? [] : node.children.filter((child) => visibleSet.has(child.id));
 
     if (!children.length) {
@@ -529,7 +527,7 @@ function layoutDesktop(visible) {
     node.layout.y = (children[0].layout.y + children[children.length - 1].layout.y) / 2;
   }
 
-  place(state.scopeRoot || state.root);
+  place(state.root);
   const maxRight = Math.max(...visible.map((node) => node.layout.x + node.layout.width));
   const maxBottom = Math.max(...visible.map((node) => node.layout.y + node.layout.height / 2));
   state.sceneWidth = maxRight + 120;
@@ -542,7 +540,7 @@ function layoutMobile(visible) {
 
   visible.forEach((node) => {
     const dimensions = nodeDimensions(node, true);
-    const indent = Math.min(node.depth - (state.scopeRoot || state.root).depth, 4) * 28;
+    const indent = Math.min(node.depth, 6) * 124;
     node.layout = {
       ...dimensions,
       x: 28 + indent,
@@ -1182,10 +1180,7 @@ function branchToggle(node) {
     clearNodeFocus();
     node.collapsed = !node.collapsed;
     renderMap();
-    requestAnimationFrame(() => {
-      centerNode(node, false);
-      dom.nodes.querySelector(`[data-node-id="${CSS.escape(node.id)}"] .toggle-branch`)?.focus({preventScroll: true});
-    });
+    requestAnimationFrame(() => centerNode(node, false));
   });
   return button;
 }
@@ -1379,8 +1374,6 @@ function renderMap() {
   if (state.elasticDrag) cancelElasticDrag();
   if (!state.root) return;
   state.mobile = window.matchMedia(MOBILE_QUERY).matches;
-  if (state.motionFrame) cancelAnimationFrame(state.motionFrame);
-  const before = new Map([...dom.nodes.querySelectorAll(".map-node")].map(el => [el.dataset.nodeId, {left: parseFloat(el.style.left), top: parseFloat(el.style.top)}]));
   const visible = getVisibleNodes();
   state.visibleNodes = visible;
 
@@ -1406,37 +1399,6 @@ function renderMap() {
 
   dom.visibleCount.textContent = String(visible.filter((node) => !node.isAnnotation).length);
   applyTransform();
-  window.ilunionExplorer?.onRender();
-  if (!window.matchMedia(REDUCED_MOTION_QUERY).matches) {
-    const moving = new Map();
-    [...dom.nodes.children].forEach((el, index) => {
-      const previous = before.get(el.dataset.nodeId);
-      const dx = previous ? previous.left - parseFloat(el.style.left) : -10;
-      const dy = previous ? previous.top - parseFloat(el.style.top) : 0;
-      if (Math.abs(dx) + Math.abs(dy) < 1) return;
-      const animation = el.animate([
-        {translate: `${dx}px ${dy}px`, opacity: previous ? 1 : 0},
-        {translate: '0px 0px', opacity: 1}
-      ], {duration: previous ? 440 : 320, delay: previous ? 0 : Math.min(index * 35, 175), easing: 'cubic-bezier(.25,.8,.25,1)', fill:'backwards'});
-      moving.set(el.dataset.nodeId, {animation, dx, dy});
-    });
-    const paths = [...dom.connections.querySelectorAll('.connector')];
-    const interpolated = node => {
-      const item = moving.get(node.id);
-      if (!item) return node.layout;
-      const progress = item.animation.effect.getComputedTiming().progress ?? (item.animation.playState === 'finished' ? 1 : 0);
-      return {...node.layout, x:node.layout.x + item.dx * (1-progress), y:node.layout.y + item.dy * (1-progress)};
-    };
-    const follow = () => {
-      paths.forEach(path => {
-        const meta = path.connectorMeta;
-        if (meta?.role === 'direct') path.setAttribute('d', connectorPath(meta.parent, meta.child, interpolated(meta.parent), interpolated(meta.child)));
-      });
-      if ([...moving.values()].some(({animation}) => animation.playState !== 'finished')) state.motionFrame = requestAnimationFrame(follow);
-      else state.motionFrame = null;
-    };
-    if (!state.mobile) follow();
-  }
 }
 
 function applyTransform() {
@@ -1905,11 +1867,10 @@ function fitView({ animate = true, readable = false } = {}) {
   const x = readable && state.mobile ? 16 : Math.max(18, (width - state.sceneWidth * scale) / 2);
   const y = readable && state.mobile ? 18 : Math.max(18, (height - state.sceneHeight * scale) / 2);
 
-  animate = animate && !window.matchMedia(REDUCED_MOTION_QUERY).matches;
-  if (animate) dom.scene.style.transition = "transform 560ms cubic-bezier(.45,0,.1,1)";
+  if (animate) dom.scene.style.transition = "transform 260ms cubic-bezier(.2,.8,.2,1)";
   state.transform = { x, y, scale };
   applyTransform();
-  if (animate) window.setTimeout(() => { dom.scene.style.transition = ""; }, 580);
+  if (animate) window.setTimeout(() => { dom.scene.style.transition = ""; }, 280);
 }
 
 function centerNode(node, emphasize = true) {
@@ -1919,9 +1880,9 @@ function centerNode(node, emphasize = true) {
   state.transform.scale = clampScale(scale);
   state.transform.x = width / 2 - (node.layout.x + node.layout.width / 2) * state.transform.scale;
   state.transform.y = height / 2 - node.layout.y * state.transform.scale;
-  dom.scene.style.transition = window.matchMedia(REDUCED_MOTION_QUERY).matches ? "" : "transform 560ms cubic-bezier(.45,0,.1,1)";
+  dom.scene.style.transition = "transform 260ms cubic-bezier(.2,.8,.2,1)";
   applyTransform();
-  window.setTimeout(() => { dom.scene.style.transition = ""; }, 580);
+  window.setTimeout(() => { dom.scene.style.transition = ""; }, 280);
 
   if (emphasize) {
     focusNode(node);
@@ -1985,7 +1946,6 @@ function focusNode(node, origin = "search") {
 }
 
 function revealNode(node) {
-  window.ilunionExplorer?.prepareSearch(node);
   let ancestor = node.parent;
   while (ancestor) {
     ancestor.collapsed = false;
@@ -2001,20 +1961,21 @@ function setAllCollapsed(summary) {
     if (!node.children.length) return;
     node.collapsed = summary;
   });
-  const scope = state.scopeRoot || state.root;
-  scope.collapsed = false;
+  state.root.collapsed = false;
+  const whatWeDo = state.allNodes.find((node) => node.title === "Qué hacemos" && node.depth === 1);
+  if (whatWeDo) whatWeDo.collapsed = false;
   renderMap();
 
   if (summary) {
     fitView({ readable: state.mobile });
     showToast("Vista resumida: abre cada rama con el botón +.");
   } else {
-    const rootLayout = (state.scopeRoot || state.root).layout;
+    const rootLayout = state.root.layout;
     state.transform.scale = state.mobile ? 0.82 : 0.52;
     state.transform.x = (state.mobile ? 16 : 28) - rootLayout.x * state.transform.scale;
     state.transform.y = (state.mobile ? 18 : 28) - (rootLayout.y - rootLayout.height / 2) * state.transform.scale;
     applyTransform();
-    showToast(`Rama desplegada: ${dom.visibleCount.textContent} páginas. Usa el buscador o el índice para recorrerla.`);
+    showToast(`Arquitectura completa desplegada: ${dom.totalCount.textContent} páginas. Arrastra o usa el buscador para recorrerla.`);
   }
 }
 
@@ -2490,7 +2451,6 @@ async function init() {
     state.allNodes = allNodes;
     dom.totalCount.textContent = String(records.length);
     renderMap();
-    window.ilunionExplorer?.ready();
     requestAnimationFrame(() => fitView({ animate: false, readable: state.mobile }));
   } catch (error) {
     console.error(error);
