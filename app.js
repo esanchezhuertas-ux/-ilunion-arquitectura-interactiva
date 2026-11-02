@@ -2,21 +2,30 @@
 
 const COLORS = {
   corporate: "#253D88",
-  servicios: "#075985",
-  consultoria: "#9A3412",
-  bienestar: "#006D77",
-  textilcare: "#6D28A0",
-  tutienda: "#9D2862",
-  circular: "#805500",
-  hoteles: "#2D653E",
-  nosotros: "#4659A1",
-  compromiso: "#426B2F",
-  contacto: "#A13336",
-  comunicacion: "#7A3E78",
-  sedes: "#356777",
-  empleo: "#68641B",
-  documentacion: "#746245",
-  legal: "#59616D"
+  servicios: "#0078E7",
+  consultoria: "#E25816",
+  bienestar: "#009BA8",
+  textilcare: "#8245E8",
+  tutienda: "#D51D84",
+  circular: "#BA7B00",
+  hoteles: "#168C4E",
+  nosotros: "#4962DC",
+  compromiso: "#56852C",
+  contacto: "#E13E51",
+  comunicacion: "#AE39B8",
+  sedes: "#00859B",
+  empleo: "#928000",
+  documentacion: "#9A6C28",
+  legal: "#5D6C83"
+};
+
+// Bright moving light, separate from the readable structural branch color.
+const FLOW_COLORS = {
+  corporate: "#74A0FF", servicios: "#00DCFF", consultoria: "#FFAB47",
+  bienestar: "#00FFE0", textilcare: "#C79AFF", tutienda: "#FF6CDD",
+  circular: "#FFE65B", hoteles: "#58F59C", nosotros: "#A1B1FF",
+  compromiso: "#BCF76B", contacto: "#FF99AB", comunicacion: "#F78AFF",
+  sedes: "#65EFFF", empleo: "#F4EE69", documentacion: "#FFD38B", legal: "#B4D4FF"
 };
 
 const BUSINESS_KEY = [
@@ -97,6 +106,7 @@ const dom = {
 
 const state = {
   root: null,
+  scopeRoot: null,
   allNodes: [],
   visibleNodes: [],
   transform: { x: 0, y: 0, scale: 1 },
@@ -447,7 +457,7 @@ function buildTree(records) {
 
   allNodes.forEach((node) => {
     if (!node.children.length) return;
-    node.collapsed = !(node.depth === 0 || node.title === "Qué hacemos");
+    node.collapsed = node.depth !== 0;
   });
 
   return { root, allNodes };
@@ -490,7 +500,7 @@ function getVisibleNodes() {
     result.push(node);
     if (!node.collapsed) node.children.forEach(walk);
   }
-  walk(state.root);
+  walk(state.scopeRoot || state.root);
   return result;
 }
 
@@ -500,11 +510,12 @@ function layoutDesktop(visible) {
   const columnSpacing = 80;
   const dimensionsById = new Map();
   const columnWidths = [];
+  const baseDepth = (state.scopeRoot || state.root).depth;
 
   visible.forEach((node) => {
     const dimensions = nodeDimensions(node, false);
     dimensionsById.set(node.id, dimensions);
-    columnWidths[node.depth] = Math.max(columnWidths[node.depth] || 0, dimensions.width);
+    columnWidths[node.depth - baseDepth] = Math.max(columnWidths[node.depth - baseDepth] || 0, dimensions.width);
   });
 
   const columnX = [64];
@@ -514,7 +525,7 @@ function layoutDesktop(visible) {
 
   function place(node) {
     const dimensions = dimensionsById.get(node.id);
-    node.layout = { ...dimensions, x: columnX[node.depth], y: 0 };
+    node.layout = { ...dimensions, x: columnX[node.depth - baseDepth], y: 0 };
     const children = node.collapsed ? [] : node.children.filter((child) => visibleSet.has(child.id));
 
     if (!children.length) {
@@ -527,7 +538,7 @@ function layoutDesktop(visible) {
     node.layout.y = (children[0].layout.y + children[children.length - 1].layout.y) / 2;
   }
 
-  place(state.root);
+  place(state.scopeRoot || state.root);
   const maxRight = Math.max(...visible.map((node) => node.layout.x + node.layout.width));
   const maxBottom = Math.max(...visible.map((node) => node.layout.y + node.layout.height / 2));
   state.sceneWidth = maxRight + 120;
@@ -540,7 +551,7 @@ function layoutMobile(visible) {
 
   visible.forEach((node) => {
     const dimensions = nodeDimensions(node, true);
-    const indent = Math.min(node.depth, 6) * 124;
+    const indent = Math.min(node.depth - (state.scopeRoot || state.root).depth, 4) * 28;
     node.layout = {
       ...dimensions,
       x: 28 + indent,
@@ -558,7 +569,9 @@ function createSvgPath(className, d, color, delay, focusChildId, connectorMeta =
   const path = document.createElementNS(SVG_NS, "path");
   path.setAttribute("class", className);
   path.setAttribute("d", d);
-  path.setAttribute("stroke", color);
+  const isFlow = className.split(" ").includes("connector-flow");
+  const colorKey = Object.keys(COLORS).find(key => COLORS[key] === color);
+  path.setAttribute("stroke", isFlow ? (FLOW_COLORS[colorKey] || color) : color);
   if (delay !== undefined) path.style.animationDelay = `${delay}s`;
   if (focusChildId) path.dataset.focusChildId = focusChildId;
   if (connectorMeta) {
@@ -1180,7 +1193,10 @@ function branchToggle(node) {
     clearNodeFocus();
     node.collapsed = !node.collapsed;
     renderMap();
-    requestAnimationFrame(() => centerNode(node, false));
+    requestAnimationFrame(() => {
+      centerNode(node, false);
+      dom.nodes.querySelector(`[data-node-id="${CSS.escape(node.id)}"] .toggle-branch`)?.focus({preventScroll: true});
+    });
   });
   return button;
 }
@@ -1374,6 +1390,8 @@ function renderMap() {
   if (state.elasticDrag) cancelElasticDrag();
   if (!state.root) return;
   state.mobile = window.matchMedia(MOBILE_QUERY).matches;
+  if (state.motionFrame) cancelAnimationFrame(state.motionFrame);
+  const before = new Map([...dom.nodes.querySelectorAll(".map-node")].map(el => [el.dataset.nodeId, {left: parseFloat(el.style.left), top: parseFloat(el.style.top)}]));
   const visible = getVisibleNodes();
   state.visibleNodes = visible;
 
@@ -1399,6 +1417,37 @@ function renderMap() {
 
   dom.visibleCount.textContent = String(visible.filter((node) => !node.isAnnotation).length);
   applyTransform();
+  window.ilunionExplorer?.onRender();
+  if (!window.matchMedia(REDUCED_MOTION_QUERY).matches) {
+    const moving = new Map();
+    [...dom.nodes.children].forEach((el, index) => {
+      const previous = before.get(el.dataset.nodeId);
+      const dx = previous ? previous.left - parseFloat(el.style.left) : -10;
+      const dy = previous ? previous.top - parseFloat(el.style.top) : 0;
+      if (Math.abs(dx) + Math.abs(dy) < 1) return;
+      const animation = el.animate([
+        {translate: `${dx}px ${dy}px`, opacity: previous ? 1 : 0},
+        {translate: '0px 0px', opacity: 1}
+      ], {duration: previous ? 440 : 320, delay: previous ? 0 : Math.min(index * 35, 175), easing: 'cubic-bezier(.25,.8,.25,1)', fill:'backwards'});
+      moving.set(el.dataset.nodeId, {animation, dx, dy});
+    });
+    const paths = [...dom.connections.querySelectorAll('.connector')];
+    const interpolated = node => {
+      const item = moving.get(node.id);
+      if (!item) return node.layout;
+      const progress = item.animation.effect.getComputedTiming().progress ?? (item.animation.playState === 'finished' ? 1 : 0);
+      return {...node.layout, x:node.layout.x + item.dx * (1-progress), y:node.layout.y + item.dy * (1-progress)};
+    };
+    const follow = () => {
+      paths.forEach(path => {
+        const meta = path.connectorMeta;
+        if (meta?.role === 'direct') path.setAttribute('d', connectorPath(meta.parent, meta.child, interpolated(meta.parent), interpolated(meta.child)));
+      });
+      if ([...moving.values()].some(({animation}) => animation.playState !== 'finished')) state.motionFrame = requestAnimationFrame(follow);
+      else state.motionFrame = null;
+    };
+    if (!state.mobile) follow();
+  }
 }
 
 function applyTransform() {
@@ -1517,22 +1566,33 @@ function minimapRoundedRect(context, x, y, width, height, radius) {
 }
 
 function minimapNodeRect(node, mapX, mapY, scaleX, scaleY) {
-  const naturalWidth = node.layout.width * scaleX;
-  const naturalHeight = node.layout.height * scaleY;
-  const minimumWidth = node.depth === 0 ? 18 : node.depth === 1 ? 12 : node.depth === 2 ? 8 : 4;
-  const minimumHeight = node.depth === 0 ? 8 : node.depth === 1 ? 5 : node.depth === 2 ? 3.5 : 2;
-  const width = clamp(naturalWidth, minimumWidth, node.depth <= 1 ? 42 : 30);
-  const height = clamp(naturalHeight, minimumHeight, node.depth === 0 ? 12 : 8);
+  // Project the real card bounds. Minimum marker sizes caused overlapping
+  // cards and reversed connectors when the whole architecture was expanded.
+  const width = node.layout.width * scaleX;
+  const height = node.layout.height * scaleY;
   const centerX = mapX(node.layout.x + node.layout.width / 2);
   const centerY = mapY(node.layout.y);
   return {
-    x: centerX - width / 2,
-    y: centerY - height / 2,
-    width,
-    height,
-    centerX,
-    centerY,
-    right: centerX + width / 2
+    x: mapX(node.layout.x), y: mapY(node.layout.y - node.layout.height / 2),
+    width, height, centerX, centerY, right: mapX(node.layout.x + node.layout.width)
+  };
+}
+
+function minimapDrawingBounds(width = 284, height = 120) {
+  const nodes = state.visibleNodes;
+  const left = Math.min(...nodes.map(n => n.layout.x)) - 64;
+  const top = Math.min(...nodes.map(n => n.layout.y - n.layout.height / 2)) - 64;
+  const right = Math.max(...nodes.map(n => n.layout.x + n.layout.width)) + 64;
+  const bottom = Math.max(...nodes.map(n => n.layout.y + n.layout.height / 2)) + 64;
+  const contentWidth = right - left, contentHeight = bottom - top;
+  // Sparse views stay miniature instead of stretching their cards to fill
+  // the canvas. Dense trees still use the complete overview on each axis.
+  const worldWidth = Math.max(contentWidth, width / .17);
+  const worldHeight = Math.max(contentHeight, height / .16);
+  return {
+    left: left - (worldWidth - contentWidth) / 2,
+    top: top - (worldHeight - contentHeight) / 2,
+    width: worldWidth, height: worldHeight
   };
 }
 
@@ -1555,7 +1615,7 @@ function drawMinimap() {
   const padding = 10;
   const innerWidth = Math.max(1, canvasRect.width - padding * 2);
   const innerHeight = Math.max(1, canvasRect.height - padding * 2);
-  const world = minimapWorldBounds();
+  const world = minimapDrawingBounds(innerWidth, innerHeight);
   const scaleX = innerWidth / world.width;
   const scaleY = innerHeight / world.height;
   const metrics = { padding, innerWidth, innerHeight, scaleX, scaleY, world };
@@ -1570,38 +1630,31 @@ function drawMinimap() {
 
   context.lineCap = "round";
   context.lineJoin = "round";
+  const projection = new DOMMatrix([scaleX, 0, 0, scaleY,
+    padding - world.left * scaleX, padding - world.top * scaleY]);
   state.visibleNodes.forEach((node) => {
     const parent = node.parent;
     if (!parent || !visibleSet.has(parent.id) || parent.collapsed) return;
-    const parentRect = nodeRects.get(parent.id);
-    const nodeRect = nodeRects.get(node.id);
-    if (!parentRect || !nodeRect) return;
-    const startX = parentRect.right;
-    const startY = parentRect.centerY;
-    const endX = nodeRect.x;
-    const endY = nodeRect.centerY;
-    const middleX = startX + (endX - startX) / 2;
-    const color = minimapBranchColor(node);
-    context.beginPath();
-    context.moveTo(startX, startY);
-    context.lineTo(middleX, startY);
-    context.lineTo(middleX, endY);
-    context.lineTo(endX, endY);
-    context.strokeStyle = color;
-    context.lineWidth = node.depth <= 2 ? 1.7 : 1.2;
-    context.setLineDash(isExternal(node) ? [3, 2] : []);
-    context.stroke();
+    // Reuse the same connector geometry as the actual map, including ports
+    // and bends, rather than drawing a different miniature tree.
+    const path = new Path2D();
+    path.addPath(new Path2D(connectorPath(parent, node)), projection);
+    context.strokeStyle = themeFor(node);
+    context.lineWidth = state.visibleNodes.length > 100 ? .55 : .9;
+    const type = connectorType(node);
+    context.setLineDash(type === 'dashed' ? [2, 1.5] : type === 'dotted' ? [.5, 1.5] : []);
+    context.stroke(path);
   });
   context.setLineDash([]);
 
   state.visibleNodes.forEach((node) => {
-    const color = minimapBranchColor(node);
+    const color = themeFor(node);
     const { x, y, width, height } = nodeRects.get(node.id);
-    const opacity = node.isAnnotation ? .18 : node.depth === 0 ? .64 : node.depth === 1 ? .48 : node.depth === 2 ? .36 : .24;
+    const opacity = node.isAnnotation ? .5 : node.depth === 0 ? 1 : .9;
     minimapRoundedRect(context, x, y, width, height, Math.min(2.5, height / 2));
     context.fillStyle = colorWithAlpha(color, opacity);
     context.fill();
-    if (node.depth <= 2 && !node.isAnnotation) {
+    if (height >= 2 && width >= 3 && node.depth <= 2 && !node.isAnnotation) {
       context.strokeStyle = colorWithAlpha(color, .48);
       context.lineWidth = .65;
       context.stroke();
@@ -1617,30 +1670,12 @@ function drawMinimap() {
   const sceneBottomRaw = sceneTopRaw + viewportHeight / scale;
   const viewWidth = sceneRightRaw - sceneLeftRaw;
   const viewHeight = sceneBottomRaw - sceneTopRaw;
-  const nodesInViewport = state.visibleNodes.filter((node) => {
-    const nodeLeft = node.layout.x;
-    const nodeRight = node.layout.x + node.layout.width;
-    const nodeTop = node.layout.y - node.layout.height / 2;
-    const nodeBottom = node.layout.y + node.layout.height / 2;
-    return nodeRight >= sceneLeftRaw && nodeLeft <= sceneRightRaw && nodeBottom >= sceneTopRaw && nodeTop <= sceneBottomRaw;
-  });
-  const contentPadding = 36;
-  const representedLeft = nodesInViewport.length
-    ? Math.max(sceneLeftRaw, Math.min(...nodesInViewport.map((node) => node.layout.x)) - contentPadding)
-    : sceneLeftRaw;
-  const representedRight = nodesInViewport.length
-    ? Math.min(sceneRightRaw, Math.max(...nodesInViewport.map((node) => node.layout.x + node.layout.width)) + contentPadding)
-    : sceneRightRaw;
-  const naturalMapWidth = Math.max(0, (representedRight - representedLeft) * scaleX);
-  const minimumMapWidth = innerWidth * .34;
-  const viewportMapWidth = Math.min(innerWidth, Math.max(minimumMapWidth, naturalMapWidth));
-  const viewportMapHeight = viewHeight >= world.height ? innerHeight : viewHeight * scaleY;
-  const sceneCenterX = (representedLeft + representedRight) / 2;
-  const sceneCenterY = (sceneTopRaw + sceneBottomRaw) / 2;
-  const viewportX = clamp(mapX(sceneCenterX) - viewportMapWidth / 2, padding, padding + innerWidth - viewportMapWidth);
-  const viewportY = viewHeight >= world.height
-    ? padding
-    : clamp(mapY(sceneCenterY) - viewportMapHeight / 2, padding, padding + innerHeight - viewportMapHeight);
+  const viewportX = clamp(mapX(sceneLeftRaw), padding, padding + innerWidth);
+  const viewportY = clamp(mapY(sceneTopRaw), padding, padding + innerHeight);
+  const viewportRight = clamp(mapX(sceneRightRaw), padding, padding + innerWidth);
+  const viewportBottom = clamp(mapY(sceneBottomRaw), padding, padding + innerHeight);
+  const viewportMapWidth = Math.max(0, viewportRight - viewportX);
+  const viewportMapHeight = Math.max(0, viewportBottom - viewportY);
   state.minimapViewportRect = {
     x: viewportX,
     y: viewportY,
@@ -1648,8 +1683,11 @@ function drawMinimap() {
     height: viewportMapHeight
   };
 
-  context.fillStyle = colorWithAlpha(MINIMAP_VIEWPORT_FILL, .10);
+  context.fillStyle = colorWithAlpha(MINIMAP_VIEWPORT_FILL, .055);
   context.fillRect(viewportX, viewportY, viewportMapWidth, viewportMapHeight);
+  context.strokeStyle = colorWithAlpha(MINIMAP_VIEWPORT_FILL, .65);
+  context.lineWidth = 1.25;
+  context.strokeRect(viewportX, viewportY, viewportMapWidth, viewportMapHeight);
 
   const coversScene = sceneLeftRaw <= 0 && sceneTopRaw <= 0 && sceneRightRaw >= state.sceneWidth && sceneBottomRaw >= state.sceneHeight;
   if (coversScene) {
@@ -1704,7 +1742,7 @@ function centerScenePoint(sceneX, sceneY) {
   const scale = state.transform.scale;
   const viewWidth = dom.viewport.clientWidth / scale;
   const viewHeight = dom.viewport.clientHeight / scale;
-  const world = state.minimapMetrics?.world || minimapWorldBounds();
+  const world = minimapWorldBounds();
   const targetX = viewWidth >= world.width
     ? world.left + world.width / 2
     : clamp(sceneX, world.left + viewWidth / 2, world.left + world.width - viewWidth / 2);
@@ -1867,10 +1905,11 @@ function fitView({ animate = true, readable = false } = {}) {
   const x = readable && state.mobile ? 16 : Math.max(18, (width - state.sceneWidth * scale) / 2);
   const y = readable && state.mobile ? 18 : Math.max(18, (height - state.sceneHeight * scale) / 2);
 
-  if (animate) dom.scene.style.transition = "transform 260ms cubic-bezier(.2,.8,.2,1)";
+  animate = animate && !window.matchMedia(REDUCED_MOTION_QUERY).matches;
+  if (animate) dom.scene.style.transition = "transform 560ms cubic-bezier(.45,0,.1,1)";
   state.transform = { x, y, scale };
   applyTransform();
-  if (animate) window.setTimeout(() => { dom.scene.style.transition = ""; }, 280);
+  if (animate) window.setTimeout(() => { dom.scene.style.transition = ""; }, 580);
 }
 
 function centerNode(node, emphasize = true) {
@@ -1880,9 +1919,9 @@ function centerNode(node, emphasize = true) {
   state.transform.scale = clampScale(scale);
   state.transform.x = width / 2 - (node.layout.x + node.layout.width / 2) * state.transform.scale;
   state.transform.y = height / 2 - node.layout.y * state.transform.scale;
-  dom.scene.style.transition = "transform 260ms cubic-bezier(.2,.8,.2,1)";
+  dom.scene.style.transition = window.matchMedia(REDUCED_MOTION_QUERY).matches ? "" : "transform 560ms cubic-bezier(.45,0,.1,1)";
   applyTransform();
-  window.setTimeout(() => { dom.scene.style.transition = ""; }, 280);
+  window.setTimeout(() => { dom.scene.style.transition = ""; }, 580);
 
   if (emphasize) {
     focusNode(node);
@@ -1946,6 +1985,7 @@ function focusNode(node, origin = "search") {
 }
 
 function revealNode(node) {
+  window.ilunionExplorer?.prepareSearch(node);
   let ancestor = node.parent;
   while (ancestor) {
     ancestor.collapsed = false;
@@ -1961,21 +2001,20 @@ function setAllCollapsed(summary) {
     if (!node.children.length) return;
     node.collapsed = summary;
   });
-  state.root.collapsed = false;
-  const whatWeDo = state.allNodes.find((node) => node.title === "Qué hacemos" && node.depth === 1);
-  if (whatWeDo) whatWeDo.collapsed = false;
+  const scope = state.scopeRoot || state.root;
+  scope.collapsed = false;
   renderMap();
 
   if (summary) {
     fitView({ readable: state.mobile });
     showToast("Vista resumida: abre cada rama con el botón +.");
   } else {
-    const rootLayout = state.root.layout;
+    const rootLayout = (state.scopeRoot || state.root).layout;
     state.transform.scale = state.mobile ? 0.82 : 0.52;
     state.transform.x = (state.mobile ? 16 : 28) - rootLayout.x * state.transform.scale;
     state.transform.y = (state.mobile ? 18 : 28) - (rootLayout.y - rootLayout.height / 2) * state.transform.scale;
     applyTransform();
-    showToast(`Arquitectura completa desplegada: ${dom.totalCount.textContent} páginas. Arrastra o usa el buscador para recorrerla.`);
+    showToast(`Rama desplegada: ${dom.visibleCount.textContent} páginas. Usa el buscador o el índice para recorrerla.`);
   }
 }
 
@@ -2451,6 +2490,7 @@ async function init() {
     state.allNodes = allNodes;
     dom.totalCount.textContent = String(records.length);
     renderMap();
+    window.ilunionExplorer?.ready();
     requestAnimationFrame(() => fitView({ animate: false, readable: state.mobile }));
   } catch (error) {
     console.error(error);
